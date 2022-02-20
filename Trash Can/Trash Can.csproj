@@ -143,6 +143,9 @@
     <Compile Include="Texts\TextsExtensions.cs" />
     <Compile Include="Trashs\Trash.cs" />
     <Compile Include="Trashs\TrashItem.cs" />
+    <Compile Include="XMLs\XML.Trash.cs" />
+    <Compile Include="XMLs\XML.Trashs.cs" />
+    <Compile Include="XMLs\XML.TrashsFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
