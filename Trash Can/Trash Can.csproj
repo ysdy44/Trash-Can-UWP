@@ -122,6 +122,9 @@
     <Compile Include="Blends\TagType.cs" />
     <Compile Include="Blends\TagTypeExtensions.cs" />
     <Compile Include="Controls\OperateType.cs" />
+    <Compile Include="Controls\ReorderControl.xaml.cs">
+      <DependentUpon>ReorderControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Elements\AccentDecorator.xaml.cs">
       <DependentUpon>AccentDecorator.xaml</DependentUpon>
     </Compile>
@@ -217,6 +220,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ReorderControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Elements\AccentDecorator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
