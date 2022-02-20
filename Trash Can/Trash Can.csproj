@@ -132,6 +132,9 @@
     <Compile Include="Elements\DeviceLayoutType.cs" />
     <Compile Include="Elements\ProgressRing.cs" />
     <Compile Include="Elements\Reorder.cs" />
+    <Compile Include="FileUtils\FileUtil.cs" />
+    <Compile Include="FileUtils\FileUtil.PickAndCopy.cs" />
+    <Compile Include="FileUtils\FileUtil.RtfFile.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
