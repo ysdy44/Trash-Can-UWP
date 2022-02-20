@@ -59,5 +59,105 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 <data name='$DisplayName' xml:space='preserve'> <value>Trash Can</value> </data>
+<data name='$Version' xml:space='preserve'> <value>1.0.0</value> </data>
+<data name='$InputText' xml:space='preserve'> <value>Introduce el texto</value> </data>
+<data name='$Untitled' xml:space='preserve'> <value>Intitulado</value> </data>
+<data name='$GithubLink' xml:space='preserve'> <value>https://github.com/ysdy44/Trash-Can-UWP</value> </data>
+<data name='$FeedbackLink' xml:space='preserve'> <value>ysdy44@outlook.com</value> </data>
+<data name='Github' xml:space='preserve'> <value>Github</value> </data>
+<data name='Feedback' xml:space='preserve'> <value>Realimentación</value> </data>
+<data name='$SettingPage_Close' xml:space='preserve'> <value>Cancelar</value> </data>
+<data name='$SettingPage_Primary' xml:space='preserve'> <value>OK</value> </data>
+<data name='$SettingPage_Theme' xml:space='preserve'> <value>Tema</value> </data>
+<data name='$SettingPage_Theme_Light' xml:space='preserve'> <value>Ligero</value> </data>
+<data name='$SettingPage_Theme_Dark' xml:space='preserve'> <value>Oscuro</value> </data>
+<data name='$SettingPage_Theme_UseSystem' xml:space='preserve'> <value>Usar sistema</value> </data>
+<data name='$SettingPage_Texts_FontFamily' xml:space='preserve'> <value>Familia tipográfica</value> </data>
+<data name='$SettingPage_Texts_FontSize' xml:space='preserve'> <value>Tamaño de fuente</value> </data>
+<data name='$MainPage_New' xml:space='preserve'> <value>Nuevo</value> </data>
+<data name='$MainPage_Home' xml:space='preserve'> <value>Casa</value> </data>
+<data name='$MainPage_About' xml:space='preserve'> <value>Sobre...</value> </data>
+<data name='$MainPage_Setting' xml:space='preserve'> <value>Configuración</value> </data>
+<data name='$MainPage_Split' xml:space='preserve'> <value>Separar</value> </data>
+<data name='$MainPage_Edit' xml:space='preserve'> <value>Editar</value> </data>
+<data name='$MainPage_LocalFolder' xml:space='preserve'> <value>Carpeta local</value> </data>
+<data name='$MainPage_Favorite' xml:space='preserve'> <value>Favorito</value> </data>
+<data name='$MainPage_UnFavorite' xml:space='preserve'> <value>No favorito</value> </data>
+<data name='$MainPage_Rename' xml:space='preserve'> <value>Rebautizar</value> </data>
+<data name='$MainPage_Remove' xml:space='preserve'> <value>Eliminar</value> </data>
+<data name='$MainPage_Duplicate' xml:space='preserve'> <value>Duplicar</value> </data>
+<data name='$DrawPage_Editor_Close' xml:space='preserve'> <value>Cancelar</value> </data>
+<data name='$DrawPage_Editor_Primary' xml:space='preserve'> <value>OK</value> </data>
+<data name='$DrawPage_Editor_Rename' xml:space='preserve'> <value>Rebautizar</value> </data>
+<data name='$DrawPage_Editor_Title' xml:space='preserve'> <value>Título</value> </data>
+<data name='$DrawPage_Editor_Comment' xml:space='preserve'> <value>Comentario</value> </data>
+<data name='$DrawPage_Editor_Keywords' xml:space='preserve'> <value>Palabras clave</value> </data>
+<data name='$DrawPage_Close' xml:space='preserve'> <value>Cerrar</value> </data>
+<data name='$DrawPage_Pin' xml:space='preserve'> <value>Alfiler</value> </data>
+<data name='$DrawPage_Undo' xml:space='preserve'> <value>Deshacer</value> </data>
+<data name='$DrawPage_Redo' xml:space='preserve'> <value>Rehacer</value> </data>
+<data name='$DrawPage_FullScreen' xml:space='preserve'> <value>Pantalla completa</value> </data>
+<data name='$DrawPage_UnFullScreen' xml:space='preserve'> <value>Salir de pantalla completa</value> </data>
+<data name='$DrawPage_Find' xml:space='preserve'> <value>Encontrar</value> </data>
+<data name='$DrawPage_Next' xml:space='preserve'> <value>Próximo</value> </data>
+<data name='$DrawPage_Replace' xml:space='preserve'> <value>Reemplazar</value> </data>
+<data name='$DrawPage_ReplaceAll' xml:space='preserve'> <value>Reemplaza todo</value> </data>
+<data name='$DrawPage_Save' xml:space='preserve'> <value>Guardar</value> </data>
+<data name='$DrawPage_Date' xml:space='preserve'> <value>Fecha</value> </data>
+<data name='$DrawPage_LocalFolder' xml:space='preserve'> <value>Carpeta local</value> </data>
+<data name='$DrawPage_Rename' xml:space='preserve'> <value>Rebautizar</value> </data>
+<data name='Edits_Edit_Cut' xml:space='preserve'> <value>Corte</value> </data>
+<data name='Edits_Edit_Copy' xml:space='preserve'> <value>Copiar texto</value> </data>
+<data name='Edits_Edit_Paste' xml:space='preserve'> <value>Pegar texto</value> </data>
+<data name='Edits_Edit_Clear' xml:space='preserve'> <value>Claro</value> </data>
+<data name='Edits_Select_All' xml:space='preserve'> <value>Seleccionar todo</value> </data>
+<data name='Edits_Select_Deselect' xml:space='preserve'> <value>Deseleccionar</value> </data>
+<data name='Edits_Select_ToStart' xml:space='preserve'> <value>Seleccione para comenzar</value> </data>
+<data name='Edits_Select_ToEnd' xml:space='preserve'> <value>Seleccionar para finalizar</value> </data>
+<data name='Operates_Horizontally_Left' xml:space='preserve'> <value>Alinear a la izquierda</value> </data>
+<data name='Operates_Horizontally_Center' xml:space='preserve'> <value>Alinear al centro</value> </data>
+<data name='Operates_Horizontally_Right' xml:space='preserve'> <value>Alinear a la derecha</value> </data>
+<data name='TagType_None' xml:space='preserve'> <value>Ninguno</value> </data>
+<data name='TagType_Red' xml:space='preserve'> <value>rojo</value> </data>
+<data name='TagType_Orange' xml:space='preserve'> <value>naranja</value> </data>
+<data name='TagType_Yellow' xml:space='preserve'> <value>Amarillo</value> </data>
+<data name='TagType_Green' xml:space='preserve'> <value>Verde</value> </data>
+<data name='TagType_Blue' xml:space='preserve'> <value>Azul</value> </data>
+<data name='TagType_Purple' xml:space='preserve'> <value>Púrpura</value> </data>
+<data name='Texts_FontStyle_Bold' xml:space='preserve'> <value>Negrita</value> </data>
+<data name='Texts_FontStyle_Italic' xml:space='preserve'> <value>Itálico</value> </data>
+<data name='Texts_FontStyle_Underline' xml:space='preserve'> <value>Subrayar</value> </data>
+<data name='Texts_FontFamily' xml:space='preserve'> <value>Familia tipográfica</value> </data>
+<data name='Texts_FontSize' xml:space='preserve'> <value>Tamaño de fuente</value> </data>
+<data name='Texts_FontWeight_Black' xml:space='preserve'> <value>Negro</value> </data>
+<data name='Texts_FontWeight_Bold' xml:space='preserve'> <value>Negrita</value> </data>
+<data name='Texts_FontWeight_ExtraBlack' xml:space='preserve'> <value>ExtraNegro</value> </data>
+<data name='Texts_FontWeight_ExtraBold' xml:space='preserve'> <value>ExtraBold</value> </data>
+<data name='Texts_FontWeight_ExtraLight' xml:space='preserve'> <value>Extra ligero</value> </data>
+<data name='Texts_FontWeight_Light' xml:space='preserve'> <value>Ligero</value> </data>
+<data name='Texts_FontWeight_Medium' xml:space='preserve'> <value>Medio</value> </data>
+<data name='Texts_FontWeight_Normal' xml:space='preserve'> <value>Normal</value> </data>
+<data name='Texts_FontWeight_SemiBold' xml:space='preserve'> <value>SemiNegrita</value> </data>
+<data name='Texts_FontWeight_SemiLight' xml:space='preserve'> <value>Semiligero</value> </data>
+<data name='Texts_FontWeight_Thin' xml:space='preserve'> <value>Delgado</value> </data>
+<data name='Texts_Underline_None' xml:space='preserve'> <value>Ninguno</value> </data>
+<data name='Texts_Underline_Words' xml:space='preserve'> <value>Palabras</value> </data>
+<data name='Texts_Underline_Single' xml:space='preserve'> <value>Único</value> </data>
+<data name='Texts_Underline_Double' xml:space='preserve'> <value>Doble</value> </data>
+<data name='Texts_Underline_Dash' xml:space='preserve'> <value>Pizca</value> </data>
+<data name='Texts_Underline_DashDot' xml:space='preserve'> <value>Guion punto</value> </data>
+<data name='Texts_Underline_DashDotDot' xml:space='preserve'> <value>Guión Punto Punto</value> </data>
+<data name='Texts_Underline_Dotted' xml:space='preserve'> <value>Punteado</value> </data>
+<data name='Texts_Underline_LongDash' xml:space='preserve'> <value>Guión largo</value> </data>
+<data name='Texts_Underline_Thin' xml:space='preserve'> <value>Delgado</value> </data>
+<data name='Texts_Underline_Thick' xml:space='preserve'> <value>Grueso</value> </data>
+<data name='Texts_Underline_ThickDash' xml:space='preserve'> <value>Guión grueso</value> </data>
+<data name='Texts_Underline_ThickDashDot' xml:space='preserve'> <value>Punto de trazo grueso</value> </data>
+<data name='Texts_Underline_ThickDashDotDot' xml:space='preserve'> <value>Grueso Guión Punto Punto</value> </data>
+<data name='Texts_Underline_ThickDotted' xml:space='preserve'> <value>Puntos gruesos</value> </data>
+<data name='Texts_Underline_ThickLongDash' xml:space='preserve'> <value>Trazo largo y grueso</value> </data>
+<data name='Texts_Underline_Wave' xml:space='preserve'> <value>Ola</value> </data>
+<data name='Texts_Underline_DoubleWave' xml:space='preserve'> <value>Ola doble</value> </data>
+<data name='Texts_Underline_HeavyWave' xml:space='preserve'> <value>Ola Pesada</value> </data>
 
  </root>

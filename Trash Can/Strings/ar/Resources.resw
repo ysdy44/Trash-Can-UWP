@@ -59,5 +59,105 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 <data name='$DisplayName' xml:space='preserve'> <value>Trash Can</value> </data>
+<data name='$Version' xml:space='preserve'> <value>1.0.0</value> </data>
+<data name='$InputText' xml:space='preserve'> <value>الرجاء إدخال النص</value> </data>
+<data name='$Untitled' xml:space='preserve'> <value>بدون عنوان</value> </data>
+<data name='$GithubLink' xml:space='preserve'> <value>https://github.com/ysdy44/Trash-Can-UWP</value> </data>
+<data name='$FeedbackLink' xml:space='preserve'> <value>ysdy44@outlook.com</value> </data>
+<data name='Github' xml:space='preserve'> <value>جيثب</value> </data>
+<data name='Feedback' xml:space='preserve'> <value>استجابة</value> </data>
+<data name='$SettingPage_Close' xml:space='preserve'> <value>يلغي</value> </data>
+<data name='$SettingPage_Primary' xml:space='preserve'> <value>موافق</value> </data>
+<data name='$SettingPage_Theme' xml:space='preserve'> <value>سمة</value> </data>
+<data name='$SettingPage_Theme_Light' xml:space='preserve'> <value>خفيفة</value> </data>
+<data name='$SettingPage_Theme_Dark' xml:space='preserve'> <value>داكن</value> </data>
+<data name='$SettingPage_Theme_UseSystem' xml:space='preserve'> <value>استخدم النظام</value> </data>
+<data name='$SettingPage_Texts_FontFamily' xml:space='preserve'> <value>خط العائلة</value> </data>
+<data name='$SettingPage_Texts_FontSize' xml:space='preserve'> <value>حجم الخط</value> </data>
+<data name='$MainPage_New' xml:space='preserve'> <value>جديد</value> </data>
+<data name='$MainPage_Home' xml:space='preserve'> <value>الصفحة الرئيسية</value> </data>
+<data name='$MainPage_About' xml:space='preserve'> <value>حول...</value> </data>
+<data name='$MainPage_Setting' xml:space='preserve'> <value>اقامة</value> </data>
+<data name='$MainPage_Split' xml:space='preserve'> <value>انشق، مزق</value> </data>
+<data name='$MainPage_Edit' xml:space='preserve'> <value>يحرر</value> </data>
+<data name='$MainPage_LocalFolder' xml:space='preserve'> <value>مجلد محلي</value> </data>
+<data name='$MainPage_Favorite' xml:space='preserve'> <value>مفضل</value> </data>
+<data name='$MainPage_UnFavorite' xml:space='preserve'> <value>غير مفضل</value> </data>
+<data name='$MainPage_Rename' xml:space='preserve'> <value>إعادة تسمية</value> </data>
+<data name='$MainPage_Remove' xml:space='preserve'> <value>إزالة</value> </data>
+<data name='$MainPage_Duplicate' xml:space='preserve'> <value>ينسخ</value> </data>
+<data name='$DrawPage_Editor_Close' xml:space='preserve'> <value>يلغي</value> </data>
+<data name='$DrawPage_Editor_Primary' xml:space='preserve'> <value>موافق</value> </data>
+<data name='$DrawPage_Editor_Rename' xml:space='preserve'> <value>إعادة تسمية</value> </data>
+<data name='$DrawPage_Editor_Title' xml:space='preserve'> <value>لقب</value> </data>
+<data name='$DrawPage_Editor_Comment' xml:space='preserve'> <value>تعليق</value> </data>
+<data name='$DrawPage_Editor_Keywords' xml:space='preserve'> <value>الكلمات الدالة</value> </data>
+<data name='$DrawPage_Close' xml:space='preserve'> <value>يغلق</value> </data>
+<data name='$DrawPage_Pin' xml:space='preserve'> <value>دبوس</value> </data>
+<data name='$DrawPage_Undo' xml:space='preserve'> <value>الغاء التحميل</value> </data>
+<data name='$DrawPage_Redo' xml:space='preserve'> <value>إعادة</value> </data>
+<data name='$DrawPage_FullScreen' xml:space='preserve'> <value>تكبير الشاشة</value> </data>
+<data name='$DrawPage_UnFullScreen' xml:space='preserve'> <value>الخروج من وضع ملئ للشاشة</value> </data>
+<data name='$DrawPage_Find' xml:space='preserve'> <value>تجد</value> </data>
+<data name='$DrawPage_Next' xml:space='preserve'> <value>التالي</value> </data>
+<data name='$DrawPage_Replace' xml:space='preserve'> <value>يستبدل</value> </data>
+<data name='$DrawPage_ReplaceAll' xml:space='preserve'> <value>استبدل الكل</value> </data>
+<data name='$DrawPage_Save' xml:space='preserve'> <value>احفظ</value> </data>
+<data name='$DrawPage_Date' xml:space='preserve'> <value>تاريخ</value> </data>
+<data name='$DrawPage_LocalFolder' xml:space='preserve'> <value>مجلد محلي</value> </data>
+<data name='$DrawPage_Rename' xml:space='preserve'> <value>إعادة تسمية</value> </data>
+<data name='Edits_Edit_Cut' xml:space='preserve'> <value>يقطع</value> </data>
+<data name='Edits_Edit_Copy' xml:space='preserve'> <value>نسخ النص</value> </data>
+<data name='Edits_Edit_Paste' xml:space='preserve'> <value>لصق النص</value> </data>
+<data name='Edits_Edit_Clear' xml:space='preserve'> <value>واضح</value> </data>
+<data name='Edits_Select_All' xml:space='preserve'> <value>اختر الكل</value> </data>
+<data name='Edits_Select_Deselect' xml:space='preserve'> <value>إلغاء</value> </data>
+<data name='Edits_Select_ToStart' xml:space='preserve'> <value>حدد للبدء</value> </data>
+<data name='Edits_Select_ToEnd' xml:space='preserve'> <value>حدد لإنهاء</value> </data>
+<data name='Operates_Horizontally_Left' xml:space='preserve'> <value>محاذاة لليسار</value> </data>
+<data name='Operates_Horizontally_Center' xml:space='preserve'> <value>مركز المحاذاة</value> </data>
+<data name='Operates_Horizontally_Right' xml:space='preserve'> <value>محاذاة اليمين</value> </data>
+<data name='TagType_None' xml:space='preserve'> <value>لا أحد</value> </data>
+<data name='TagType_Red' xml:space='preserve'> <value>أحمر</value> </data>
+<data name='TagType_Orange' xml:space='preserve'> <value>البرتقالي</value> </data>
+<data name='TagType_Yellow' xml:space='preserve'> <value>الأصفر</value> </data>
+<data name='TagType_Green' xml:space='preserve'> <value>أخضر</value> </data>
+<data name='TagType_Blue' xml:space='preserve'> <value>أزرق</value> </data>
+<data name='TagType_Purple' xml:space='preserve'> <value>نفسجي</value> </data>
+<data name='Texts_FontStyle_Bold' xml:space='preserve'> <value>بالخط العريض</value> </data>
+<data name='Texts_FontStyle_Italic' xml:space='preserve'> <value>مائل</value> </data>
+<data name='Texts_FontStyle_Underline' xml:space='preserve'> <value>خط سفلي</value> </data>
+<data name='Texts_FontFamily' xml:space='preserve'> <value>خط العائلة</value> </data>
+<data name='Texts_FontSize' xml:space='preserve'> <value>حجم الخط</value> </data>
+<data name='Texts_FontWeight_Black' xml:space='preserve'> <value>أسود</value> </data>
+<data name='Texts_FontWeight_Bold' xml:space='preserve'> <value>بالخط العريض</value> </data>
+<data name='Texts_FontWeight_ExtraBlack' xml:space='preserve'> <value>ExtraBlack</value> </data>
+<data name='Texts_FontWeight_ExtraBold' xml:space='preserve'> <value>ExtraBold</value> </data>
+<data name='Texts_FontWeight_ExtraLight' xml:space='preserve'> <value>المزيد من الإضاءة</value> </data>
+<data name='Texts_FontWeight_Light' xml:space='preserve'> <value>خفيفة</value> </data>
+<data name='Texts_FontWeight_Medium' xml:space='preserve'> <value>واسطة</value> </data>
+<data name='Texts_FontWeight_Normal' xml:space='preserve'> <value>طبيعي</value> </data>
+<data name='Texts_FontWeight_SemiBold' xml:space='preserve'> <value>شبه بولد</value> </data>
+<data name='Texts_FontWeight_SemiLight' xml:space='preserve'> <value>سيمي لايت</value> </data>
+<data name='Texts_FontWeight_Thin' xml:space='preserve'> <value>نحيف</value> </data>
+<data name='Texts_Underline_None' xml:space='preserve'> <value>لا أحد</value> </data>
+<data name='Texts_Underline_Words' xml:space='preserve'> <value>كلمات</value> </data>
+<data name='Texts_Underline_Single' xml:space='preserve'> <value>أعزب</value> </data>
+<data name='Texts_Underline_Double' xml:space='preserve'> <value>مزدوج</value> </data>
+<data name='Texts_Underline_Dash' xml:space='preserve'> <value>اندفاع</value> </data>
+<data name='Texts_Underline_DashDot' xml:space='preserve'> <value>داش دوت</value> </data>
+<data name='Texts_Underline_DashDotDot' xml:space='preserve'> <value>شرطة نقطة نقطة</value> </data>
+<data name='Texts_Underline_Dotted' xml:space='preserve'> <value>منقط</value> </data>
+<data name='Texts_Underline_LongDash' xml:space='preserve'> <value>اندفاعة طويلة</value> </data>
+<data name='Texts_Underline_Thin' xml:space='preserve'> <value>رقيقة</value> </data>
+<data name='Texts_Underline_Thick' xml:space='preserve'> <value>سميك</value> </data>
+<data name='Texts_Underline_ThickDash' xml:space='preserve'> <value>شرطة سميكة</value> </data>
+<data name='Texts_Underline_ThickDashDot' xml:space='preserve'> <value>شرطة نقطية سميكة</value> </data>
+<data name='Texts_Underline_ThickDashDotDot' xml:space='preserve'> <value>شرطة نقطية كثيفة</value> </data>
+<data name='Texts_Underline_ThickDotted' xml:space='preserve'> <value>منقط سميك</value> </data>
+<data name='Texts_Underline_ThickLongDash' xml:space='preserve'> <value>شرطة طويلة سميكة</value> </data>
+<data name='Texts_Underline_Wave' xml:space='preserve'> <value>لوح</value> </data>
+<data name='Texts_Underline_DoubleWave' xml:space='preserve'> <value>الموجة المزدوجة</value> </data>
+<data name='Texts_Underline_HeavyWave' xml:space='preserve'> <value>موجة ثقيلة</value> </data>
 
  </root>
