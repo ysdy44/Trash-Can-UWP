@@ -125,6 +125,9 @@
     <Compile Include="Controls\ReorderControl.xaml.cs">
       <DependentUpon>ReorderControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TrashControl.xaml.cs">
+      <DependentUpon>TrashControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Elements\AccentDecorator.xaml.cs">
       <DependentUpon>AccentDecorator.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Controls\ReorderControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TrashControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
