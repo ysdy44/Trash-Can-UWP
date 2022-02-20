@@ -124,6 +124,7 @@
     <Compile Include="Elements\ApplicationTitleBarExtension.cs" />
     <Compile Include="Elements\DeviceLayout.cs" />
     <Compile Include="Elements\DeviceLayoutType.cs" />
+    <Compile Include="Elements\ProgressRing.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
