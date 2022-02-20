@@ -138,6 +138,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Texts\FontWeight2.cs" />
     <Compile Include="Texts\TextsExtensions.cs" />
+    <Compile Include="Trashs\Trash.cs" />
+    <Compile Include="Trashs\TrashItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
