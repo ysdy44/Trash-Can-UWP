@@ -4,13 +4,1107 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:Trash_Can"
+    xmlns:controls="using:Trash_Can.Controls"
+    xmlns:elements="using:Trash_Can.Elements"
+    xmlns:trashs="using:Trash_Can.Trashs"
     mc:Ignorable="d"
     NavigationCacheMode="Required"    
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     >
 
 
+    <FrameworkElement.Resources>
+
+        <!--Flyout-->
+        <MenuFlyout x:Name="TitleFlyout" Placement="Bottom">
+            <MenuFlyoutItem x:Name="SaveItem">
+                <MenuFlyoutItem.KeyboardAccelerators>
+                    <KeyboardAccelerator Modifiers="Control" Key="S"/>
+                </MenuFlyoutItem.KeyboardAccelerators>
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Save"/>
+                </MenuFlyoutItem.Icon>
+                Save
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="CloseItem">
+                <MenuFlyoutItem.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="Escape"/>
+                </MenuFlyoutItem.KeyboardAccelerators>
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Cancel"/>
+                </MenuFlyoutItem.Icon>
+                Close
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="DateItem">
+                <MenuFlyoutItem.KeyboardAccelerators>
+                    <KeyboardAccelerator Modifiers="Control" Key="T"/>
+                </MenuFlyoutItem.KeyboardAccelerators>
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Calendar"/>
+                </MenuFlyoutItem.Icon>
+                Date
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="FindItem">
+                <MenuFlyoutItem.KeyboardAccelerators>
+                    <KeyboardAccelerator Modifiers="Control" Key="F"/>
+                </MenuFlyoutItem.KeyboardAccelerators>
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Find"/>
+                </MenuFlyoutItem.Icon>
+                Find
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="LocalFolderItem">
+                <MenuFlyoutItem.KeyboardAccelerators>
+                    <KeyboardAccelerator Modifiers="Control" Key="L"/>
+                </MenuFlyoutItem.KeyboardAccelerators>
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="NewWindow"/>
+                </MenuFlyoutItem.Icon>
+                Local folder
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="RenameItem">
+                <MenuFlyoutItem.KeyboardAccelerators>
+                    <KeyboardAccelerator Modifiers="Control" Key="E"/>
+                </MenuFlyoutItem.KeyboardAccelerators>
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Edit"/>
+                </MenuFlyoutItem.Icon>
+                Rename
+            </MenuFlyoutItem>
+        </MenuFlyout>
+        <MenuFlyout x:Name="SelectAllFlyout" >
+            <MenuFlyoutItem x:Name="SelectAllItem" >
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="SelectAll" />
+                </MenuFlyoutItem.Icon>
+                Select All
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="DeselectItem" >
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Cancel" />
+                </MenuFlyoutItem.Icon>
+                Deselect
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="SelectToStartItem" >
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Upload" />
+                </MenuFlyoutItem.Icon>
+                Select To Start
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="SelectToEndItem" >
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Download" />
+                </MenuFlyoutItem.Icon>
+                Select To End
+            </MenuFlyoutItem>
+        </MenuFlyout>
+        <MenuFlyout x:Name="WeightFlyout" >
+            <MenuFlyoutItem x:Name="WeightBlackItem" >
+                Black 900
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="WeightBoldItem" >
+                Bold 700
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="WeightExtraBlackItem" >
+                ExtraBlack 950
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="WeightExtraBoldItem" >
+                ExtraBold 800
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="WeightExtraLightItem" >
+                ExtraLight 200
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="WeightLightItem" >
+                Light 300
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="WeightMediumItem" >
+                Medium 500
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="WeightNormalItem" >
+                Normal 400
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="WeightSemiBoldItem" >
+                SemiBold 600
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="WeightSemiLightItem" >
+                SemiLight 350
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="WeightThinItem" >
+                Thin 100
+            </MenuFlyoutItem>
+        </MenuFlyout>
+        <MenuFlyout x:Name="UnderlineFlyout" >
+            <MenuFlyoutItem x:Name="UnderlineNoneItem" >
+                None
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineWordsItem" >
+                Words
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="UnderlineSingleItem" >
+                Single
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineDoubleItem" >
+                Double
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="UnderlineDashItem" >
+                Dash
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineDashDotItem" >
+                DashDot
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineDashDotDotItem" >
+                DashDotDot
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineDottedItem" >
+                Dotted
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineLongDashItem" >
+                LongDash
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="UnderlineThinItem" >
+                Thin
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="UnderlineThickItem" >
+                Thick
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineThickDashItem" >
+                ThickDash
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineThickDashDotItem" >
+                ThickDashDot
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineThickDashDotDotItem" >
+                ThickDashDotDot
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineThickDottedItem" >
+                ThickDotted
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineThickLongDashItem" >
+                ThickLongDash
+            </MenuFlyoutItem>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Name="UnderlineWaveItem" >
+                Wave
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineDoubleWaveItem" >
+                DoubleWave
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Name="UnderlineHeavyWaveItem" >
+                HeavyWave
+            </MenuFlyoutItem>
+        </MenuFlyout>
+
+    </FrameworkElement.Resources>
+
+
     <Grid>
 
+        <!--VisualState-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+
+                <!--Phone-->
+                <VisualState x:Name="Phone">
+                    <VisualState.Setters>
+                        <!--SplitView-->
+                        <Setter Target="SplitView.DisplayMode" Value="Overlay"/>
+                        <Setter Target="SplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="PaneListView.Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+                        <Setter Target="PhoneSplitButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!--Pad-->
+                <VisualState x:Name="Pad">
+                    <VisualState.Setters>
+                        <!--SplitView-->
+                        <Setter Target="SplitView.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="SplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="PaneListView.Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!--PC-->
+                <VisualState x:Name="PC">
+                    <VisualState.Setters>
+                        <!--SplitView-->
+                        <Setter Target="SplitView.IsPaneOpen" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+
+                <!--Phone-->
+                <VisualState x:Name="WritablePhone">
+                    <VisualState.Setters>
+                        <!--Page-->
+                        <Setter Target="FlipView.Visibility" Value="Collapsed"/>
+                        <Setter Target="ListView.Visibility" Value="Collapsed"/>
+
+                        <Setter Target="BodyBorder.Visibility" Value="Visible"/>
+                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+
+                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+
+                        <!--SplitView-->
+                        <Setter Target="SplitView.DisplayMode" Value="Overlay"/>
+                        <Setter Target="SplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="PaneListView.Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+
+                        <!--Writable-->
+                        <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
+                        <Setter Target="FootStackPanel01.Orientation" Value="Vertical"/>
+                        <Setter Target="FootStackPanel02.Orientation" Value="Vertical"/>
+
+                        <Setter Target="FootScrollViewer.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootBorder.Margin" Value="0"/>
+                        <Setter Target="FootBorder.CornerRadius" Value="0"/>
+                        <Setter Target="FootBorder.BorderThickness" Value="0,1,0,0"/>
+
+                        <Setter Target="BodyBorder.Margin" Value="0"/>
+                        <Setter Target="FindBorder.Margin" Value="0"/>
+                        <Setter Target="FindBorder.HorizontalAlignment" Value="Stretch"/>
+                        <Setter Target="SubtitleTextBlock.Visibility" Value="Collapsed"/>
+
+                        <Setter Target="PinButton.Visibility" Value="Visible"/>
+                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
+                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
+                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
+                        <Setter Target="FullScreenButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!--Pad-->
+                <VisualState x:Name="WritablePad">
+                    <VisualState.Setters>
+                        <!--Page-->
+                        <Setter Target="FlipView.Visibility" Value="Collapsed"/>
+                        <Setter Target="ListView.Visibility" Value="Collapsed"/>
+
+                        <Setter Target="BodyBorder.Visibility" Value="Visible"/>
+                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+
+                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+
+                        <!--SplitView-->
+                        <Setter Target="SplitView.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="SplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="PaneListView.Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+
+                        <!--Writable-->
+                        <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
+
+                        <Setter Target="FootScrollViewer.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootBorder.Margin" Value="0"/>
+                        <Setter Target="FootBorder.CornerRadius" Value="8,8,0,0"/>
+                        <Setter Target="FootBorder.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="FootBorder.BorderThickness" Value="1,1,1,0"/>
+
+                        <Setter Target="BodyBorder.Margin" Value="0"/>
+                        <Setter Target="FindBorder.Margin" Value="0,4,4,0"/>
+
+                        <Setter Target="PinButton.Visibility" Value="Visible"/>
+                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
+                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
+                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
+                        <Setter Target="FullScreenButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!--PC-->
+                <VisualState x:Name="WritablePC">
+                    <VisualState.Setters>
+                        <!--Page-->
+                        <Setter Target="FlipView.Visibility" Value="Collapsed"/>
+                        <Setter Target="ListView.Visibility" Value="Collapsed"/>
+
+                        <Setter Target="BodyBorder.Visibility" Value="Visible"/>
+                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+
+                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+
+                        <!--SplitView-->
+                        <Setter Target="SplitView.IsPaneOpen" Value="True"/>
+
+                        <Setter Target="PinButton.Visibility" Value="Visible"/>
+                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
+                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
+                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
+                        <Setter Target="FullScreenButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+
+                <!--Phone-->
+                <VisualState x:Name="FullScreenPhone">
+                    <VisualState.Setters>
+                        <!--Page-->
+                        <Setter Target="FlipView.Visibility" Value="Collapsed"/>
+                        <Setter Target="ListView.Visibility" Value="Collapsed"/>
+
+                        <Setter Target="BodyBorder.Visibility" Value="Visible"/>
+                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+
+                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+
+                        <!--SplitView-->
+                        <Setter Target="SplitView.IsPaneOpen" Value="False"/>
+
+                        <!--Writable-->
+                        <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
+                        <Setter Target="FootStackPanel01.Orientation" Value="Vertical"/>
+                        <Setter Target="FootStackPanel02.Orientation" Value="Vertical"/>
+
+                        <Setter Target="FootScrollViewer.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootBorder.Margin" Value="0"/>
+                        <Setter Target="FootBorder.CornerRadius" Value="0"/>
+                        <Setter Target="FootBorder.BorderThickness" Value="0,1,0,0"/>
+
+                        <Setter Target="BodyBorder.Margin" Value="0"/>
+                        <Setter Target="FindBorder.Margin" Value="0"/>
+                        <Setter Target="FindBorder.HorizontalAlignment" Value="Stretch"/>
+                        <Setter Target="SubtitleTextBlock.Visibility" Value="Collapsed"/>
+
+                        <Setter Target="PinButton.Visibility" Value="Visible"/>
+                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
+                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
+                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
+                        <Setter Target="UnFullScreenButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!--Pad-->
+                <VisualState x:Name="FullScreenPad">
+                    <VisualState.Setters>
+                        <!--Page-->
+                        <Setter Target="FlipView.Visibility" Value="Collapsed"/>
+                        <Setter Target="ListView.Visibility" Value="Collapsed"/>
+
+                        <Setter Target="BodyBorder.Visibility" Value="Visible"/>
+                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+
+                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+
+                        <!--SplitView-->
+                        <Setter Target="SplitView.IsPaneOpen" Value="False"/>
+
+                        <!--Writable-->
+                        <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
+
+                        <Setter Target="FootScrollViewer.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootBorder.Margin" Value="0"/>
+                        <Setter Target="FootBorder.CornerRadius" Value="8,8,0,0"/>
+                        <Setter Target="FootBorder.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="FootBorder.BorderThickness" Value="1,1,1,0"/>
+
+                        <Setter Target="BodyBorder.Margin" Value="0"/>
+                        <Setter Target="FindBorder.Margin" Value="0,4,4,0"/>
+
+                        <Setter Target="PinButton.Visibility" Value="Visible"/>
+                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
+                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
+                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
+                        <Setter Target="UnFullScreenButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!--PC-->
+                <VisualState x:Name="FullScreenPC">
+                    <VisualState.Setters>
+                        <!--Page-->
+                        <Setter Target="FlipView.Visibility" Value="Collapsed"/>
+                        <Setter Target="ListView.Visibility" Value="Collapsed"/>
+
+                        <Setter Target="BodyBorder.Visibility" Value="Visible"/>
+                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+
+                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+
+                        <!--SplitView-->
+                        <Setter Target="SplitView.IsPaneOpen" Value="False"/>
+
+                        <!--Writable-->
+                        <Setter Target="PinButton.Visibility" Value="Visible"/>
+                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
+                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
+                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
+                        <Setter Target="UnFullScreenButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <SplitView x:Name="SplitView" IsPaneOpen="True" DisplayMode="Inline" OpenPaneLength="240" PaneBackground="{x:Null}">
+
+
+            <SplitView.Pane>
+                <ListView x:Name="PaneListView" SelectionMode="None" IsItemClickEnabled="True"
+                      RequestedTheme="Dark" Background="{ThemeResource SystemControlAccentAcrylicWindowAccentMediumHighBrush}">
+
+                    <ListView.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="PCAppTitleTextBlock" Grid.ColumnSpan="2" Margin="12,0" FontSize="12" VerticalAlignment="Center"
+                                   Visibility="{x:Bind BooleanToVisibilityConverter(SplitView.IsPaneOpen), Mode=OneWay}"/>
+                            <Button x:Name="PCSplitButton" Grid.Row="1" Foreground="White" >
+                                <ToolTipService.ToolTip>
+                                    <ToolTip x:Name="PCSplitToolTip" Style="{StaticResource AppToolTipStyle}">
+                                        Split
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
+                                <SymbolIcon Symbol="GlobalNavigationButton" />
+                            </Button>
+                        </Grid>
+                    </ListView.Header>
+
+                    <ListView.Footer>
+                        <ListViewItem x:Name="SettingItem" Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="26" Height="26">
+                                    <SymbolIcon Symbol="Setting"/>
+                                </Border>
+                                <TextBlock x:Name="SettingTextBlock" Margin="12,2" VerticalAlignment="Center">
+                                    Setting
+                                </TextBlock>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView.Footer>
+
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <FrameworkElement.Tag>
+                                <x:Int32>0</x:Int32>
+                            </FrameworkElement.Tag>
+                            <Border Width="26" Height="26">
+                                <SymbolIcon Symbol="Add"/>
+                            </Border>
+                            <TextBlock x:Name="NewTextBlock" Margin="12,2" VerticalAlignment="Center">
+                                New
+                            </TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <FrameworkElement.Tag>
+                                <x:Int32>1</x:Int32>
+                            </FrameworkElement.Tag>
+                            <Border Width="26" Height="26">
+                                <SymbolIcon Symbol="Home"/>
+                            </Border>
+                            <TextBlock x:Name="HomeTextBlock" Margin="12,2" VerticalAlignment="Center">
+                                Home
+                            </TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <FrameworkElement.Tag>
+                                <x:Int32>2</x:Int32>
+                            </FrameworkElement.Tag>
+                            <Border Width="26" Height="26">
+                                <SymbolIcon Symbol="Important"/>
+                            </Border>
+                            <TextBlock x:Name="AboutTextBlock" Margin="12,2" VerticalAlignment="Center">
+                                About...
+                            </TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
+            </SplitView.Pane>
+
+
+            <Grid>
+                <Panel.Background>
+                    <!--Brush-->
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Offset="0" Color="{ThemeResource SystemAccentColorLight3}"/>
+                        <GradientStop Offset="0.1428571428571429" Color="{ThemeResource SystemAccentColorLight3}"/>
+
+                        <GradientStop Offset="0.1428571428571429" Color="{ThemeResource SystemAccentColorLight2}"/>
+                        <GradientStop Offset="0.2857142857142857" Color="{ThemeResource SystemAccentColorLight2}"/>
+
+                        <GradientStop Offset="0.2857142857142857" Color="{ThemeResource SystemAccentColorLight1}"/>
+                        <GradientStop Offset="0.4285714285714287" Color="{ThemeResource SystemAccentColorLight1}"/>
+
+                        <GradientStop Offset="0.4285714285714287" Color="{ThemeResource SystemAccentColor}"/>
+                        <GradientStop Offset="0.5714285714285713" Color="{ThemeResource SystemAccentColor}"/>
+
+                        <GradientStop Offset="0.5714285714285713" Color="{ThemeResource SystemAccentColorDark1}"/>
+                        <GradientStop Offset="0.710" Color="{ThemeResource SystemAccentColorDark1}"/>
+
+                        <GradientStop Offset="0.7142857142857143" Color="{ThemeResource SystemAccentColorDark2}"/>
+                        <GradientStop Offset="0.8571428571428571" Color="{ThemeResource SystemAccentColorDark2}"/>
+
+                        <GradientStop Offset="0.8571428571428571" Color="{ThemeResource SystemAccentColorDark3}"/>
+                        <GradientStop Offset="1" Color="{ThemeResource SystemAccentColorDark3}"/>
+                    </LinearGradientBrush>
+                </Panel.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Extension-->
+                <elements:ApplicationTitleBarExtension x:Name="ApplicationView" TitleBarColor="Transparent"/>
+
+
+                <TextBlock x:Name="PadAppTitleTextBlock"  Margin="12,0" FontSize="12" VerticalAlignment="Center"
+                           Visibility="{x:Bind ReverseBooleanToVisibilityConverter(SplitView.IsPaneOpen), Mode=OneWay}"/>
+
+
+                <!--FlipView-->
+                <FlipView x:Name="FlipView"
+                      Grid.Row="1" 
+                      Grid.RowSpan="2" 
+                      Margin="0,0,0,200"
+                      RequestedTheme="Dark"
+                      ItemsSource="{x:Bind Items}" 
+                      >
+                    <ItemsControl.ItemTemplate>
+                        <!--DataTemplate-->
+                        <DataTemplate x:DataType="trashs:TrashItem">
+                            <controls:TrashControl Model="{x:Bind}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </FlipView>
+
+
+                <!--ListView-->
+                <ListView x:Name="ListView"
+                    Grid.Row="2"
+                    Height="200" VerticalAlignment="Bottom"
+                    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    SelectionMode="Single" IsItemClickEnabled="False"
+                    SelectedIndex="{x:Bind FlipView.SelectedIndex, Mode=TwoWay}"
+                    ItemsSource="{x:Bind Items}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                    ScrollViewer.HorizontalScrollMode="Enabled"
+                    ScrollViewer.IsHorizontalRailEnabled="False"
+                    ScrollViewer.VerticalScrollMode="Disabled"
+                    ScrollViewer.IsVerticalRailEnabled="True"
+                    ScrollViewer.ZoomMode="Disabled"
+                    ScrollViewer.IsDeferredScrollingEnabled="False"
+                    ScrollViewer.BringIntoViewOnFocusChange="True"
+                    >
+                    <ListView.Footer>
+                        <StackPanel Margin="10,2" Width="140">
+                            <Button x:Name="AddButton" Width="140" Height="140" Background="{ThemeResource AppBackground}" >
+                                <FontIcon FontSize="22" Glyph="&#xE109;" FontFamily="Segoe MDL2 Assets"/>
+                            </Button>
+                        </StackPanel>
+                    </ListView.Footer>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsStackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="trashs:TrashItem">
+                            <StackPanel Width="140">
+                                <elements:AccentDecoratorItem IsFavorite="{x:Bind IsFavorite, Mode=OneWay}"/>
+                                <TextBlock Margin="4" FontWeight="Bold" TextTrimming="CharacterEllipsis" Text="{x:Bind Title, Mode=OneWay}"/>
+                                <TextBlock Margin="4" FontWeight="Normal" TextTrimming="CharacterEllipsis" Text="{x:Bind DateCreated, Mode=OneWay}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ListView>
+
+
+
+                <!--Body-->
+                <Border x:Name="BodyBorder" Grid.Row="3" Margin="0,64,0,0" Visibility="Collapsed" >
+                    <RichEditBox x:Name="RichEditBox"  
+                         IsHandwritingViewEnabled="False"
+                         BorderThickness="0" 
+                         BorderBrush="Transparent" 
+                         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+                </Border>
+
+
+                <!--Foot-->
+                <ScrollViewer x:Name="FootScrollViewer" Grid.Row="3" VerticalAlignment="Top" Visibility="Collapsed" >
+                    <Border x:Name="FootBorder"
+                        CornerRadius="8"
+                        Padding="12,0"
+                        Margin="12,4"
+                        MinHeight="54"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        BorderThickness="1"
+                        BorderBrush="{ThemeResource AppStroke}"
+                        Background="{ThemeResource AppBackground}"
+                        >
+                        <StackPanel x:Name="FootStackPanel" Orientation="Horizontal" >
+
+                            <StackPanel x:Name="FootStackPanel01" Orientation="Horizontal" >
+
+                                <Grid Height="48">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="CutButton">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="CutToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Cut
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="Cut" />
+                                    </Button>
+                                    <Button x:Name="CopyButton" Grid.Column="1">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="CopyToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Copy
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="Copy" />
+                                    </Button>
+                                    <Button x:Name="PasteButton" Grid.Column="2">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="PasteToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Paste
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="Paste" />
+                                    </Button>
+                                    <Line Grid.Column="3" />
+                                    <Button x:Name="SelectAllButton" Grid.Column="3">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="SelectAllToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                SelectAll
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="SelectAll" />
+                                    </Button>
+                                    <Button x:Name="DeleteButton" Grid.Column="4">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="ClearToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Delete
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="Delete" />
+                                    </Button>
+                                    <Rectangle Grid.Column="5"/>
+                                    <Button x:Name="FindButton" Grid.Column="6">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="FindToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Find
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="Find" />
+                                    </Button>
+                                </Grid>
+
+                                <Rectangle/>
+
+                                <Grid Height="48">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Line/>
+                                    <Button x:Name="BoldButton">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="BoldToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Bold
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="Bold" />
+                                    </Button>
+                                    <Button x:Name="ItalicButton" Grid.Column="1">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="ItalicToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Italic
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="Italic" />
+                                    </Button>
+                                    <Line Grid.Column="2" />
+                                    <Button x:Name="UnderlineButton" Grid.Column="2">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="UnderlineToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Underline
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="Underline" />
+                                    </Button>
+                                    <Rectangle Grid.Column="3"/>
+                                    <Button x:Name="AlignLeftButton" Grid.Column="4">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="AlignLeftToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Align Left
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="AlignLeft" />
+                                    </Button>
+                                    <Button x:Name="AlignCenterButton" Grid.Column="5">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="AlignCenterToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Align Center
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="AlignCenter" />
+                                    </Button>
+                                    <Button x:Name="AlignRightButton" Grid.Column="6">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="AlignRightToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Align Right
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <SymbolIcon Symbol="AlignRight" />
+                                    </Button>
+                                </Grid>
+
+                            </StackPanel>
+
+                            <Rectangle/>
+
+                            <StackPanel x:Name="FootStackPanel02" Orientation="Horizontal" >
+
+                                <Grid Height="48" Padding="12,0" HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" MinWidth="204"/>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox x:Name="FontFamilyComboBox" >
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="FontFamilyToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Font Family
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                    </ComboBox>
+                                    <ComboBox x:Name="FontSizeComboBox" Grid.Column="2" >
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="FontSizeToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Font Size
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                    </ComboBox>
+                                </Grid>
+
+                                <Rectangle/>
+
+                                <Grid Height="48">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="TagTypeNoneButton" Width="42" Foreground="White">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="TagTypeNoneToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Default
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <Grid>
+                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="{ThemeResource SystemBaseHighColor}" />
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                        </Grid>
+                                    </Button>
+                                    <Button x:Name="TagTypeRedButton" Grid.Column="1" Width="42" Foreground="White">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="TagTypeRedToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Red
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <Grid>
+                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="LightCoral" />
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                        </Grid>
+                                    </Button>
+                                    <Button x:Name="TagTypeOrangeButton" Grid.Column="2" Width="42" Foreground="White">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="TagTypeOrangeToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Orange
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <Grid>
+                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="Orange" />
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                        </Grid>
+                                    </Button>
+                                    <Button x:Name="TagTypeYellowButton" Grid.Column="3" Width="42" Foreground="White">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="TagTypeYellowToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Yellow
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <Grid>
+                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="Yellow" />
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                        </Grid>
+                                    </Button>
+                                    <Button x:Name="TagTypeGreenButton" Grid.Column="4" Width="42" Foreground="White">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="TagTypeGreenToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Green
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <Grid>
+                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="YellowGreen" />
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                        </Grid>
+                                    </Button>
+                                    <Button x:Name="TagTypeBlueButton" Grid.Column="5" Width="42" Foreground="White">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="TagTypeBlueToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Blue
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <Grid>
+                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="SkyBlue" />
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                        </Grid>
+                                    </Button>
+                                    <Button x:Name="TagTypePurpleButton" Grid.Column="6" Width="42" Foreground="White">
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip x:Name="TagTypePurpleToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                Purple
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
+                                        <Grid>
+                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="Plum" />
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Border>
+                </ScrollViewer>
+
+
+                <!--Find-->
+                <Border x:Name="FindBorder" Grid.Row="2" Visibility="Collapsed" 
+                        Margin="0,64,4,0" MinWidth="333"
+                        HorizontalAlignment="Right" VerticalAlignment="Top" 
+                        BorderThickness="1" 
+                        BorderBrush="{ThemeResource AppStroke}" 
+                        Background="{ThemeResource AppBackground}"
+                        >
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" MaxWidth="60"/>
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="1*" MaxWidth="60"/>
+                                <ColumnDefinition Width="1*" MaxWidth="60"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="FindReplaceButton" >
+                                <ToolTipService.ToolTip>
+                                    <ToolTip x:Name="FindReplaceToolTip" Style="{StaticResource AppToolTipStyle}">
+                                        Replace
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
+                                <FontIcon Glyph="&#xE011;" FontFamily="Segoe MDL2 Assets"/>
+                            </Button>
+                            <TextBox x:Name="FindTextBox" Grid.Column="1" VerticalAlignment="Center"
+                                 BorderThickness="1" BorderBrush="{ThemeResource AppBorderBrush}" />
+                            <Button x:Name="FindNextButton" Grid.Column="2" >
+                                <ToolTipService.ToolTip>
+                                    <ToolTip x:Name="NextToolTip" Style="{StaticResource AppToolTipStyle}">
+                                        Next
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
+                                <SymbolIcon Symbol="Forward" />
+                            </Button>
+                            <Button x:Name="FindCloseButton" Grid.Column="3" >
+                                <ToolTipService.ToolTip>
+                                    <ToolTip x:Name="FindCloseToolTip" Style="{StaticResource AppToolTipStyle}">
+                                        Close
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
+                                <SymbolIcon Symbol="Cancel" />
+                            </Button>
+                        </Grid>
+                        <Grid x:Name="ReplaceGrid" Visibility="Collapsed">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" MaxWidth="60"/>
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="Auto" MinWidth="90"/>
+                                <ColumnDefinition Width="Auto" MinWidth="90"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="ReplaceTextBox" Grid.Column="1" VerticalAlignment="Center"
+                                 BorderThickness="1" BorderBrush="{ThemeResource AppBorderBrush}" />
+                            <Button x:Name="ReplaceButton" Grid.Column="2" Width="Auto">
+                                Relace
+                            </Button>
+                            <Button x:Name="ReplaceAllButton" Grid.Column="3" Width="Auto">
+                                Relace All
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+
+
+                <!--Head-->
+                <Grid Grid.Row="1" RequestedTheme="Dark">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" MaxWidth="60"/>
+                        <ColumnDefinition Width="1*" MaxWidth="60"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*" MaxWidth="60"/>
+                        <ColumnDefinition Width="1*" MaxWidth="60"/>
+                        <ColumnDefinition Width="1*" MaxWidth="60"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="PhoneSplitButton" Grid.Column="0" Visibility="Collapsed" Foreground="White" >
+                        <ToolTipService.ToolTip>
+                            <ToolTip x:Name="PhoneSplitToolTip" Style="{StaticResource AppToolTipStyle}">
+                                Split
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
+                        <SymbolIcon Symbol="GlobalNavigationButton" />
+                    </Button>
+                    <Button x:Name="CloseButton" Grid.Column="0" Visibility="Collapsed" Foreground="White" >
+                        <ToolTipService.ToolTip>
+                            <ToolTip x:Name="CloseToolTip" Style="{StaticResource AppToolTipStyle}">
+                                Close
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
+                        <SymbolIcon Symbol="Cancel" />
+                    </Button>
+                    <Button x:Name="PinButton" Grid.Column="1" Visibility="Collapsed" Foreground="White" >
+                        <ToolTipService.ToolTip>
+                            <ToolTip x:Name="PinToolTip" Style="{StaticResource AppToolTipStyle}">
+                                Pin
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
+                        <SymbolIcon Symbol="{x:Bind VisibilityToPinConverter(FootBorder.Visibility), Mode=OneWay}" />
+                    </Button>
+                    <Button x:Name="TitleButton" Grid.Column="2" Visibility="Collapsed" Width="Auto" HorizontalAlignment="Center" Foreground="{ThemeResource AppForeground}">
+                        <StackPanel>
+                            <TextBlock x:Name="TitleTextBlock" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                Untitled
+                            </TextBlock>
+                            <TextBlock x:Name="SubtitleTextBlock" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="UndoButton" Grid.Column="3" IsEnabled="False" Visibility="Collapsed" Foreground="White" >
+                        <ToolTipService.ToolTip>
+                            <ToolTip x:Name="UndoToolTip" Style="{StaticResource AppToolTipStyle}">
+                                Undo
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
+                        <SymbolIcon Symbol="Undo" />
+                    </Button>
+                    <Button x:Name="RedoButton" Grid.Column="4" IsEnabled="False" Visibility="Collapsed" Foreground="White" >
+                        <ToolTipService.ToolTip>
+                            <ToolTip x:Name="RedoToolTip" Style="{StaticResource AppToolTipStyle}">
+                                Redo
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
+                        <SymbolIcon Symbol="Redo" />
+                    </Button>
+                    <Button x:Name="FullScreenButton" Grid.Column="5" Visibility="Collapsed" Foreground="White" >
+                        <ToolTipService.ToolTip>
+                            <ToolTip x:Name="FullScreenToolTip" Style="{StaticResource AppToolTipStyle}">
+                                Full screen
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
+                        <SymbolIcon Symbol="FullScreen"/>
+                    </Button>
+                    <Button x:Name="UnFullScreenButton" Grid.Column="5" Visibility="Collapsed" Foreground="White" >
+                        <ToolTipService.ToolTip>
+                            <ToolTip x:Name="UnFullScreenToolTip" Style="{StaticResource AppToolTipStyle}">
+                                Exit Full Screen
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
+                        <SymbolIcon Symbol="BackToWindow"/>
+                    </Button>
+                </Grid>
+
+            </Grid>
+        </SplitView>
+
+
+        <!--Dialog-->
+        <controls:TrashEditor x:Name="Editor" />
+        <local:AboutDialog x:Name="AboutDialog" />
+        <local:SettingDialog x:Name="SettingDialog" />
+        <Border Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
+                Visibility="{x:Bind BooleanToVisibilityConverter(ProgressRing.IsActive), Mode=OneWay}">
+            <elements:ProgressRing x:Name="ProgressRing" IsActive="False" Width="80" Height="80" Thickness="4" />
+        </Border>
+        
     </Grid>
 </Page>
