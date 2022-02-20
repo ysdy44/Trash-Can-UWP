@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Blends\TagType.cs" />
     <Compile Include="Blends\TagTypeExtensions.cs" />
+    <Compile Include="Elements\ApplicationTitleBarExtension.cs" />
     <Compile Include="Elements\DeviceLayout.cs" />
     <Compile Include="Elements\DeviceLayoutType.cs" />
     <Compile Include="MainPage.xaml.cs">
