@@ -38,7 +38,7 @@
         Description="Trash Can"
         BackgroundColor="#001A67">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="ms-resource:///resources/$DisplayName" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png"   BackgroundColor="transparent"/>
+        <uap:SplashScreen Image="Assets\SplashScreen.png"   BackgroundColor="#FFFFFF"/>
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="portrait"/>
           <uap:Rotation Preference="landscape"/>
