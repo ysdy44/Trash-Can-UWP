@@ -158,6 +158,7 @@
     <Compile Include="FileUtils\FileUtil.cs" />
     <Compile Include="FileUtils\FileUtil.PickAndCopy.cs" />
     <Compile Include="FileUtils\FileUtil.RtfFile.cs" />
+    <Compile Include="MainPage.Find.cs" />
     <Compile Include="MainPage.Construct.cs" />
     <Compile Include="MainPage.Method.cs" />
     <Compile Include="MainPage.xaml.cs">

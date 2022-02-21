@@ -36,57 +36,6 @@ namespace Trash_Can
         public readonly ObservableCollection<TrashItem> Items = new ObservableCollection<TrashItem>();
 
 
-        #region DependencyProperty
-
-
-        /// <summary> Gets or set the find mode for <see cref="MainPage"/>. </summary>
-        public FindMode FindMode
-        {
-            get => (FindMode)base.GetValue(FindModeProperty);
-            set => base.SetValue(FindModeProperty, value);
-        }
-        /// <summary> Identifies the <see cref = "MainPage.FindMode" /> dependency property. </summary>
-        public static readonly DependencyProperty FindModeProperty = DependencyProperty.Register(nameof(FindMode), typeof(FindMode), typeof(MainPage), new PropertyMetadata(FindMode.None, (sender, e) =>
-        {
-            MainPage control = (MainPage)sender;
-
-            if (e.NewValue is FindMode value)
-            {
-                switch (value)
-                {
-                    case FindMode.None:
-                        control.RichEditBox.Padding = new Thickness();
-                        control.FindBorder.Visibility = Visibility.Collapsed;
-                        control.ReplaceGrid.Visibility = Visibility.Collapsed;
-                        break;
-                    case FindMode.Find:
-                        control.RichEditBox.Padding = new Thickness(0, 54, 0, 0);
-                        control.FindBorder.Visibility = Visibility.Visible;
-                        control.ReplaceGrid.Visibility = Visibility.Collapsed;
-                        if (e.OldValue is FindMode.None)
-                        {
-                            control.FindTextBox.Focus(FocusState.Keyboard);
-                        }
-
-                        control.FindMatches();
-                        break;
-                    case FindMode.Relace:
-                        control.RichEditBox.Padding = new Thickness(0, 102, 0, 0);
-                        control.FindBorder.Visibility = Visibility.Visible;
-                        control.ReplaceGrid.Visibility = Visibility.Visible;
-
-                        control.FindMatches();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }));
-
-
-        #endregion
-
-
         //@VisualState
         bool _vsIsWritable = false;
         bool _vsIsFullScreen = false;

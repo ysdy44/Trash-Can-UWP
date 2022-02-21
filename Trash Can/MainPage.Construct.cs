@@ -13,13 +13,6 @@ using Windows.UI.Xaml.Controls;
 
 namespace Trash_Can
 {
-    public enum FindMode
-    {
-        None,
-        Find,
-        Relace,
-    }
-
     public sealed partial class MainPage : Page
     {
 
@@ -547,32 +540,6 @@ namespace Trash_Can
         }
 
 
-        private void ConstructFind()
-        {
-            //     this.FindTextBox.TextChanged += (s, e) => this.FindBoxHighlightMatches();
-            this.FindNextButton.Click += (s, e) =>
-            {
-                this.Focus();
-                this.FindMatches();
-            };
-
-            this.FindCloseButton.Click += (s, e) => this.FindMode = FindMode.None;
-            this.FindReplaceButton.Click += (s, e) =>
-            {
-                switch (this.FindMode)
-                {
-                    case FindMode.Relace:
-                        this.FindMode = FindMode.Find;
-                        break;
-                    default:
-                        this.FindMode = FindMode.Relace;
-                        break;
-                }
-            };
-        }
-
-
-
         private void Update()
         {
             this.UndoButton.IsEnabled = this.Document.CanUndo();
@@ -587,31 +554,6 @@ namespace Trash_Can
         {
             this.RichEditBox.Focus(FocusState.Keyboard);
         }
-
-
-
-        private void FindMatches()
-        {
-            string textToFind = this.FindTextBox.Text;
-            if (string.IsNullOrEmpty(textToFind)) return;
-
-            this.FindMatchesCore(textToFind);
-        }
-        private void FindMatchesCore(string textToFind)
-        {
-            ITextRange searchRange = this.Document.GetRange(this.Selection.StartPosition + 1, int.MaxValue);
-
-            int length = searchRange.FindText(textToFind, TextConstants.MaxUnitCount, FindOptions.None);
-            if (length != 0)
-            {
-                this.Selection.SetRange(searchRange.StartPosition, searchRange.EndPosition);
-                return;
-            }
-
-            this.Selection.SetRange(0, 0);
-            this.FindMatchesCore(textToFind);
-        }
-
 
 
         private void Underline(UnderlineType type)
