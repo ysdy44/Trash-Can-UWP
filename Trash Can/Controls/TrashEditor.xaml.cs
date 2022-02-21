@@ -47,7 +47,6 @@ namespace Trash_Can.Controls
             this.InitializeComponent();
             this.ConstructStrings();
 
-            this.CancelButton.Click += (s, e) => base.Hide();
             this.StackPanel.SizeChanged += (s, e) =>
             {
                 if (e.NewSize == Size.Empty) return;

@@ -7,6 +7,12 @@
     mc:Ignorable="d" 
     >
 
+    <ContentDialog.Title>
+        <TextBlock x:Name="TitleTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
+            Setting
+        </TextBlock>
+    </ContentDialog.Title>
+
 
     <StackPanel>
 

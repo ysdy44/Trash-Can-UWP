@@ -16,18 +16,9 @@
     >
 
     <ContentDialog.Title>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="CancelButton" Padding="0" Width="50" Foreground="{ThemeResource AppBlueLinearGradientBrush}" Style="{StaticResource TextBlockButtonStyle}">
-                <SymbolIcon Symbol="Cancel"/>
-            </Button>
-            <TextBlock x:Name="TitleTextBlock" Grid.Column="1" Style="{StaticResource SubtitleTextBlockStyle}">
-                Rename
-            </TextBlock>
-        </Grid>
+        <TextBlock x:Name="TitleTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
+            Rename
+        </TextBlock>
     </ContentDialog.Title>
 
 
@@ -36,25 +27,25 @@
         VerticalScrollBarVisibility="Hidden"
         >
         <StackPanel x:Name="StackPanel">
-          
+
             <TextBox x:Name="TitleTextBox" VerticalAlignment="Center"
                  BorderThickness="1" BorderBrush="{ThemeResource AppBorderBrush}">
                 <TextBox.Header>
                     Title
                 </TextBox.Header>
             </TextBox>
-            
+
             <ContentControl Height="12"/>
-            
+
             <TextBox x:Name="CommentTextBox" AcceptsReturn="True" VerticalAlignment="Center"
                  BorderThickness="1" BorderBrush="{ThemeResource AppBorderBrush}">
                 <TextBox.Header>
                     Comment
                 </TextBox.Header>
             </TextBox>
-            
+
             <ContentControl Height="8"/>
-            
+
             <TextBlock x:Name="KeywordsTextBlock" Margin="2,4">
                 Keywords
             </TextBlock>
@@ -68,7 +59,7 @@
                     <local:ReorderControl x:Name="KeywordsControl4" ReorderIndex="4"/>
                 </Canvas>
             </Border>
-            
+
         </StackPanel>
     </ScrollViewer>
 

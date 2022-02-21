@@ -94,7 +94,8 @@ namespace Trash_Can
 
             base.SecondaryButtonText = resource.GetString("$SettingPage_Close");
             base.PrimaryButtonText = resource.GetString("$SettingPage_Primary");
-
+            
+            this.TitleTextBlock.Text = resource.GetString("$MainPage_Setting");
             this.ThemeTextBlock.Text = resource.GetString("$SettingPage_Theme");
             this.LightRadioButton.Content = resource.GetString("$SettingPage_Theme_Light");
             this.DarkRadioButton.Content = resource.GetString("$SettingPage_Theme_Dark");
