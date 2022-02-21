@@ -219,27 +219,64 @@
                 <!--Phone-->
                 <VisualState x:Name="Phone">
                     <VisualState.Setters>
+                        <!--Page-->
+                        <Setter Target="FootPanel.IsShow" Value="False"/>
+
                         <!--SplitView-->
                         <Setter Target="SplitView.DisplayMode" Value="Overlay"/>
                         <Setter Target="SplitView.IsPaneOpen" Value="False"/>
                         <Setter Target="PaneListView.Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
                         <Setter Target="PhoneSplitButton.Visibility" Value="Visible"/>
+
+                        <!--Writable-->
+                        <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
+                        <Setter Target="FootStackPanel01.Orientation" Value="Vertical"/>
+                        <Setter Target="FootStackPanel02.Orientation" Value="Vertical"/>
+
+                        <Setter Target="FootScrollViewer.Style" Value="{StaticResource AppNoneScrollViewerStyle}"/>
+                        <Setter Target="FootPanel.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootBorder.Margin" Value="0"/>
+                        <Setter Target="FootBorder.CornerRadius" Value="0"/>
+                        <Setter Target="FootBorder.BorderThickness" Value="0,1,0,0"/>
+
+                        <Setter Target="BodyBorder.Margin" Value="0"/>
+                        <Setter Target="FindBorder.Margin" Value="0"/>
+                        <Setter Target="FindBorder.HorizontalAlignment" Value="Stretch"/>
+                        <Setter Target="SubtitleTextBlock.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
 
                 <!--Pad-->
                 <VisualState x:Name="Pad">
                     <VisualState.Setters>
+                        <!--Page-->
+                        <Setter Target="FootPanel.IsShow" Value="False"/>
+
                         <!--SplitView-->
                         <Setter Target="SplitView.DisplayMode" Value="CompactOverlay"/>
                         <Setter Target="SplitView.IsPaneOpen" Value="False"/>
                         <Setter Target="PaneListView.Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+
+                        <!--Writable-->
+                        <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
+
+                        <Setter Target="FootPanel.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootBorder.Margin" Value="0"/>
+                        <Setter Target="FootBorder.CornerRadius" Value="8,8,0,0"/>
+                        <Setter Target="FootBorder.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="FootBorder.BorderThickness" Value="1,1,1,0"/>
+
+                        <Setter Target="BodyBorder.Margin" Value="0"/>
+                        <Setter Target="FindBorder.Margin" Value="0,4,4,0"/>
                     </VisualState.Setters>
                 </VisualState>
 
                 <!--PC-->
                 <VisualState x:Name="PC">
                     <VisualState.Setters>
+                        <!--Page-->
+                        <Setter Target="FootPanel.IsShow" Value="False"/>
+
                         <!--SplitView-->
                         <Setter Target="SplitView.IsPaneOpen" Value="True"/>
                     </VisualState.Setters>
@@ -256,18 +293,20 @@
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
                         <Setter Target="FootPanel.IsShow" Value="True"/>
 
-                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+                        <Setter Target="PinButton.Visibility" Value="Visible"/>
 
                         <!--SplitView-->
                         <Setter Target="SplitView.DisplayMode" Value="Overlay"/>
                         <Setter Target="SplitView.IsPaneOpen" Value="False"/>
                         <Setter Target="PaneListView.Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+                        <Setter Target="HeadGrid.Visibility" Value="Visible"/>
 
                         <!--Writable-->
                         <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
                         <Setter Target="FootStackPanel01.Orientation" Value="Vertical"/>
                         <Setter Target="FootStackPanel02.Orientation" Value="Vertical"/>
 
+                        <Setter Target="FootScrollViewer.Style" Value="{StaticResource AppNoneScrollViewerStyle}"/>
                         <Setter Target="FootPanel.VerticalAlignment" Value="Bottom"/>
                         <Setter Target="FootBorder.Margin" Value="0"/>
                         <Setter Target="FootBorder.CornerRadius" Value="0"/>
@@ -277,12 +316,6 @@
                         <Setter Target="FindBorder.Margin" Value="0"/>
                         <Setter Target="FindBorder.HorizontalAlignment" Value="Stretch"/>
                         <Setter Target="SubtitleTextBlock.Visibility" Value="Collapsed"/>
-
-                        <Setter Target="PinButton.Visibility" Value="Visible"/>
-                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
-                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
-                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
-                        <Setter Target="FullScreenButton.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -296,12 +329,13 @@
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
                         <Setter Target="FootPanel.IsShow" Value="True"/>
 
-                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+                        <Setter Target="PinButton.Visibility" Value="Visible"/>
 
                         <!--SplitView-->
                         <Setter Target="SplitView.DisplayMode" Value="CompactOverlay"/>
                         <Setter Target="SplitView.IsPaneOpen" Value="False"/>
                         <Setter Target="PaneListView.Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+                        <Setter Target="HeadGrid.Visibility" Value="Visible"/>
 
                         <!--Writable-->
                         <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
@@ -314,12 +348,6 @@
 
                         <Setter Target="BodyBorder.Margin" Value="0"/>
                         <Setter Target="FindBorder.Margin" Value="0,4,4,0"/>
-
-                        <Setter Target="PinButton.Visibility" Value="Visible"/>
-                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
-                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
-                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
-                        <Setter Target="FullScreenButton.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -333,57 +361,14 @@
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
                         <Setter Target="FootPanel.IsShow" Value="True"/>
 
-                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+                        <Setter Target="FullScreenButton.Visibility" Value="Visible"/>
 
                         <!--SplitView-->
                         <Setter Target="SplitView.IsPaneOpen" Value="True"/>
-
-                        <Setter Target="PinButton.Visibility" Value="Visible"/>
-                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
-                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
-                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
-                        <Setter Target="FullScreenButton.Visibility" Value="Visible"/>
+                        <Setter Target="HeadGrid.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
 
-
-                <!--Phone-->
-                <VisualState x:Name="FullScreenPhone">
-                    <VisualState.Setters>
-                        <!--Page-->
-                        <Setter Target="FlipView.Visibility" Value="Collapsed"/>
-                        <Setter Target="ListView.Visibility" Value="Collapsed"/>
-
-                        <Setter Target="BodyBorder.Visibility" Value="Visible"/>
-                        <Setter Target="FootPanel.IsShow" Value="True"/>
-
-                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
-
-                        <!--SplitView-->
-                        <Setter Target="SplitView.IsPaneOpen" Value="False"/>
-
-                        <!--Writable-->
-                        <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
-                        <Setter Target="FootStackPanel01.Orientation" Value="Vertical"/>
-                        <Setter Target="FootStackPanel02.Orientation" Value="Vertical"/>
-
-                        <Setter Target="FootPanel.VerticalAlignment" Value="Bottom"/>
-                        <Setter Target="FootBorder.Margin" Value="0"/>
-                        <Setter Target="FootBorder.CornerRadius" Value="0"/>
-                        <Setter Target="FootBorder.BorderThickness" Value="0,1,0,0"/>
-
-                        <Setter Target="BodyBorder.Margin" Value="0"/>
-                        <Setter Target="FindBorder.Margin" Value="0"/>
-                        <Setter Target="FindBorder.HorizontalAlignment" Value="Stretch"/>
-                        <Setter Target="SubtitleTextBlock.Visibility" Value="Collapsed"/>
-
-                        <Setter Target="PinButton.Visibility" Value="Visible"/>
-                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
-                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
-                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
-                        <Setter Target="UnFullScreenButton.Visibility" Value="Visible"/>
-                    </VisualState.Setters>
-                </VisualState>
 
                 <!--Pad-->
                 <VisualState x:Name="FullScreenPad">
@@ -395,10 +380,11 @@
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
                         <Setter Target="FootPanel.IsShow" Value="True"/>
 
-                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+                        <Setter Target="UnFullScreenButton.Visibility" Value="Visible"/>
 
                         <!--SplitView-->
                         <Setter Target="SplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="HeadGrid.Visibility" Value="Visible"/>
 
                         <!--Writable-->
                         <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
@@ -411,12 +397,6 @@
 
                         <Setter Target="BodyBorder.Margin" Value="0"/>
                         <Setter Target="FindBorder.Margin" Value="0,4,4,0"/>
-
-                        <Setter Target="PinButton.Visibility" Value="Visible"/>
-                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
-                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
-                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
-                        <Setter Target="UnFullScreenButton.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -430,17 +410,11 @@
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
                         <Setter Target="FootPanel.IsShow" Value="True"/>
 
-                        <Setter Target="CloseButton.Visibility" Value="Visible"/>
+                        <Setter Target="UnFullScreenButton.Visibility" Value="Visible"/>
 
                         <!--SplitView-->
                         <Setter Target="SplitView.IsPaneOpen" Value="False"/>
-
-                        <!--Writable-->
-                        <Setter Target="PinButton.Visibility" Value="Visible"/>
-                        <Setter Target="TitleButton.Visibility" Value="Visible"/>
-                        <Setter Target="UndoButton.Visibility" Value="Visible"/>
-                        <Setter Target="RedoButton.Visibility" Value="Visible"/>
-                        <Setter Target="UnFullScreenButton.Visibility" Value="Visible"/>
+                        <Setter Target="HeadGrid.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -672,8 +646,8 @@
                             <Setter Property="Stroke" Value="{ThemeResource AppBlueLinearGradientBrush}" />
                         </Style>
                     </FrameworkElement.Resources>
-                    <ScrollViewer>
-                        <Border x:Name="FootBorder"
+                    <ScrollViewer x:Name="FootScrollViewer"  Style="{StaticResource AppHorizontalScrollViewerStyle}">
+                        <Border x:Name="FootBorder"                      
                                 CornerRadius="8"
                                 Padding="12,0"
                                 Margin="12,4"
@@ -687,13 +661,14 @@
                             <StackPanel x:Name="FootStackPanel" Orientation="Horizontal" >
 
                                 <StackPanel x:Name="FootStackPanel01" Orientation="Horizontal" >
-                                    <Panel.ChildrenTransitions>
-                                        <TransitionCollection>
-                                            <EntranceThemeTransition IsStaggeringEnabled="True"/>
-                                        </TransitionCollection>
-                                    </Panel.ChildrenTransitions>
 
                                     <Grid Height="48">
+                                        <Panel.ChildrenTransitions>
+                                            <TransitionCollection>
+                                                <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                                            </TransitionCollection>
+                                        </Panel.ChildrenTransitions>
+
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"/>
                                             <ColumnDefinition Width="1*"/>
@@ -763,7 +738,7 @@
                                                 <EntranceThemeTransition IsStaggeringEnabled="True"/>
                                             </TransitionCollection>
                                         </Panel.ChildrenTransitions>
-                                        
+
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"/>
                                             <ColumnDefinition Width="1*"/>
@@ -838,7 +813,7 @@
                                                 <EntranceThemeTransition IsStaggeringEnabled="True"/>
                                             </TransitionCollection>
                                         </Panel.ChildrenTransitions>
-                                        
+
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" MinWidth="204"/>
                                             <ColumnDefinition Width="8"/>
@@ -868,7 +843,7 @@
                                                 <EntranceThemeTransition IsStaggeringEnabled="True"/>
                                             </TransitionCollection>
                                         </Panel.ChildrenTransitions>
-                                        
+
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"/>
                                             <ColumnDefinition Width="1*"/>
@@ -1066,30 +1041,29 @@
 
 
                 <!--Head-->
-                <Grid Grid.Row="1" RequestedTheme="Dark">
+                <Button x:Name="PhoneSplitButton" Grid.Row="1" RequestedTheme="Dark" Visibility="Collapsed" Foreground="White" HorizontalAlignment="Left" >
+                    <ToolTipService.ToolTip>
+                        <ToolTip x:Name="PhoneSplitToolTip" Style="{StaticResource AppToolTipStyle}">
+                            Split
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                    <SymbolIcon Symbol="GlobalNavigationButton" />
+                </Button>
+                <Grid x:Name="HeadGrid" Grid.Row="1" RequestedTheme="Dark" Visibility="Collapsed" >
                     <Panel.ChildrenTransitions>
                         <TransitionCollection>
                             <EntranceThemeTransition IsStaggeringEnabled="True"/>
                         </TransitionCollection>
                     </Panel.ChildrenTransitions>
-                    
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" MaxWidth="60"/>
                         <ColumnDefinition Width="1*" MaxWidth="60"/>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="1*" MaxWidth="60"/>
                         <ColumnDefinition Width="1*" MaxWidth="60"/>
-                        <ColumnDefinition Width="1*" MaxWidth="60"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="PhoneSplitButton" Grid.Column="0" Visibility="Collapsed" Foreground="White" >
-                        <ToolTipService.ToolTip>
-                            <ToolTip x:Name="PhoneSplitToolTip" Style="{StaticResource AppToolTipStyle}">
-                                Split
-                            </ToolTip>
-                        </ToolTipService.ToolTip>
-                        <SymbolIcon Symbol="GlobalNavigationButton" />
-                    </Button>
-                    <Button x:Name="CloseButton" Grid.Column="0" Visibility="Collapsed" Foreground="White" >
+                    <Button x:Name="CloseButton" Grid.Column="0" Foreground="White" >
                         <ToolTipService.ToolTip>
                             <ToolTip x:Name="CloseToolTip" Style="{StaticResource AppToolTipStyle}">
                                 Close
@@ -1105,7 +1079,7 @@
                         </ToolTipService.ToolTip>
                         <SymbolIcon Symbol="{x:Bind ReverseBooleanToPinConverter(FootPanel.IsShow), Mode=OneWay}" />
                     </Button>
-                    <Button x:Name="TitleButton" Grid.Column="2" Visibility="Collapsed" Width="Auto" HorizontalAlignment="Center" Foreground="{ThemeResource AppForeground}">
+                    <Button x:Name="TitleButton" Grid.Column="2" Width="Auto" HorizontalAlignment="Center" Foreground="{ThemeResource AppForeground}">
                         <StackPanel>
                             <TextBlock x:Name="TitleTextBlock" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" >
                                 Untitled
@@ -1114,7 +1088,7 @@
                             </TextBlock>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="UndoButton" Grid.Column="3" IsEnabled="False" Visibility="Collapsed" Foreground="White" >
+                    <Button x:Name="UndoButton" Grid.Column="3" IsEnabled="False" Foreground="White" >
                         <ToolTipService.ToolTip>
                             <ToolTip x:Name="UndoToolTip" Style="{StaticResource AppToolTipStyle}">
                                 Undo
@@ -1122,7 +1096,7 @@
                         </ToolTipService.ToolTip>
                         <SymbolIcon Symbol="Undo" />
                     </Button>
-                    <Button x:Name="RedoButton" Grid.Column="4" IsEnabled="False" Visibility="Collapsed" Foreground="White" >
+                    <Button x:Name="RedoButton" Grid.Column="4" IsEnabled="False" Foreground="White" >
                         <ToolTipService.ToolTip>
                             <ToolTip x:Name="RedoToolTip" Style="{StaticResource AppToolTipStyle}">
                                 Redo
@@ -1130,7 +1104,7 @@
                         </ToolTipService.ToolTip>
                         <SymbolIcon Symbol="Redo" />
                     </Button>
-                    <Button x:Name="FullScreenButton" Grid.Column="5" Visibility="Collapsed" Foreground="White" >
+                    <Button x:Name="FullScreenButton" Grid.Column="1" Visibility="Collapsed" Foreground="White" >
                         <ToolTipService.ToolTip>
                             <ToolTip x:Name="FullScreenToolTip" Style="{StaticResource AppToolTipStyle}">
                                 Full screen
@@ -1138,7 +1112,7 @@
                         </ToolTipService.ToolTip>
                         <SymbolIcon Symbol="FullScreen"/>
                     </Button>
-                    <Button x:Name="UnFullScreenButton" Grid.Column="5" Visibility="Collapsed" Foreground="White" >
+                    <Button x:Name="UnFullScreenButton" Grid.Column="1" Visibility="Collapsed" Foreground="White" >
                         <ToolTipService.ToolTip>
                             <ToolTip x:Name="UnFullScreenToolTip" Style="{StaticResource AppToolTipStyle}">
                                 Exit Full Screen
