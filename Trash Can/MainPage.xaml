@@ -687,6 +687,11 @@
                             <StackPanel x:Name="FootStackPanel" Orientation="Horizontal" >
 
                                 <StackPanel x:Name="FootStackPanel01" Orientation="Horizontal" >
+                                    <Panel.ChildrenTransitions>
+                                        <TransitionCollection>
+                                            <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                                        </TransitionCollection>
+                                    </Panel.ChildrenTransitions>
 
                                     <Grid Height="48">
                                         <Grid.ColumnDefinitions>
@@ -753,6 +758,12 @@
                                     <Rectangle/>
 
                                     <Grid Height="48">
+                                        <Panel.ChildrenTransitions>
+                                            <TransitionCollection>
+                                                <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                                            </TransitionCollection>
+                                        </Panel.ChildrenTransitions>
+                                        
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"/>
                                             <ColumnDefinition Width="1*"/>
@@ -822,6 +833,12 @@
                                 <StackPanel x:Name="FootStackPanel02" Orientation="Horizontal" >
 
                                     <Grid Height="48" Padding="12,0" HorizontalAlignment="Stretch">
+                                        <Panel.ChildrenTransitions>
+                                            <TransitionCollection>
+                                                <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                                            </TransitionCollection>
+                                        </Panel.ChildrenTransitions>
+                                        
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" MinWidth="204"/>
                                             <ColumnDefinition Width="8"/>
@@ -846,6 +863,12 @@
                                     <Rectangle/>
 
                                     <Grid Height="48">
+                                        <Panel.ChildrenTransitions>
+                                            <TransitionCollection>
+                                                <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                                            </TransitionCollection>
+                                        </Panel.ChildrenTransitions>
+                                        
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"/>
                                             <ColumnDefinition Width="1*"/>
@@ -1044,6 +1067,12 @@
 
                 <!--Head-->
                 <Grid Grid.Row="1" RequestedTheme="Dark">
+                    <Panel.ChildrenTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                        </TransitionCollection>
+                    </Panel.ChildrenTransitions>
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" MaxWidth="60"/>
                         <ColumnDefinition Width="1*" MaxWidth="60"/>

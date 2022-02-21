@@ -4,27 +4,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    HorizontalAlignment="Stretch"
-    HorizontalContentAlignment="Stretch"
-    BorderThickness="1" 
-    BorderBrush="{ThemeResource AppBorderBrush}"
-    Background="{ThemeResource AppBackgroundDark}"
-    PrimaryButtonStyle="{StaticResource TextBlockButtonStyle}"
-    SecondaryButtonStyle="{StaticResource TextBlockButtonStyle}"
+    mc:Ignorable="d" 
     >
 
 
     <StackPanel>
 
-        <StackPanel.ChildrenTransitions>
+        <Panel.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition IsStaggeringEnabled="True"/>
             </TransitionCollection>
-        </StackPanel.ChildrenTransitions>
+        </Panel.ChildrenTransitions>
 
 
-        <StackPanel.Children>
+        <Panel.Children>
 
             <!--ThemeMode-->
             <TextBlock x:Name="ThemeTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
@@ -55,8 +48,8 @@
                 Font Size
             </TextBlock>
             <ComboBox x:Name="FontSizeComboBox" Grid.Column="2" />
-      
-        </StackPanel.Children>
+
+        </Panel.Children>
 
     </StackPanel>
 </ContentDialog>

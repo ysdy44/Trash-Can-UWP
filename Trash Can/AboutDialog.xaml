@@ -6,26 +6,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:elements="using:Trash_Can.Elements"
     mc:Ignorable="d"
-    HorizontalAlignment="Stretch"
-    HorizontalContentAlignment="Stretch"
-    BorderThickness="1" 
-    BorderBrush="{ThemeResource AppBorderBrush}"
-    Background="{ThemeResource AppBackgroundDark}"
-    PrimaryButtonStyle="{StaticResource TextBlockButtonStyle}"
-    SecondaryButtonStyle="{StaticResource TextBlockButtonStyle}"
     >
 
 
     <StackPanel>
 
-        <StackPanel.ChildrenTransitions>
+        <Panel.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition IsStaggeringEnabled="True"/>
             </TransitionCollection>
-        </StackPanel.ChildrenTransitions>
+        </Panel.ChildrenTransitions>
 
 
-        <StackPanel.Children>
+        <Panel.Children>
 
             <elements:AccentDecorator x:Name="AccentDecorator" />
 
@@ -41,7 +34,7 @@
             <TextBlock x:Name="FeedbackTextBlock" HorizontalAlignment="Center"/>
             <HyperlinkButton x:Name="FeedbackHyperlinkButton" HorizontalAlignment="Center"/>
 
-        </StackPanel.Children>
+        </Panel.Children>
 
     </StackPanel>
 </ContentDialog>
