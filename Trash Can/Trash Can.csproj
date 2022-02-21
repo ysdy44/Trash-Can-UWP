@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="Blends\TagType.cs" />
     <Compile Include="Blends\TagTypeExtensions.cs" />
+    <Compile Include="Controls\LoadingState.cs" />
     <Compile Include="Controls\OperateType.cs" />
     <Compile Include="Controls\ReorderControl.xaml.cs">
       <DependentUpon>ReorderControl.xaml</DependentUpon>
