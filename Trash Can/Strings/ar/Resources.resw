@@ -66,6 +66,13 @@
 <data name='$FeedbackLink' xml:space='preserve'> <value>ysdy44@outlook.com</value> </data>
 <data name='Github' xml:space='preserve'> <value>جيثب</value> </data>
 <data name='Feedback' xml:space='preserve'> <value>استجابة</value> </data>
+<data name='$Loading_Loading' xml:space='preserve'> <value>جار التحميل</value> </data>
+<data name='$Loading_LoadFailed' xml:space='preserve'> <value>فشل في التحميل</value> </data>
+<data name='$Loading_FileCorrupt' xml:space='preserve'> <value>الملف تالف</value> </data>
+<data name='$Loading_FileNull' xml:space='preserve'> <value>الملف فارغ</value> </data>
+<data name='$Loading_Saving' xml:space='preserve'> <value>إنقاذ</value> </data>
+<data name='$Loading_SaveSuccess' xml:space='preserve'> <value>حفظ بنجاح</value> </data>
+<data name='$Loading_SaveFailed' xml:space='preserve'> <value>فشل الحفظ</value> </data>
 <data name='$SettingPage_Close' xml:space='preserve'> <value>يلغي</value> </data>
 <data name='$SettingPage_Primary' xml:space='preserve'> <value>موافق</value> </data>
 <data name='$SettingPage_Theme' xml:space='preserve'> <value>سمة</value> </data>

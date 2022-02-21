@@ -66,6 +66,13 @@
 <data name='$FeedbackLink' xml:space='preserve'> <value>ysdy44@outlook.com</value> </data>
 <data name='Github' xml:space='preserve'> <value>Github</value> </data>
 <data name='Feedback' xml:space='preserve'> <value>피드백</value> </data>
+<data name='$Loading_Loading' xml:space='preserve'> <value>로딩 중</value> </data>
+<data name='$Loading_LoadFailed' xml:space='preserve'> <value>불러 오지 못했습니다</value> </data>
+<data name='$Loading_FileCorrupt' xml:space='preserve'> <value>파일이 손상되었습니다</value> </data>
+<data name='$Loading_FileNull' xml:space='preserve'> <value>파일이 비어 있습니다</value> </data>
+<data name='$Loading_Saving' xml:space='preserve'> <value>절약</value> </data>
+<data name='$Loading_SaveSuccess' xml:space='preserve'> <value>성공적으로 저장되었다</value> </data>
+<data name='$Loading_SaveFailed' xml:space='preserve'> <value>저장 실패</value> </data>
 <data name='$SettingPage_Close' xml:space='preserve'> <value>취소</value> </data>
 <data name='$SettingPage_Primary' xml:space='preserve'> <value>확인</value> </data>
 <data name='$SettingPage_Theme' xml:space='preserve'> <value>테마</value> </data>

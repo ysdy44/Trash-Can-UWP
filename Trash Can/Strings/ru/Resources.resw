@@ -66,6 +66,13 @@
 <data name='$FeedbackLink' xml:space='preserve'> <value>ysdy44@outlook.com</value> </data>
 <data name='Github' xml:space='preserve'> <value>Github</value> </data>
 <data name='Feedback' xml:space='preserve'> <value>Обратная связь</value> </data>
+<data name='$Loading_Loading' xml:space='preserve'> <value>Загрузка</value> </data>
+<data name='$Loading_LoadFailed' xml:space='preserve'> <value>Ошибка загрузки</value> </data>
+<data name='$Loading_FileCorrupt' xml:space='preserve'> <value>Файл поврежден</value> </data>
+<data name='$Loading_FileNull' xml:space='preserve'> <value>Файл пуст</value> </data>
+<data name='$Loading_Saving' xml:space='preserve'> <value>Экономия</value> </data>
+<data name='$Loading_SaveSuccess' xml:space='preserve'> <value>Успешно сохранено</value> </data>
+<data name='$Loading_SaveFailed' xml:space='preserve'> <value>Сохранено не удалось</value> </data>
 <data name='$SettingPage_Close' xml:space='preserve'> <value>Отмена</value> </data>
 <data name='$SettingPage_Primary' xml:space='preserve'> <value>Ok</value> </data>
 <data name='$SettingPage_Theme' xml:space='preserve'> <value>Тема</value> </data>

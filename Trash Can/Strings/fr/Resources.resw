@@ -66,6 +66,13 @@
 <data name='$FeedbackLink' xml:space='preserve'> <value>ysdy44@outlook.com</value> </data>
 <data name='Github' xml:space='preserve'> <value>Github</value> </data>
 <data name='Feedback' xml:space='preserve'> <value>Retour d'information</value> </data>
+<data name='$Loading_Loading' xml:space='preserve'> <value>Chargement</value> </data>
+<data name='$Loading_LoadFailed' xml:space='preserve'> <value>Échec du chargement</value> </data>
+<data name='$Loading_FileCorrupt' xml:space='preserve'> <value>Le fichier est corrompu</value> </data>
+<data name='$Loading_FileNull' xml:space='preserve'> <value>Le fichier est vide</value> </data>
+<data name='$Loading_Saving' xml:space='preserve'> <value>Économie</value> </data>
+<data name='$Loading_SaveSuccess' xml:space='preserve'> <value>Enregistré avec succès</value> </data>
+<data name='$Loading_SaveFailed' xml:space='preserve'> <value>Échec de l'enregistrement</value> </data>
 <data name='$SettingPage_Close' xml:space='preserve'> <value>Annuler</value> </data>
 <data name='$SettingPage_Primary' xml:space='preserve'> <value>d'accord</value> </data>
 <data name='$SettingPage_Theme' xml:space='preserve'> <value>Thème</value> </data>
