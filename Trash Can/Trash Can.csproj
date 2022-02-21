@@ -124,6 +124,9 @@
     </Compile>
     <Compile Include="Blends\TagType.cs" />
     <Compile Include="Blends\TagTypeExtensions.cs" />
+    <Compile Include="Controls\LoadingControl.xaml.cs">
+      <DependentUpon>LoadingControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LoadingState.cs" />
     <Compile Include="Controls\OperateType.cs" />
     <Compile Include="Controls\ReorderControl.xaml.cs">
@@ -244,6 +247,10 @@
     <Page Include="AboutDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\LoadingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ReorderControl.xaml">
       <Generator>MSBuild:Compile</Generator>
