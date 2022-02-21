@@ -16,7 +16,7 @@ namespace Trash_Can.Trashs
             {
                 Title = this.Title,
                 Comment = this.Comment,
-                Keywords = this.Keywords.ToList(),
+                Keywords = this.Keywords == null ? null : this.Keywords.ToList(),
             };
         }
 
