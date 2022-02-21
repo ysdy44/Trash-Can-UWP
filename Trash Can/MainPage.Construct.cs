@@ -200,7 +200,11 @@ namespace Trash_Can
             };
 
 
-            this.TitleButton.Click += (s, e) => this.TitleFlyout.ShowAt(this.TitleButton);
+            this.TitleButton.Holding += (s, e) => this.TitleFlyout.ShowAt(this.HeadBorder);
+            this.TitleButton.RightTapped += (s, e) => this.TitleFlyout.ShowAt(this.HeadBorder);
+            this.TitleButton.Click += (s, e) => this.TitleFlyout.ShowAt(this.HeadBorder);
+
+
             this.SaveItem.Click += async (s, e) =>
             {
                 this.State = LoadingState.Saving;

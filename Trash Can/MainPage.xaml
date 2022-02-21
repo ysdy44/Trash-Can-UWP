@@ -1041,6 +1041,7 @@
 
 
                 <!--Head-->
+                <Border x:Name="HeadBorder" Grid.Row="1"/>
                 <Button x:Name="PhoneSplitButton" Grid.Row="1" RequestedTheme="Dark" Visibility="Collapsed" Foreground="White" HorizontalAlignment="Left" >
                     <ToolTipService.ToolTip>
                         <ToolTip x:Name="PhoneSplitToolTip" Style="{StaticResource AppToolTipStyle}">
