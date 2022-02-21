@@ -161,7 +161,7 @@ namespace Trash_Can
                 }
                 this.ProgressRing.IsActive = false;
             };
-            this.PinButton.Click += (s, e) => this.FootBorder.Visibility = this.FootBorder.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            this.PinButton.Click += (s, e) => this.FootPanel.IsShow = !this.FootPanel.IsShow;
 
 
             this.UndoButton.Click += (s, e) =>

@@ -7,6 +7,7 @@
     xmlns:local="using:Trash_Can"
     xmlns:controls="using:Trash_Can.Controls"
     xmlns:elements="using:Trash_Can.Elements"
+    xmlns:transitions="using:Trash_Can.Elements.Transitions"
     xmlns:trashs="using:Trash_Can.Trashs"
     mc:Ignorable="d"
     NavigationCacheMode="Required"    
@@ -253,7 +254,7 @@
                         <Setter Target="ListView.Visibility" Value="Collapsed"/>
 
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
-                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+                        <Setter Target="FootPanel.IsShow" Value="True"/>
 
                         <Setter Target="CloseButton.Visibility" Value="Visible"/>
 
@@ -267,7 +268,7 @@
                         <Setter Target="FootStackPanel01.Orientation" Value="Vertical"/>
                         <Setter Target="FootStackPanel02.Orientation" Value="Vertical"/>
 
-                        <Setter Target="FootScrollViewer.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootPanel.VerticalAlignment" Value="Bottom"/>
                         <Setter Target="FootBorder.Margin" Value="0"/>
                         <Setter Target="FootBorder.CornerRadius" Value="0"/>
                         <Setter Target="FootBorder.BorderThickness" Value="0,1,0,0"/>
@@ -293,7 +294,7 @@
                         <Setter Target="ListView.Visibility" Value="Collapsed"/>
 
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
-                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+                        <Setter Target="FootPanel.IsShow" Value="True"/>
 
                         <Setter Target="CloseButton.Visibility" Value="Visible"/>
 
@@ -305,7 +306,7 @@
                         <!--Writable-->
                         <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
 
-                        <Setter Target="FootScrollViewer.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootPanel.VerticalAlignment" Value="Bottom"/>
                         <Setter Target="FootBorder.Margin" Value="0"/>
                         <Setter Target="FootBorder.CornerRadius" Value="8,8,0,0"/>
                         <Setter Target="FootBorder.HorizontalAlignment" Value="Center"/>
@@ -330,7 +331,7 @@
                         <Setter Target="ListView.Visibility" Value="Collapsed"/>
 
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
-                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+                        <Setter Target="FootPanel.IsShow" Value="True"/>
 
                         <Setter Target="CloseButton.Visibility" Value="Visible"/>
 
@@ -354,7 +355,7 @@
                         <Setter Target="ListView.Visibility" Value="Collapsed"/>
 
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
-                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+                        <Setter Target="FootPanel.IsShow" Value="True"/>
 
                         <Setter Target="CloseButton.Visibility" Value="Visible"/>
 
@@ -366,7 +367,7 @@
                         <Setter Target="FootStackPanel01.Orientation" Value="Vertical"/>
                         <Setter Target="FootStackPanel02.Orientation" Value="Vertical"/>
 
-                        <Setter Target="FootScrollViewer.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootPanel.VerticalAlignment" Value="Bottom"/>
                         <Setter Target="FootBorder.Margin" Value="0"/>
                         <Setter Target="FootBorder.CornerRadius" Value="0"/>
                         <Setter Target="FootBorder.BorderThickness" Value="0,1,0,0"/>
@@ -392,7 +393,7 @@
                         <Setter Target="ListView.Visibility" Value="Collapsed"/>
 
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
-                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+                        <Setter Target="FootPanel.IsShow" Value="True"/>
 
                         <Setter Target="CloseButton.Visibility" Value="Visible"/>
 
@@ -402,7 +403,7 @@
                         <!--Writable-->
                         <Setter Target="FootStackPanel.Orientation" Value="Vertical"/>
 
-                        <Setter Target="FootScrollViewer.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="FootPanel.VerticalAlignment" Value="Bottom"/>
                         <Setter Target="FootBorder.Margin" Value="0"/>
                         <Setter Target="FootBorder.CornerRadius" Value="8,8,0,0"/>
                         <Setter Target="FootBorder.HorizontalAlignment" Value="Center"/>
@@ -427,7 +428,7 @@
                         <Setter Target="ListView.Visibility" Value="Collapsed"/>
 
                         <Setter Target="BodyBorder.Visibility" Value="Visible"/>
-                        <Setter Target="FootScrollViewer.Visibility" Value="Visible"/>
+                        <Setter Target="FootPanel.IsShow" Value="True"/>
 
                         <Setter Target="CloseButton.Visibility" Value="Visible"/>
 
@@ -647,301 +648,303 @@
 
 
                 <!--Foot-->
-                <ScrollViewer x:Name="FootScrollViewer" Grid.Row="3" VerticalAlignment="Top" Visibility="Collapsed" >
-                    <Border x:Name="FootBorder"
-                        CornerRadius="8"
-                        Padding="12,0"
-                        Margin="12,4"
-                        MinHeight="54"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Center"
-                        BorderThickness="1"
-                        BorderBrush="{ThemeResource AppStroke}"
-                        Background="{ThemeResource AppBackground}"
-                        >
-                        <StackPanel x:Name="FootStackPanel" Orientation="Horizontal" >
+                <transitions:TransitionPanel x:Name="FootPanel" Grid.Row="3" VerticalAlignment="Top" IsShow="False" >
+                    <ScrollViewer>
+                        <Border x:Name="FootBorder"
+                                CornerRadius="8"
+                                Padding="12,0"
+                                Margin="12,4"
+                                MinHeight="54"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                BorderThickness="1"
+                                BorderBrush="{ThemeResource AppStroke}"
+                                Background="{ThemeResource AppBackground}"
+                                >
+                            <StackPanel x:Name="FootStackPanel" Orientation="Horizontal" >
 
-                            <StackPanel x:Name="FootStackPanel01" Orientation="Horizontal" >
+                                <StackPanel x:Name="FootStackPanel01" Orientation="Horizontal" >
 
-                                <Grid Height="48">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Button x:Name="CutButton">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="CutToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Cut
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="Cut" />
-                                    </Button>
-                                    <Button x:Name="CopyButton" Grid.Column="1">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="CopyToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Copy
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="Copy" />
-                                    </Button>
-                                    <Button x:Name="PasteButton" Grid.Column="2">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="PasteToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Paste
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="Paste" />
-                                    </Button>
-                                    <Line Grid.Column="3" />
-                                    <Button x:Name="SelectAllButton" Grid.Column="3">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="SelectAllToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                SelectAll
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="SelectAll" />
-                                    </Button>
-                                    <Button x:Name="DeleteButton" Grid.Column="4">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="ClearToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Delete
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="Delete" />
-                                    </Button>
-                                    <Rectangle Grid.Column="5"/>
-                                    <Button x:Name="FindButton" Grid.Column="6">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="FindToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Find
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="Find" />
-                                    </Button>
-                                </Grid>
+                                    <Grid Height="48">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button x:Name="CutButton">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="CutToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Cut
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="Cut" />
+                                        </Button>
+                                        <Button x:Name="CopyButton" Grid.Column="1">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="CopyToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Copy
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="Copy" />
+                                        </Button>
+                                        <Button x:Name="PasteButton" Grid.Column="2">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="PasteToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Paste
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="Paste" />
+                                        </Button>
+                                        <Line Grid.Column="3" />
+                                        <Button x:Name="SelectAllButton" Grid.Column="3">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="SelectAllToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    SelectAll
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="SelectAll" />
+                                        </Button>
+                                        <Button x:Name="DeleteButton" Grid.Column="4">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="ClearToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Delete
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="Delete" />
+                                        </Button>
+                                        <Rectangle Grid.Column="5"/>
+                                        <Button x:Name="FindButton" Grid.Column="6">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="FindToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Find
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="Find" />
+                                        </Button>
+                                    </Grid>
 
-                                <Rectangle/>
+                                    <Rectangle/>
 
-                                <Grid Height="48">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Line/>
-                                    <Button x:Name="BoldButton">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="BoldToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Bold
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="Bold" />
-                                    </Button>
-                                    <Button x:Name="ItalicButton" Grid.Column="1">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="ItalicToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Italic
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="Italic" />
-                                    </Button>
-                                    <Line Grid.Column="2" />
-                                    <Button x:Name="UnderlineButton" Grid.Column="2">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="UnderlineToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Underline
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="Underline" />
-                                    </Button>
-                                    <Rectangle Grid.Column="3"/>
-                                    <Button x:Name="AlignLeftButton" Grid.Column="4">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="AlignLeftToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Align Left
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="AlignLeft" />
-                                    </Button>
-                                    <Button x:Name="AlignCenterButton" Grid.Column="5">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="AlignCenterToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Align Center
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="AlignCenter" />
-                                    </Button>
-                                    <Button x:Name="AlignRightButton" Grid.Column="6">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="AlignRightToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Align Right
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <SymbolIcon Symbol="AlignRight" />
-                                    </Button>
-                                </Grid>
+                                    <Grid Height="48">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Line/>
+                                        <Button x:Name="BoldButton">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="BoldToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Bold
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="Bold" />
+                                        </Button>
+                                        <Button x:Name="ItalicButton" Grid.Column="1">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="ItalicToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Italic
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="Italic" />
+                                        </Button>
+                                        <Line Grid.Column="2" />
+                                        <Button x:Name="UnderlineButton" Grid.Column="2">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="UnderlineToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Underline
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="Underline" />
+                                        </Button>
+                                        <Rectangle Grid.Column="3"/>
+                                        <Button x:Name="AlignLeftButton" Grid.Column="4">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="AlignLeftToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Align Left
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="AlignLeft" />
+                                        </Button>
+                                        <Button x:Name="AlignCenterButton" Grid.Column="5">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="AlignCenterToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Align Center
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="AlignCenter" />
+                                        </Button>
+                                        <Button x:Name="AlignRightButton" Grid.Column="6">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="AlignRightToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Align Right
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <SymbolIcon Symbol="AlignRight" />
+                                        </Button>
+                                    </Grid>
 
-                            </StackPanel>
-
-                            <Rectangle/>
-
-                            <StackPanel x:Name="FootStackPanel02" Orientation="Horizontal" >
-
-                                <Grid Height="48" Padding="12,0" HorizontalAlignment="Stretch">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" MinWidth="204"/>
-                                        <ColumnDefinition Width="8"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <ComboBox x:Name="FontFamilyComboBox" >
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="FontFamilyToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Font Family
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                    </ComboBox>
-                                    <ComboBox x:Name="FontSizeComboBox" Grid.Column="2" >
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="FontSizeToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Font Size
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                    </ComboBox>
-                                </Grid>
+                                </StackPanel>
 
                                 <Rectangle/>
 
-                                <Grid Height="48">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Button x:Name="TagTypeNoneButton" Width="42" Foreground="White">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="TagTypeNoneToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Default
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <Grid>
-                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
-                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Ellipse.Fill>
-                                                    <SolidColorBrush Color="{ThemeResource SystemBaseHighColor}" />
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                        </Grid>
-                                    </Button>
-                                    <Button x:Name="TagTypeRedButton" Grid.Column="1" Width="42" Foreground="White">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="TagTypeRedToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Red
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <Grid>
-                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
-                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Ellipse.Fill>
-                                                    <SolidColorBrush Color="LightCoral" />
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                        </Grid>
-                                    </Button>
-                                    <Button x:Name="TagTypeOrangeButton" Grid.Column="2" Width="42" Foreground="White">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="TagTypeOrangeToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Orange
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <Grid>
-                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
-                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Ellipse.Fill>
-                                                    <SolidColorBrush Color="Orange" />
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                        </Grid>
-                                    </Button>
-                                    <Button x:Name="TagTypeYellowButton" Grid.Column="3" Width="42" Foreground="White">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="TagTypeYellowToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Yellow
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <Grid>
-                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
-                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Ellipse.Fill>
-                                                    <SolidColorBrush Color="Yellow" />
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                        </Grid>
-                                    </Button>
-                                    <Button x:Name="TagTypeGreenButton" Grid.Column="4" Width="42" Foreground="White">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="TagTypeGreenToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Green
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <Grid>
-                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
-                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Ellipse.Fill>
-                                                    <SolidColorBrush Color="YellowGreen" />
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                        </Grid>
-                                    </Button>
-                                    <Button x:Name="TagTypeBlueButton" Grid.Column="5" Width="42" Foreground="White">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="TagTypeBlueToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Blue
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <Grid>
-                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
-                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Ellipse.Fill>
-                                                    <SolidColorBrush Color="SkyBlue" />
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                        </Grid>
-                                    </Button>
-                                    <Button x:Name="TagTypePurpleButton" Grid.Column="6" Width="42" Foreground="White">
-                                        <ToolTipService.ToolTip>
-                                            <ToolTip x:Name="TagTypePurpleToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                Purple
-                                            </ToolTip>
-                                        </ToolTipService.ToolTip>
-                                        <Grid>
-                                            <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
-                                            <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Ellipse.Fill>
-                                                    <SolidColorBrush Color="Plum" />
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                        </Grid>
-                                    </Button>
-                                </Grid>
+                                <StackPanel x:Name="FootStackPanel02" Orientation="Horizontal" >
+
+                                    <Grid Height="48" Padding="12,0" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" MinWidth="204"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ComboBox x:Name="FontFamilyComboBox" >
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="FontFamilyToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Font Family
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                        </ComboBox>
+                                        <ComboBox x:Name="FontSizeComboBox" Grid.Column="2" >
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="FontSizeToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Font Size
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                        </ComboBox>
+                                    </Grid>
+
+                                    <Rectangle/>
+
+                                    <Grid Height="48">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button x:Name="TagTypeNoneButton" Width="42" Foreground="White">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="TagTypeNoneToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Default
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <Grid>
+                                                <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                                <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Ellipse.Fill>
+                                                        <SolidColorBrush Color="{ThemeResource SystemBaseHighColor}" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </Grid>
+                                        </Button>
+                                        <Button x:Name="TagTypeRedButton" Grid.Column="1" Width="42" Foreground="White">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="TagTypeRedToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Red
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <Grid>
+                                                <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                                <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Ellipse.Fill>
+                                                        <SolidColorBrush Color="LightCoral" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </Grid>
+                                        </Button>
+                                        <Button x:Name="TagTypeOrangeButton" Grid.Column="2" Width="42" Foreground="White">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="TagTypeOrangeToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Orange
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <Grid>
+                                                <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                                <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Ellipse.Fill>
+                                                        <SolidColorBrush Color="Orange" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </Grid>
+                                        </Button>
+                                        <Button x:Name="TagTypeYellowButton" Grid.Column="3" Width="42" Foreground="White">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="TagTypeYellowToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Yellow
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <Grid>
+                                                <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                                <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Ellipse.Fill>
+                                                        <SolidColorBrush Color="Yellow" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </Grid>
+                                        </Button>
+                                        <Button x:Name="TagTypeGreenButton" Grid.Column="4" Width="42" Foreground="White">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="TagTypeGreenToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Green
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <Grid>
+                                                <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                                <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Ellipse.Fill>
+                                                        <SolidColorBrush Color="YellowGreen" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </Grid>
+                                        </Button>
+                                        <Button x:Name="TagTypeBlueButton" Grid.Column="5" Width="42" Foreground="White">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="TagTypeBlueToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Blue
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <Grid>
+                                                <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                                <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Ellipse.Fill>
+                                                        <SolidColorBrush Color="SkyBlue" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </Grid>
+                                        </Button>
+                                        <Button x:Name="TagTypePurpleButton" Grid.Column="6" Width="42" Foreground="White">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip x:Name="TagTypePurpleToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Purple
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
+                                            <Grid>
+                                                <FontIcon Glyph="&#xE91F;" FontSize="25" FontFamily="Segoe MDL2 Assets" />
+                                                <Ellipse Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Ellipse.Fill>
+                                                        <SolidColorBrush Color="Plum" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </Grid>
+                                        </Button>
+                                    </Grid>
+
+                                </StackPanel>
 
                             </StackPanel>
-
-                        </StackPanel>
-                    </Border>
-                </ScrollViewer>
+                        </Border>
+                    </ScrollViewer>
+                </transitions:TransitionPanel>
 
 
                 <!--Find-->
@@ -1048,7 +1051,7 @@
                                 Pin
                             </ToolTip>
                         </ToolTipService.ToolTip>
-                        <SymbolIcon Symbol="{x:Bind VisibilityToPinConverter(FootBorder.Visibility), Mode=OneWay}" />
+                        <SymbolIcon Symbol="{x:Bind ReverseBooleanToPinConverter(FootPanel.IsShow), Mode=OneWay}" />
                     </Button>
                     <Button x:Name="TitleButton" Grid.Column="2" Visibility="Collapsed" Width="Auto" HorizontalAlignment="Center" Foreground="{ThemeResource AppForeground}">
                         <StackPanel>
@@ -1105,6 +1108,6 @@
                 Visibility="{x:Bind BooleanToVisibilityConverter(ProgressRing.IsActive), Mode=OneWay}">
             <elements:ProgressRing x:Name="ProgressRing" IsActive="False" Width="80" Height="80" Thickness="4" />
         </Border>
-        
+
     </Grid>
 </Page>

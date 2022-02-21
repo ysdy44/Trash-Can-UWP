@@ -21,7 +21,7 @@ namespace Trash_Can
         //@Converter
         private Visibility BooleanToVisibilityConverter(bool value) => value ? Visibility.Visible : Visibility.Collapsed;
         private Visibility ReverseBooleanToVisibilityConverter(bool value) => value ? Visibility.Collapsed : Visibility.Visible;
-        private Symbol VisibilityToPinConverter(Visibility value) => value == Visibility.Visible ? Symbol.UnPin : Symbol.Pin;
+        private Symbol ReverseBooleanToPinConverter(bool value) => value ? Symbol.UnPin : Symbol.Pin;
 
 
         public string Title { get => this.TitleTextBlock.Text; set => this.TitleTextBlock.Text = value; }
