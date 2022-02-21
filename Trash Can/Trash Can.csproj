@@ -231,6 +231,17 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Icons\FontWeight\Black.png" />
+    <Content Include="Icons\FontWeight\Bold.png" />
+    <Content Include="Icons\FontWeight\ExtraBlack.png" />
+    <Content Include="Icons\FontWeight\ExtraBold.png" />
+    <Content Include="Icons\FontWeight\ExtraLight.png" />
+    <Content Include="Icons\FontWeight\Light.png" />
+    <Content Include="Icons\FontWeight\Medium.png" />
+    <Content Include="Icons\FontWeight\Normal.png" />
+    <Content Include="Icons\FontWeight\SemiBold.png" />
+    <Content Include="Icons\FontWeight\SemiLight.png" />
+    <Content Include="Icons\FontWeight\Thin.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
