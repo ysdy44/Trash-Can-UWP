@@ -1119,18 +1119,24 @@
                     </Button>
                 </Grid>
 
+
+                <!--Loading-->
+                <controls:LoadingControl x:Name="LoadingControl" Grid.RowSpan="3"/>
+
             </Grid>
         </SplitView>
 
 
         <!--Dialog-->
-        <controls:TrashEditor x:Name="Editor" />
-        <local:AboutDialog x:Name="AboutDialog" />
-        <local:SettingDialog x:Name="SettingDialog" />
-        <Border Background="{ThemeResource SystemControlBackgroundAltMediumLowBrush}"
-                Visibility="{x:Bind BooleanToVisibilityConverter(ProgressRing.IsActive), Mode=OneWay}">
-            <elements:ProgressRing x:Name="ProgressRing" IsActive="False" Width="80" Height="80" Thickness="4" />
-        </Border>
+        <Grid>
+            <FrameworkElement.Resources>
+                <!--Style-->
+                <Style TargetType="ScrollViewer" BasedOn="{StaticResource AppVerticalScrollViewerStyle}"/>
+            </FrameworkElement.Resources>
+            <controls:TrashEditor x:Name="Editor" Style="{StaticResource AppContentDialogStyle}"/>
+            <local:AboutDialog x:Name="AboutDialog" Style="{StaticResource AppContentDialogStyle}"/>
+            <local:SettingDialog x:Name="SettingDialog" Style="{StaticResource AppContentDialogStyle}"/>
+        </Grid>
 
     </Grid>
 </Page>

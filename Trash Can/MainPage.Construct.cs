@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Trash_Can.Blends;
+using Trash_Can.Controls;
 using Trash_Can.Texts;
 using Trash_Can.Trashs;
 using Windows.ApplicationModel.DataTransfer;
@@ -154,12 +156,18 @@ namespace Trash_Can
         {
             this.CloseButton.Click += async (s, e) =>
             {
-                this.ProgressRing.IsActive = true;
+                this.State = LoadingState.Saving;
                 {
                     string name = this.Subtitle;
+                    bool result = await this.Export(name);
                     await this.Exit(name);
+                    if (result == false)
+                    {
+                        this.State = LoadingState.SaveFailed;
+                        await Task.Delay(1000);
+                    }
                 }
-                this.ProgressRing.IsActive = false;
+                this.State = LoadingState.None;
             };
             this.PinButton.Click += (s, e) => this.FootPanel.IsShow = !this.FootPanel.IsShow;
 
@@ -195,18 +203,42 @@ namespace Trash_Can
             this.TitleButton.Click += (s, e) => this.TitleFlyout.ShowAt(this.TitleButton);
             this.SaveItem.Click += async (s, e) =>
             {
-                string name = this.Subtitle;
-                await this.Export(name);
+                this.State = LoadingState.Saving;
+                {
+                    string name = this.Subtitle;
+                    bool result = await this.Export(name);
+                    if (result == false)
+                    {
+                        this.State = LoadingState.SaveFailed;
+                        await Task.Delay(1000);
+                    }
+                }
+                this.State = LoadingState.None;
             };
             this.CloseItem.Click += async (s, e) =>
             {
                 switch (this.FindMode)
                 {
                     case FindMode.None:
-                        await this.Exit(this.Subtitle);
+                        {
+                            this.State = LoadingState.Saving;
+                            {
+                                string name = this.Subtitle;
+                                bool result = await this.Export(name);
+                                await this.Exit(name);
+                                if (result == false)
+                                {
+                                    this.State = LoadingState.SaveFailed;
+                                    await Task.Delay(1000);
+                                }
+                            }
+                            this.State = LoadingState.None;
+                        }
                         break;
                     default:
-                        this.FindMode = FindMode.None;
+                        {
+                            this.FindMode = FindMode.None;
+                        }
                         break;
                 }
             };
@@ -324,6 +356,7 @@ namespace Trash_Can
                 this.Update();
                 this.Focus();
             };
+
             this.WeightBlackItem.Click += (s, e) => this.Weight(FontWeight2.Black);
             this.WeightBoldItem.Click += (s, e) => this.Weight(FontWeight2.Bold);
             this.WeightExtraBlackItem.Click += (s, e) => this.Weight(FontWeight2.ExtraBlack);
@@ -335,6 +368,7 @@ namespace Trash_Can
             this.WeightSemiBoldItem.Click += (s, e) => this.Weight(FontWeight2.SemiBold);
             this.WeightSemiLightItem.Click += (s, e) => this.Weight(FontWeight2.SemiLight);
             this.WeightThinItem.Click += (s, e) => this.Weight(FontWeight2.Thin);
+
             this.ItalicButton.Click += (s, e) =>
             {
                 var format = this.CharacterFormat;
@@ -343,6 +377,7 @@ namespace Trash_Can
                 this.Update();
                 this.Focus();
             };
+
             this.UnderlineButton.Holding += (s, e) => this.UnderlineFlyout.ShowAt(this.UnderlineButton);
             this.UnderlineButton.RightTapped += (s, e) => this.UnderlineFlyout.ShowAt(this.UnderlineButton);
             this.UnderlineButton.Click += (s, e) =>
@@ -361,6 +396,7 @@ namespace Trash_Can
                 this.Update();
                 this.Focus();
             };
+
             this.UnderlineNoneItem.Click += (s, e) => this.Underline(UnderlineType.None);
             this.UnderlineWordsItem.Click += (s, e) => this.Underline(UnderlineType.Words);
             this.UnderlineSingleItem.Click += (s, e) => this.Underline(UnderlineType.Single);
@@ -380,30 +416,7 @@ namespace Trash_Can
             this.UnderlineWaveItem.Click += (s, e) => this.Underline(UnderlineType.Wave);
             this.UnderlineDoubleWaveItem.Click += (s, e) => this.Underline(UnderlineType.DoubleWave);
             this.UnderlineHeavyWaveItem.Click += (s, e) => this.Underline(UnderlineType.HeavyWave);
-            //  None = 1, // 字符不带有下划线。
-            //  Words = 3, // 在单词下面划线，而不是单词之间的空格。
-            //
-            //  Single = 2, // 单实线。
-            //  Double = 4, // 两条双实线
-            //
-            //  Dash = 6, // 虚线。
-            //  DashDot = 7, // 交替短划线和点。
-            //  DashDotDot = 8, // 单个短划线，每个短划线后跟两个点。
-            //  Dotted = 5, // 点线。
-            //  LongDash = 14, // 长破折号。
-            //
-            //  Thin = 11, // 细实线。
-            //
-            //  Thick = 10, // 粗实线。
-            //  ThickDash = 15, // 粗的短划线。
-            //  ThickDashDot = 16, // 粗的交替短划线和点。
-            //  ThickDashDotDot = 17, // 粗的短划线，每个短划线后跟两个粗点。
-            //  ThickDotted = 18, // 粗点线。     
-            //  ThickLongDash = 19, // 粗的长破折号。
-            //      
-            //  Wave = 9, // 波浪线。
-            //  DoubleWave = 12, // 两条波浪线。
-            //  HeavyWave = 13, // 粗波浪线。
+
             this.AlignLeftButton.Click += (s, e) =>
             {
                 this.RichEditBox.TextAlignment = TextAlignment.Left;
@@ -458,7 +471,6 @@ namespace Trash_Can
                     this.Focus();
                 }
             };
-
         }
 
 
@@ -557,7 +569,6 @@ namespace Trash_Can
 
 
 
-
         private void Update()
         {
             this.UndoButton.IsEnabled = this.Document.CanUndo();
@@ -572,7 +583,6 @@ namespace Trash_Can
         {
             this.RichEditBox.Focus(FocusState.Keyboard);
         }
-
 
 
 
@@ -616,10 +626,6 @@ namespace Trash_Can
             this.Update();
             this.Focus();
         }
-
-
-
-
 
     }
 }

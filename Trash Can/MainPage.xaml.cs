@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Trash_Can.Controls;
 using Trash_Can.Elements;
 using Trash_Can.Trashs;
@@ -23,7 +24,8 @@ namespace Trash_Can
         private Visibility ReverseBooleanToVisibilityConverter(bool value) => value ? Visibility.Collapsed : Visibility.Visible;
         private Symbol ReverseBooleanToPinConverter(bool value) => value ? Symbol.UnPin : Symbol.Pin;
 
-
+        
+        public LoadingState State { get => this.LoadingControl.State; set => this.LoadingControl.State = value; }
         public string Title { get => this.TitleTextBlock.Text; set => this.TitleTextBlock.Text = value; }
         public string Subtitle { get => this.SubtitleTextBlock.Text; set => this.SubtitleTextBlock.Text = value; }
         public ITextDocument Document => this.RichEditBox.Document;
@@ -102,7 +104,7 @@ namespace Trash_Can
                     {
                         case DeviceLayoutType.PC: return this.FullScreenPC;
                         case DeviceLayoutType.Pad: return this.FullScreenPad;
-                        case DeviceLayoutType.Phone: return this.FullScreenPhone;
+                        case DeviceLayoutType.Phone: return this.WritablePhone;
                     }
                 }
                 else if (this._vsIsWritable)
@@ -195,7 +197,20 @@ namespace Trash_Can
             };
 
 
-            this.AddButton.Click += async (s, e) => await this.Open(await this.New());
+            this.AddButton.Click += async (s, e) =>
+            {
+                this.State = LoadingState.Loading;
+                {
+                    string name = await this.New();
+                    bool result = await this.Open(name);
+                    if (result == false)
+                    {
+                        this.State = LoadingState.LoadFailed;
+                        await Task.Delay(1000);
+                    }
+                }
+                this.State = LoadingState.None;
+            };
             this.SettingItem.Tapped += async (s, e) => await this.SettingDialog.ShowAsync(ContentDialogPlacement.InPlace);
             this.PaneListView.ItemClick += async (s, e) =>
             {
@@ -207,42 +222,50 @@ namespace Trash_Can
                         {
                             case 0:
                                 {
-                                    this.ProgressRing.IsActive = true;
+                                    this.State = LoadingState.Loading;
                                     {
-                                        this.ProgressRing.IsActive = false;
-                                        string name = this.Subtitle;
-                                        bool result = await this.Exit(name);
-                                        if (result)
+                                        string name = await this.New();
+                                        bool result = await this.Open(name);
+                                        if (result == false)
                                         {
-                                            string name2 = await this.New();
-                                            await this.Open(name2);
+                                            this.State = LoadingState.LoadFailed;
+                                            await Task.Delay(1000);
                                         }
                                     }
+                                    this.State = LoadingState.None;
                                 }
                                 break;
                             case 1:
                                 switch (this._vsDeviceLayoutType)
                                 {
                                     case DeviceLayoutType.Phone:
-                                        break;
-                                    default:
-                                        this.ProgressRing.IsActive = true;
-                                        {
-                                            string name = this.Subtitle;
-                                            await this.Exit(name);
-                                        }
-                                        this.ProgressRing.IsActive = false;
-                                        break;
-                                }
-                                switch (this._vsDeviceLayoutType)
-                                {
-                                    case DeviceLayoutType.Phone:
                                     case DeviceLayoutType.Pad:
                                         this.SplitView.IsPaneOpen = false;
-                                        this.SplitView.IsPaneOpen = false;
                                         break;
                                     default:
                                         break;
+                                }
+                                if (this._vsIsWritable)
+                                {
+                                    switch (this._vsDeviceLayoutType)
+                                    {
+                                        case DeviceLayoutType.Phone:
+                                            break;
+                                        default:
+                                            this.State = LoadingState.Saving;
+                                            {
+                                                string name = this.Subtitle;
+                                                bool result = await this.Export(name);
+                                                await this.Exit(name);
+                                                if (result == false)
+                                                {
+                                                    this.State = LoadingState.SaveFailed;
+                                                    await Task.Delay(1000);
+                                                }
+                                            }
+                                            this.State = LoadingState.None;
+                                            break;
+                                    }
                                 }
                                 break;
                             case 2:
@@ -307,9 +330,16 @@ namespace Trash_Can
                 {
                     case OperateType.Edit:
                         {
-                            this.ProgressRing.IsActive = true;
-                            await this.Open(item.Name);
-                            this.ProgressRing.IsActive = false;
+                            this.State = LoadingState.Loading;
+                            {
+                                bool result = await this.Open(item.Name);
+                                if (result == false)
+                                {
+                                    this.State = LoadingState.FileCorrupt;
+                                    await Task.Delay(1000);
+                                }
+                            }
+                            this.State = LoadingState.None;
                         }
                         break;
                     case OperateType.Rename:
@@ -321,24 +351,46 @@ namespace Trash_Can
                     case OperateType.Remove:
                         {
                             if (item.IsFavorite) return;
-                            int index = this.FlipView.SelectedIndex;
 
-                            StorageFile file = await FileUtil.FIndRtfFile(item.Name);
-                            if (file != null) await file.DeleteAsync();
+                            this.State = LoadingState.Loading;
+                            {
+                                StorageFile file = await FileUtil.FIndRtfFile(item.Name);
+                                if (file == null)
+                                {
+                                    this.State = LoadingState.FileNull;
+                                    await Task.Delay(1000);
+                                }
+                                else
+                                {
+                                    await file.DeleteAsync();
+                                }
+                            }
+                            this.State = LoadingState.None;
+
+                            int index = this.FlipView.SelectedIndex;
                             this.Items.Remove(item);
                             this.Save();
-
                             this.FlipView.SelectedIndex = Math.Max(0, index - 1);
                         }
                         break;
                     case OperateType.Duplicate:
                         {
-                            TrashItem trash = await FileUtil.CopyRtfFile(item.Name);
-                            if (trash == null) return;
-
-                            trash.Properties = item.Properties.Clone();
-                            this.Items.Add(trash);
-                            this.Save();
+                            this.State = LoadingState.Loading;
+                            {
+                                TrashItem trash = await FileUtil.CopyRtfFile(item.Name);
+                                if (trash == null)
+                                {
+                                    this.State = LoadingState.FileNull;
+                                    await Task.Delay(1000);
+                                }
+                                else
+                                {
+                                    trash.Properties = item.Properties.Clone();
+                                    this.Items.Add(trash);
+                                    this.Save();
+                                }
+                            }
+                            this.State = LoadingState.None;
                         }
                         break;
                     case OperateType.Favorite:
