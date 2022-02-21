@@ -145,6 +145,12 @@
     <Compile Include="Elements\DeviceLayoutType.cs" />
     <Compile Include="Elements\ProgressRing.cs" />
     <Compile Include="Elements\Reorder.cs" />
+    <Compile Include="Elements\Transitions\IndexTransitionPanel.cs" />
+    <Compile Include="Elements\Transitions\ITransitionElement.cs" />
+    <Compile Include="Elements\Transitions\TransitionPanel.cs" />
+    <Compile Include="Elements\Transitions\TransitionPanelBase.xaml.cs">
+      <DependentUpon>TransitionPanelBase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FileUtils\FileUtil.cs" />
     <Compile Include="FileUtils\FileUtil.PickAndCopy.cs" />
     <Compile Include="FileUtils\FileUtil.RtfFile.cs" />
@@ -255,6 +261,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Elements\AccentDecoratorItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Elements\Transitions\TransitionPanelBase.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
