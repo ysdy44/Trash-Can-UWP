@@ -21,6 +21,54 @@
 
 
     <!--Style-->
+    <Style x:Key="AppContentDialogStyle" TargetType="ContentDialog">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{ThemeResource AppBorderBrush}" />
+        <Setter Property="Background" Value="{ThemeResource AppBackgroundDark}" />
+        <Setter Property="PrimaryButtonStyle" Value="{ThemeResource TextBlockButtonStyle}" />
+        <Setter Property="SecondaryButtonStyle" Value="{ThemeResource TextBlockButtonStyle}" />
+    </Style>
+
+
+    <!--Style-->
+    <Style x:Name="AppNoneScrollViewerStyle" TargetType="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="HorizontalScrollMode" Value="Disabled"/>
+        <Setter Property="IsHorizontalRailEnabled" Value="False"/>
+        <Setter Property="VerticalScrollMode" Value="Disabled"/>
+        <Setter Property="IsVerticalRailEnabled" Value="True"/>
+        <Setter Property="ZoomMode" Value="Disabled"/>
+        <Setter Property="IsDeferredScrollingEnabled" Value="False"/>
+        <Setter Property="BringIntoViewOnFocusChange" Value="False"/>
+    </Style>
+    <Style x:Name="AppHorizontalScrollViewerStyle" TargetType="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="HorizontalScrollMode" Value="Enabled"/>
+        <Setter Property="IsHorizontalRailEnabled" Value="False"/>
+        <Setter Property="VerticalScrollMode" Value="Disabled"/>
+        <Setter Property="IsVerticalRailEnabled" Value="True"/>
+        <Setter Property="ZoomMode" Value="Disabled"/>
+        <Setter Property="IsDeferredScrollingEnabled" Value="False"/>
+        <Setter Property="BringIntoViewOnFocusChange" Value="True"/>
+    </Style>
+    <Style x:Name="AppVerticalScrollViewerStyle" TargetType="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="HorizontalScrollMode" Value="Disabled"/>
+        <Setter Property="IsHorizontalRailEnabled" Value="True"/>
+        <Setter Property="VerticalScrollMode" Value="Enabled"/>
+        <Setter Property="IsVerticalRailEnabled" Value="False"/>
+        <Setter Property="ZoomMode" Value="Disabled"/>
+        <Setter Property="IsDeferredScrollingEnabled" Value="False"/>
+        <Setter Property="BringIntoViewOnFocusChange" Value="True"/>
+    </Style>
+
+
+    <!--Style-->
     <Style x:Key="AppRoundedBorderStyle" TargetType="Border">
         <Setter Property="Margin" Value="1,0"/>
         <Setter Property="Height" Value="38"/>
@@ -28,16 +76,6 @@
         <Setter Property="BorderThickness" Value="0.5,0.5,0.5,1.5"/>
         <Setter Property="BorderBrush" Value="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"/>
         <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}"/>
-    </Style>
-
-
-    <!--Style-->
-    <Style TargetType="Rectangle">
-        <Setter Property="MinWidth" Value="1" />
-        <Setter Property="MinHeight" Value="1" />
-        <Setter Property="MaxHeight" Value="30" />
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Fill" Value="{ThemeResource AppBorderBrush}" />
     </Style>
 
 
@@ -52,22 +90,6 @@
 
 
     <!--Style-->
-    <Style TargetType="Line">
-        <Setter Property="X1" Value="0" />
-        <Setter Property="Y1" Value="0" />
-        <Setter Property="X2" Value="24" />
-        <Setter Property="Y2" Value="0" />
-        <Setter Property="Margin" Value="1" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="bottom" />
-        <Setter Property="StrokeStartLineCap" Value="Triangle" />
-        <Setter Property="StrokeEndLineCap" Value="Triangle" />
-        <Setter Property="StrokeThickness" Value="2" />
-        <Setter Property="Stroke" Value="{ThemeResource AppBlueLinearGradientBrush}" />
-    </Style>
-
-
-    <!--Style-->
     <Style TargetType="Button" BasedOn="{StaticResource TextBlockButtonStyle}">
         <Setter Property="Width" Value="50" />
         <Setter Property="Height" Value="48" />
@@ -78,20 +100,6 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="{ThemeResource AppBlueLinearGradientBrush}"/>
-    </Style>
-
-
-    <!--Style-->
-    <Style TargetType="ScrollViewer">
-        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
-        <Setter Property="HorizontalScrollMode" Value="Enabled"/>
-        <Setter Property="IsHorizontalRailEnabled" Value="False"/>
-        <Setter Property="VerticalScrollMode" Value="Disabled"/>
-        <Setter Property="IsVerticalRailEnabled" Value="True"/>
-        <Setter Property="ZoomMode" Value="Disabled"/>
-        <Setter Property="IsDeferredScrollingEnabled" Value="False"/>
-        <Setter Property="BringIntoViewOnFocusChange" Value="True"/>
     </Style>
 
 
