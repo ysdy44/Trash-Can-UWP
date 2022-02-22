@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Trash_Can.Trashs;
 using Windows.Storage;
+using Windows.UI.Xaml;
 
 namespace Trash_Can
 {
@@ -11,24 +12,24 @@ namespace Trash_Can
     {
 
         public static string NewName() => $"{Guid.NewGuid()}.rtf";
-      
-        public static TrashItem ConstructTrashItem(StorageFile item)
-        {
 
+        public static TrashItem ConstructTrashItem(StorageFile item, ElementTheme theme = ElementTheme.Default)
+        {
             return new TrashItem
             {
                 Name = item.Name,
                 DateCreated = item.DateCreated,
+                Theme = theme
             };
         }
-     
-        public static async Task<TrashItem> CopyRtfFile(string name)
+
+        public static async Task<TrashItem> CopyRtfFile(string name, ElementTheme theme = ElementTheme.Default)
         {
             StorageFile file = await FileUtil.FIndRtfFile(name);
             if (file == null) return null;
 
             var copy = await file.CopyAsync(ApplicationData.Current.LocalFolder, FileUtil.NewName());
-            return FileUtil.ConstructTrashItem(copy);
+            return FileUtil.ConstructTrashItem(copy, theme);
         }
 
 
@@ -49,7 +50,7 @@ namespace Trash_Can
 
             return zipFiles;
         }
-       
+
         public static async Task<StorageFile> FIndRtfFile(string name)
         {
             // Get file.

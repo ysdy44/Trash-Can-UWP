@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI.Xaml;
 
 namespace Trash_Can
 {
@@ -19,6 +20,18 @@ namespace Trash_Can
             return item;
         }
 
+        public static string ReadTextAsync(string text, ElementTheme theme)
+        {
+            switch (theme)
+            {
+                case ElementTheme.Light:
+                    return text.Replace(@"\red255\green255\blue255;", @"\red0\green0\blue0;");
+                case ElementTheme.Dark:
+                    return text.Replace(@"\red0\green0\blue0;", @"\red255\green255\blue255;");
+                default:
+                    return text;
+            }
+        }
 
         #region  IsExists
 
