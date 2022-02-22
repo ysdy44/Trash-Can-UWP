@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Windows.UI.Xaml;
 
 namespace Trash_Can.Trashs
 {
@@ -8,6 +9,7 @@ namespace Trash_Can.Trashs
     {
         public string Name { get; set; }
         public DateTimeOffset DateCreated { get; set; }
+        public ElementTheme Theme { get; set; }
 
         public bool IsFavorite
         {

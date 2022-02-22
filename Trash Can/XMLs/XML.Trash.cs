@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Trash_Can.Trashs;
+using Windows.UI.Xaml;
 
 namespace Trash_Can
 {
@@ -17,6 +18,7 @@ namespace Trash_Can
             {
                 if (trash.Name != null) element.Add(new XAttribute("Name", trash.Name));
                 element.Add(new XAttribute("DateCreated", trash.DateCreated.Ticks));
+                element.Add(new XAttribute("Theme", (int)trash.Theme));
                 element.Add(new XAttribute("IsFavorite", trash.IsFavorite));
             }
 
@@ -58,6 +60,7 @@ namespace Trash_Can
             };
             if (element.Attribute("Name") is XAttribute name) trash2.Name = name.Value;
             if (element.Attribute("DateCreated") is XAttribute dateCreated) trash2.DateCreated = new DateTimeOffset((long)dateCreated, TimeSpan.Zero);
+            if (element.Attribute("Theme") is XAttribute theme) trash2.Theme = (ElementTheme)(int)theme;
             if (element.Attribute("IsFavorite") is XAttribute isFavorite) trash2.IsFavorite = (bool)isFavorite;
 
             return trash2;
