@@ -114,8 +114,8 @@
 <data name='$DrawPage_LocalFolder' xml:space='preserve'> <value>Cartella locale</value> </data>
 <data name='$DrawPage_Rename' xml:space='preserve'> <value>Rinominare</value> </data>
 <data name='Edits_Edit_Cut' xml:space='preserve'> <value>Taglio</value> </data>
-<data name='Edits_Edit_Copy' xml:space='preserve'> <value>Copia testo</value> </data>
-<data name='Edits_Edit_Paste' xml:space='preserve'> <value>Incolla testo</value> </data>
+<data name='Edits_Edit_Copy' xml:space='preserve'> <value>copia</value> </data>
+<data name='Edits_Edit_Paste' xml:space='preserve'> <value>Incolla</value> </data>
 <data name='Edits_Edit_Clear' xml:space='preserve'> <value>Chiaro</value> </data>
 <data name='Edits_Select_All' xml:space='preserve'> <value>Seleziona tutto</value> </data>
 <data name='Edits_Select_Deselect' xml:space='preserve'> <value>Deseleziona</value> </data>

@@ -114,8 +114,8 @@
 <data name='$DrawPage_LocalFolder' xml:space='preserve'> <value>ローカルフォルダ</value> </data>
 <data name='$DrawPage_Rename' xml:space='preserve'> <value>名前を変更する</value> </data>
 <data name='Edits_Edit_Cut' xml:space='preserve'> <value>切る</value> </data>
-<data name='Edits_Edit_Copy' xml:space='preserve'> <value>テキストをコピーする</value> </data>
-<data name='Edits_Edit_Paste' xml:space='preserve'> <value>テキストを貼り付け</value> </data>
+<data name='Edits_Edit_Copy' xml:space='preserve'> <value>コピー</value> </data>
+<data name='Edits_Edit_Paste' xml:space='preserve'> <value>ペースト</value> </data>
 <data name='Edits_Edit_Clear' xml:space='preserve'> <value>晴れ</value> </data>
 <data name='Edits_Select_All' xml:space='preserve'> <value>すべて選択</value> </data>
 <data name='Edits_Select_Deselect' xml:space='preserve'> <value>選択を解除</value> </data>

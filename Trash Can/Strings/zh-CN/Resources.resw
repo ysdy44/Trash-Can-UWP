@@ -114,8 +114,8 @@
 <data name='$DrawPage_LocalFolder' xml:space='preserve'> <value>本地文件夹</value> </data>
 <data name='$DrawPage_Rename' xml:space='preserve'> <value>重命名</value> </data>
 <data name='Edits_Edit_Cut' xml:space='preserve'> <value>剪切</value> </data>
-<data name='Edits_Edit_Copy' xml:space='preserve'> <value>复制文本</value> </data>
-<data name='Edits_Edit_Paste' xml:space='preserve'> <value>粘贴文本</value> </data>
+<data name='Edits_Edit_Copy' xml:space='preserve'> <value>复制</value> </data>
+<data name='Edits_Edit_Paste' xml:space='preserve'> <value>粘贴</value> </data>
 <data name='Edits_Edit_Clear' xml:space='preserve'> <value>清除</value> </data>
 <data name='Edits_Select_All' xml:space='preserve'> <value>全选</value> </data>
 <data name='Edits_Select_Deselect' xml:space='preserve'> <value>取消</value> </data>

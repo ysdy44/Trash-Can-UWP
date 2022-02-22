@@ -114,8 +114,8 @@
 <data name='$DrawPage_LocalFolder' xml:space='preserve'> <value>Pasta lo cal</value> </data>
 <data name='$DrawPage_Rename' xml:space='preserve'> <value>Renomear</value> </data>
 <data name='Edits_Edit_Cut' xml:space='preserve'> <value>Cortar</value> </data>
-<data name='Edits_Edit_Copy' xml:space='preserve'> <value>Copiar Texto</value> </data>
-<data name='Edits_Edit_Paste' xml:space='preserve'> <value>Colar Texto</value> </data>
+<data name='Edits_Edit_Copy' xml:space='preserve'> <value>cópia de</value> </data>
+<data name='Edits_Edit_Paste' xml:space='preserve'> <value>Colar</value> </data>
 <data name='Edits_Edit_Clear' xml:space='preserve'> <value>Claro</value> </data>
 <data name='Edits_Select_All' xml:space='preserve'> <value>Selecionar tudo</value> </data>
 <data name='Edits_Select_Deselect' xml:space='preserve'> <value>Deselecionar</value> </data>

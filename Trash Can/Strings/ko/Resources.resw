@@ -114,8 +114,8 @@
 <data name='$DrawPage_LocalFolder' xml:space='preserve'> <value>로컬 폴더</value> </data>
 <data name='$DrawPage_Rename' xml:space='preserve'> <value>이름 바꾸기</value> </data>
 <data name='Edits_Edit_Cut' xml:space='preserve'> <value>절단</value> </data>
-<data name='Edits_Edit_Copy' xml:space='preserve'> <value>텍스트 복사</value> </data>
-<data name='Edits_Edit_Paste' xml:space='preserve'> <value>텍스트 붙여넣기</value> </data>
+<data name='Edits_Edit_Copy' xml:space='preserve'> <value>부</value> </data>
+<data name='Edits_Edit_Paste' xml:space='preserve'> <value>풀</value> </data>
 <data name='Edits_Edit_Clear' xml:space='preserve'> <value>맑은</value> </data>
 <data name='Edits_Select_All' xml:space='preserve'> <value>모두 선택</value> </data>
 <data name='Edits_Select_Deselect' xml:space='preserve'> <value>선택 취소</value> </data>

@@ -114,8 +114,8 @@
 <data name='$DrawPage_LocalFolder' xml:space='preserve'> <value>Lokale map</value> </data>
 <data name='$DrawPage_Rename' xml:space='preserve'> <value>Hernoemen</value> </data>
 <data name='Edits_Edit_Cut' xml:space='preserve'> <value>Besnoeiing</value> </data>
-<data name='Edits_Edit_Copy' xml:space='preserve'> <value>Kopieer tekst</value> </data>
-<data name='Edits_Edit_Paste' xml:space='preserve'> <value>Tekst plakken</value> </data>
+<data name='Edits_Edit_Copy' xml:space='preserve'> <value>Kopiëren</value> </data>
+<data name='Edits_Edit_Paste' xml:space='preserve'> <value>Plakken</value> </data>
 <data name='Edits_Edit_Clear' xml:space='preserve'> <value>Doorzichtig</value> </data>
 <data name='Edits_Select_All' xml:space='preserve'> <value>Selecteer alles</value> </data>
 <data name='Edits_Select_Deselect' xml:space='preserve'> <value>Selectie ongedaan maken</value> </data>
