@@ -6,6 +6,7 @@ using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.System;
 using Windows.UI.Text;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace Trash_Can
@@ -30,13 +31,13 @@ namespace Trash_Can
             });
         }
 
-        private async Task<string> New()
+        private async Task<TrashItem> New()
         {
             StorageFile file = await FileUtil.CreateFileAsync();
-            TrashItem trash = FileUtil.ConstructTrashItem(file);
+            TrashItem trash = FileUtil.ConstructTrashItem(file, base.ActualTheme);
             trash.Properties = new Trash
             {
-                Title = this.Untitled
+                Title = this.Untitled,
             };
 
             this.Items.Add(trash);
@@ -44,30 +45,40 @@ namespace Trash_Can
 
             this.FlipView.SelectedIndex = 0;
 
-            return file.Name;
+            return trash;
         }
 
 
         /// <summary>
         /// Open
         /// </summary>
-        private async Task<bool> Open(string name)
+        private async Task<bool> Open(TrashItem trash, ElementTheme theme)
         {
-            if (string.IsNullOrEmpty(name)) return false;
+            if (trash == null) return false;
+            if (string.IsNullOrEmpty(trash.Name)) return false;
 
-            foreach (TrashItem item in this.Items)
-            {
-                if (item.Name == name) this.Title = item.Title;
-            }
-            this.Subtitle = name;
+            this.Title = trash.Title;
+            this.Subtitle = trash.Name;
             this.Update2();
 
-            if (await FileUtil.GetFile(name) is IStorageFile file2)
+            if (await FileUtil.GetFile(trash.Name) is IStorageFile file)
             {
-                using (IRandomAccessStream stream = await file2.OpenAsync(FileAccessMode.ReadWrite))
+                // Color:
+                // Foregournd follow Theme
+                if (theme != trash.Theme)
                 {
-                    this.Document.LoadFromStream(TextSetOptions.FormatRtf, stream);
+                    string text = FileUtil.ReadTextAsync(await FileIO.ReadTextAsync(file), theme);
+                    //await FileIO.WriteTextAsync(file, text);
+                    this.Document.SetText(TextSetOptions.FormatRtf, text);
                 }
+                else
+                {
+                    using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                    {
+                        this.Document.LoadFromStream(TextSetOptions.FormatRtf, stream);
+                    }
+                }
+
                 this._vsIsWritable = true;
                 this.VisualState = this.VisualState; // VisualState
                 return true;
@@ -107,7 +118,7 @@ namespace Trash_Can
         /// <summary>
         /// Exit the current Project.
         /// </summary>
-        private async Task<bool> Exit(string name)
+        private async Task<bool> Exit(TrashItem item, ElementTheme theme)
         {
             if (this._vsIsWritable == false) return false;
 
@@ -129,12 +140,12 @@ namespace Trash_Can
                 this.VisualState = this.VisualState; // VisualState
             }
 
-            await this.Export(name);
+            await this.Export(item.Name);
 
             // Order
-            if (this.Items.FirstOrDefault(c => c.Name == name) is TrashItem item)
             {
                 item.DateCreated = DateTimeOffset.Now;
+                item.Theme = theme;
 
                 int oldIndex = this.Items.IndexOf(item);
                 int newIndex = 0;
@@ -147,8 +158,6 @@ namespace Trash_Can
 
                 return true;
             }
-
-            return false;
         }
 
     }

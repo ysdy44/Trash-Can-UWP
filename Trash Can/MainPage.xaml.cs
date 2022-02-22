@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Trash_Can.Controls;
 using Trash_Can.Elements;
@@ -24,7 +25,7 @@ namespace Trash_Can
         private Visibility ReverseBooleanToVisibilityConverter(bool value) => value ? Visibility.Collapsed : Visibility.Visible;
         private Symbol ReverseBooleanToPinConverter(bool value) => value ? Symbol.UnPin : Symbol.Pin;
 
-        
+
         public LoadingState State { get => this.LoadingControl.State; set => this.LoadingControl.State = value; }
         public string Title { get => this.TitleTextBlock.Text; set => this.TitleTextBlock.Text = value; }
         public string Subtitle { get => this.SubtitleTextBlock.Text; set => this.SubtitleTextBlock.Text = value; }
@@ -151,8 +152,8 @@ namespace Trash_Can
             {
                 this.State = LoadingState.Loading;
                 {
-                    string name = await this.New();
-                    bool result = await this.Open(name);
+                    TrashItem trash = await this.New();
+                    bool result = await this.Open(trash, base.ActualTheme);
                     if (result == false)
                     {
                         this.State = LoadingState.LoadFailed;
@@ -164,9 +165,9 @@ namespace Trash_Can
             this.SettingItem.Tapped += async (s, e) => await this.SettingDialog.ShowAsync(ContentDialogPlacement.InPlace);
             this.PaneListView.ItemClick += async (s, e) =>
             {
-                if (e.ClickedItem is StackPanel item)
+                if (e.ClickedItem is StackPanel stackPanel)
                 {
-                    if (item.Tag is int index)
+                    if (stackPanel.Tag is int index)
                     {
                         switch (index)
                         {
@@ -174,8 +175,8 @@ namespace Trash_Can
                                 {
                                     this.State = LoadingState.Loading;
                                     {
-                                        string name = await this.New();
-                                        bool result = await this.Open(name);
+                                        TrashItem trash = await this.New();
+                                        bool result = await this.Open(trash, base.ActualTheme);
                                         if (result == false)
                                         {
                                             this.State = LoadingState.LoadFailed;
@@ -205,12 +206,14 @@ namespace Trash_Can
                                             this.State = LoadingState.Saving;
                                             {
                                                 string name = this.Subtitle;
-                                                bool result = await this.Export(name);
-                                                await this.Exit(name);
-                                                if (result == false)
+                                                if (this.Items.FirstOrDefault(c => c.Name == name) is TrashItem item)
                                                 {
-                                                    this.State = LoadingState.SaveFailed;
-                                                    await Task.Delay(1000);
+                                                    bool result = await this.Exit(item, base.ActualTheme);
+                                                    if (result == false)
+                                                    {
+                                                        this.State = LoadingState.SaveFailed;
+                                                        await Task.Delay(1000);
+                                                    }
                                                 }
                                             }
                                             this.State = LoadingState.None;
@@ -229,11 +232,26 @@ namespace Trash_Can
             };
 
 
+            // Color:
+            // The SelectionHighlightColor ignore Focuse.
+            this.RichEditBox.SelectionHighlightColorWhenNotFocused = this.RichEditBox.SelectionHighlightColor;
+            base.ActualThemeChanged += async (s, e) =>
+            {
+                string name = this.Subtitle;
+                if (this.Items.FirstOrDefault(c => c.Name == name) is TrashItem item)
+                {
+                    bool result = await this.Exit(item, base.ActualTheme);
+                }
+            };
+
+            this.RichEditBox.SelectionFlyout = null;
             this.RichEditBox.TextCompositionEnded += (s, e) => this.Update();
             this.RichEditBox.CopyingToClipboard += (s, e) => this.Update();
             this.RichEditBox.CuttingToClipboard += (s, e) => this.Update();
             this.RichEditBox.SelectionChanging += (s, e) => this.Update();
 
+            // Text:
+            // The FontFamily, FontSize follow Setting.
             this.RichEditBox.FontFamily = new FontFamily(this.SettingDialog.GetFontFamily());
             this.RichEditBox.FontSize = this.SettingDialog.GetFontSize();
             this.SettingDialog.Setted += (s, e) =>
@@ -282,7 +300,7 @@ namespace Trash_Can
                         {
                             this.State = LoadingState.Loading;
                             {
-                                bool result = await this.Open(item.Name);
+                                bool result = await this.Open(item, base.ActualTheme);
                                 if (result == false)
                                 {
                                     this.State = LoadingState.FileCorrupt;
@@ -327,7 +345,7 @@ namespace Trash_Can
                         {
                             this.State = LoadingState.Loading;
                             {
-                                TrashItem trash = await FileUtil.CopyRtfFile(item.Name);
+                                TrashItem trash = await FileUtil.CopyRtfFile(item.Name, base.ActualTheme);
                                 if (trash == null)
                                 {
                                     this.State = LoadingState.FileNull;

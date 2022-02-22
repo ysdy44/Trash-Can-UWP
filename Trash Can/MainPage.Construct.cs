@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Trash_Can.Controls;
 using Trash_Can.Trashs;
@@ -148,12 +149,14 @@ namespace Trash_Can
                 this.State = LoadingState.Saving;
                 {
                     string name = this.Subtitle;
-                    bool result = await this.Export(name);
-                    await this.Exit(name);
-                    if (result == false)
+                    if (this.Items.FirstOrDefault(c => c.Name == name) is TrashItem item)
                     {
-                        this.State = LoadingState.SaveFailed;
-                        await Task.Delay(1000);
+                        bool result = await this.Exit(item, base.ActualTheme);
+                        if (result == false)
+                        {
+                            this.State = LoadingState.SaveFailed;
+                            await Task.Delay(1000);
+                        }
                     }
                 }
                 this.State = LoadingState.None;
@@ -217,12 +220,14 @@ namespace Trash_Can
                             this.State = LoadingState.Saving;
                             {
                                 string name = this.Subtitle;
-                                bool result = await this.Export(name);
-                                await this.Exit(name);
-                                if (result == false)
+                                if (this.Items.FirstOrDefault(c => c.Name == name) is TrashItem item)
                                 {
-                                    this.State = LoadingState.SaveFailed;
-                                    await Task.Delay(1000);
+                                    bool result = await this.Exit(item, base.ActualTheme);
+                                    if (result == false)
+                                    {
+                                        this.State = LoadingState.SaveFailed;
+                                        await Task.Delay(1000);
+                                    }
                                 }
                             }
                             this.State = LoadingState.None;
