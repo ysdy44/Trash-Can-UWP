@@ -162,19 +162,25 @@ namespace Trash_Can
 
             this.AlignLeftButton.Click += (s, e) =>
             {
-                this.RichEditBox.TextAlignment = TextAlignment.Left;
+                var format = this.ParagraphFormat;
+                format.Alignment = ParagraphAlignment.Left;
+                this.Selection.ParagraphFormat = format;
                 this.Update();
                 this.Focus();
             };
             this.AlignCenterButton.Click += (s, e) =>
             {
-                this.RichEditBox.TextAlignment = TextAlignment.Center;
+                var format = this.ParagraphFormat;
+                format.Alignment = ParagraphAlignment.Center;
+                this.Selection.ParagraphFormat = format;
                 this.Update();
                 this.Focus();
             };
             this.AlignRightButton.Click += (s, e) =>
             {
-                this.RichEditBox.TextAlignment = TextAlignment.Right;
+                var format = this.ParagraphFormat;
+                format.Alignment = ParagraphAlignment.Right;
+                this.Selection.ParagraphFormat = format;
                 this.Update();
                 this.Focus();
             };

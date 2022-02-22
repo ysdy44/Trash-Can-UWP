@@ -31,6 +31,7 @@ namespace Trash_Can
         public ITextDocument Document => this.RichEditBox.Document;
         public ITextRange Selection => this.Document.Selection;
         public ITextCharacterFormat CharacterFormat { get => this.Selection.CharacterFormat; set => this.Selection.CharacterFormat = value; }
+        public ITextParagraphFormat ParagraphFormat { get => this.Selection.ParagraphFormat; set => this.Selection.ParagraphFormat = value; }
 
 
         public readonly ObservableCollection<TrashItem> Items = new ObservableCollection<TrashItem>();
