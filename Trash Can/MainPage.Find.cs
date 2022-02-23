@@ -31,15 +31,16 @@ namespace Trash_Can
 
             if (e.NewValue is FindMode value)
             {
+                Thickness pageMargin = control.SettingDialog.GetPageMargin();
+                control.UpdateRichEditBoxPadding(value, pageMargin);
+
                 switch (value)
                 {
                     case FindMode.None:
-                        control.RichEditBox.Padding = new Thickness();
                         control.FindBorder.Visibility = Visibility.Collapsed;
                         control.ReplaceGrid.Visibility = Visibility.Collapsed;
                         break;
                     case FindMode.Find:
-                        control.RichEditBox.Padding = new Thickness(0, 54, 0, 0);
                         control.FindBorder.Visibility = Visibility.Visible;
                         control.ReplaceGrid.Visibility = Visibility.Collapsed;
                         if (e.OldValue is FindMode.None)
@@ -50,7 +51,6 @@ namespace Trash_Can
                         control.FindMatches();
                         break;
                     case FindMode.Replace:
-                        control.RichEditBox.Padding = new Thickness(0, 102, 0, 0);
                         control.FindBorder.Visibility = Visibility.Visible;
                         control.ReplaceGrid.Visibility = Visibility.Visible;
 
@@ -61,6 +61,18 @@ namespace Trash_Can
                 }
             }
         }));
+
+        private void UpdateRichEditBoxPadding(FindMode mode, Thickness pageMargin)
+        {
+            switch (mode)
+            {
+                case FindMode.None: break;
+                case FindMode.Find: pageMargin.Top += 54; break;
+                case FindMode.Replace: pageMargin.Top += 102; break;
+                default: break;
+            }
+            this.RichEditBox.Padding = pageMargin;
+        }
 
 
         #endregion

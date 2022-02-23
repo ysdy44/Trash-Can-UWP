@@ -261,11 +261,17 @@ namespace Trash_Can
             // The FontFamily, FontSize follow Setting.
             this.RichEditBox.FontFamily = new FontFamily(this.SettingDialog.GetFontFamily());
             this.RichEditBox.FontSize = this.SettingDialog.GetFontSize();
-            this.SettingDialog.Setted += (s, e) =>
-            {
-                this.RichEditBox.FontFamily = new FontFamily(this.SettingDialog.GetFontFamily());
-                this.RichEditBox.FontSize = this.SettingDialog.GetFontSize();
-            };
+
+
+            // Setting
+            this.RichEditBox.FontFamily = new FontFamily(this.SettingDialog.GetFontFamily());
+            this.RichEditBox.FontSize = this.SettingDialog.GetFontSize();
+            Thickness pageMargin1 = this.SettingDialog.GetPageMargin();
+            this.UpdateRichEditBoxPadding(this.FindMode, pageMargin1);
+
+            this.SettingDialog.FontFamilySetted += (s, fontFamily) => this.RichEditBox.FontFamily = new FontFamily(fontFamily);
+            this.SettingDialog.FontSizeSetted += (s, fontSize) => this.RichEditBox.FontSize = fontSize;
+            this.SettingDialog.PageMarginSetted += (s, pageMargin) => this.UpdateRichEditBoxPadding(this.FindMode, pageMargin);
 
 
             this.Editor.Closed += (s, e) =>

@@ -53,7 +53,26 @@
             <TextBlock x:Name="FontSizeTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
                 Font Size
             </TextBlock>
-            <ComboBox x:Name="FontSizeComboBox" Grid.Column="2" />
+            <ComboBox x:Name="FontSizeComboBox" />
+            <ContentControl Height="8"/>
+
+
+            <!--PageMargin-->
+            <TextBlock x:Name="PageMarginTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
+                Page Margin
+            </TextBlock>
+            <ComboBox x:Name="PageMarginComboBox" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="Thickness">
+                        <TextBlock>
+                            <Run Text="{x:Bind Left, Mode=OneTime}"/>
+                            <Run Text="{x:Bind Top, Mode=OneTime}"/>
+                            <Run Text="{x:Bind Right, Mode=OneTime}"/>
+                            <Run Text="{x:Bind Bottom, Mode=OneTime}"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
         </Panel.Children>
 

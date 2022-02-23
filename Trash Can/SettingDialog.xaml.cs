@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Trash_Can.Texts;
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;
@@ -15,10 +16,25 @@ namespace Trash_Can
 
         //@Delegate  
         /// <summary> Occurs when Setted. </summary>
-        public event EventHandler<bool> Setted;
+        public event EventHandler<string> FontFamilySetted;
+        /// <summary> Occurs when Setted. </summary>
+        public event EventHandler<float> FontSizeSetted;
+        /// <summary> Occurs when Setted. </summary>
+        public event EventHandler<Thickness> PageMarginSetted;
 
         readonly ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
 
+        private readonly IList<Thickness> PageMargins = new List<Thickness>
+        {
+            new Thickness(0),
+            new Thickness(2),
+            new Thickness(4),
+            new Thickness(8,6,8,6),
+            new Thickness(16,12,16,12),
+            new Thickness(18,14,18,14),
+            new Thickness(24,16,24,16),
+            new Thickness(32,28,32,28),
+        };
 
         //@Construct
         /// <summary>
@@ -31,6 +47,7 @@ namespace Trash_Can
             this.ConstructStrings();
             this.ConstructFontFamily();
             this.ConstructFontSize();
+            this.ConstructPageMargin();
 
             base.SecondaryButtonClick += (s, e) => base.Hide();
             base.PrimaryButtonClick += (s, e) => base.Hide();
@@ -83,6 +100,19 @@ namespace Trash_Can
             return (float)base.FontSize;
         }
 
+        public void SetPageMargin(Thickness value) => this.LocalSettings.Values["PageMargin"] = new double[] { value.Left, value.Top, value.Right, value.Bottom };
+        public Thickness GetPageMargin()
+        {
+            if (this.LocalSettings.Values.ContainsKey("PageMargin"))
+            {
+                if (this.LocalSettings.Values["PageMargin"] is double[] item)
+                {
+                    return new Thickness(item[0], item[1], item[2], item[3]);
+                }
+            }
+            return new Thickness(18, 14, 18, 14);
+        }
+
     }
 
 
@@ -94,7 +124,7 @@ namespace Trash_Can
 
             base.SecondaryButtonText = resource.GetString("$SettingPage_Close");
             base.PrimaryButtonText = resource.GetString("$SettingPage_Primary");
-            
+
             this.TitleTextBlock.Text = resource.GetString("$MainPage_Setting");
             this.ThemeTextBlock.Text = resource.GetString("$SettingPage_Theme");
             this.LightRadioButton.Content = resource.GetString("$SettingPage_Theme_Light");
@@ -128,7 +158,7 @@ namespace Trash_Can
                 if (this.FontFamilyComboBox.SelectedItem is string item)
                 {
                     this.SetFontFamily(item);
-                    this.Setted?.Invoke(this, false); // Delegate
+                    this.FontFamilySetted?.Invoke(this, item); // Delegate
                 }
             };
         }
@@ -142,7 +172,21 @@ namespace Trash_Can
                 if (this.FontSizeComboBox.SelectedItem is float item)
                 {
                     this.SetFontSize(item);
-                    this.Setted?.Invoke(this, false); // Delegate
+                    this.FontSizeSetted?.Invoke(this, item); // Delegate
+                }
+            };
+        }
+
+        private void ConstructPageMargin()
+        {
+            this.PageMarginComboBox.ItemsSource = this.PageMargins;
+            this.PageMarginComboBox.SelectedItem = this.GetPageMargin();
+            this.PageMarginComboBox.SelectionChanged += (s, e) =>
+            {
+                if (this.PageMarginComboBox.SelectedItem is Thickness item)
+                {
+                    this.SetPageMargin(item);
+                    this.PageMarginSetted?.Invoke(this, item); // Delegate
                 }
             };
         }
