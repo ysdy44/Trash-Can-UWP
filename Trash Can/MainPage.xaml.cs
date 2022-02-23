@@ -235,13 +235,20 @@ namespace Trash_Can
             // Color:
             // The SelectionHighlightColor ignore Focuse.
             this.RichEditBox.SelectionHighlightColorWhenNotFocused = this.RichEditBox.SelectionHighlightColor;
-            base.ActualThemeChanged += async (s, e) =>
+
+            // Foregournd follow Theme
+            this.RichEditBox.RequestedTheme = base.ActualTheme;
+            base.ActualThemeChanged += (s, e) =>
             {
-                string name = this.Subtitle;
-                if (this.Items.FirstOrDefault(c => c.Name == name) is TrashItem item)
+                this.Document.GetText(TextGetOptions.FormatRtf, out string text);
                 {
-                    bool result = await this.Exit(item, base.ActualTheme);
+                    ElementTheme theme = base.ActualTheme;
+                    {
+                        text = FileUtil.ReadTextAsync(text, theme);
+                    }
+                    this.RichEditBox.RequestedTheme = theme;
                 }
+                this.Document.SetText(TextSetOptions.FormatRtf, text);
             };
 
             this.RichEditBox.SelectionFlyout = null;
