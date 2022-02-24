@@ -119,14 +119,16 @@ namespace Trash_Can
                 IEnumerable<TrashItem> trashs = await XML.ConstructTrashsFile();
                 if (trashs == null)
                 {
-                    await this.New();
-                    return;
+                    await this.New(this.Untitled);
+                }
+                else
+                {
+                    foreach (TrashItem item in trashs)
+                    {
+                        this.Items.Add(item);
+                    }
                 }
 
-                foreach (TrashItem item in trashs)
-                {
-                    this.Items.Add(item);
-                }
                 this.FlipView.SelectedIndex = 0;
             };
 
@@ -152,7 +154,7 @@ namespace Trash_Can
             {
                 this.State = LoadingState.Loading;
                 {
-                    TrashItem trash = await this.New();
+                    TrashItem trash = await this.New(this.Untitled);
                     bool result = await this.Open(trash, base.ActualTheme);
                     if (result == false)
                     {
@@ -175,7 +177,7 @@ namespace Trash_Can
                                 {
                                     this.State = LoadingState.Loading;
                                     {
-                                        TrashItem trash = await this.New();
+                                        TrashItem trash = await this.New(this.Untitled);
                                         bool result = await this.Open(trash, base.ActualTheme);
                                         if (result == false)
                                         {

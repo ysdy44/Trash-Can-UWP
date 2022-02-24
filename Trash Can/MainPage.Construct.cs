@@ -149,14 +149,14 @@ namespace Trash_Can
                 this.State = LoadingState.Saving;
                 {
                     string name = this.Subtitle;
-                    if (this.Items.FirstOrDefault(c => c.Name == name) is TrashItem item)
+                    TrashItem item = string.IsNullOrEmpty(name) ? null : this.Items.FirstOrDefault(c => c.Name == name);
+                    if (item == null) item = await this.New(this.Title);
+
+                    bool result = await this.Exit(item, base.ActualTheme);
+                    if (result == false)
                     {
-                        bool result = await this.Exit(item, base.ActualTheme);
-                        if (result == false)
-                        {
-                            this.State = LoadingState.SaveFailed;
-                            await Task.Delay(1000);
-                        }
+                        this.State = LoadingState.SaveFailed;
+                        await Task.Delay(1000);
                     }
                 }
                 this.State = LoadingState.None;
@@ -202,7 +202,10 @@ namespace Trash_Can
                 this.State = LoadingState.Saving;
                 {
                     string name = this.Subtitle;
-                    bool result = await this.Export(name);
+                    TrashItem item = string.IsNullOrEmpty(name) ? null : this.Items.FirstOrDefault(c => c.Name == name);
+                    if (item == null) item = await this.New(this.Title);
+
+                    bool result = await this.Export(item.Name);
                     if (result == false)
                     {
                         this.State = LoadingState.SaveFailed;
@@ -220,14 +223,14 @@ namespace Trash_Can
                             this.State = LoadingState.Saving;
                             {
                                 string name = this.Subtitle;
-                                if (this.Items.FirstOrDefault(c => c.Name == name) is TrashItem item)
+                                TrashItem item = string.IsNullOrEmpty(name) ? null : this.Items.FirstOrDefault(c => c.Name == name);
+                                if (item == null) item = await this.New(this.Title);
+
+                                bool result = await this.Exit(item, base.ActualTheme);
+                                if (result == false)
                                 {
-                                    bool result = await this.Exit(item, base.ActualTheme);
-                                    if (result == false)
-                                    {
-                                        this.State = LoadingState.SaveFailed;
-                                        await Task.Delay(1000);
-                                    }
+                                    this.State = LoadingState.SaveFailed;
+                                    await Task.Delay(1000);
                                 }
                             }
                             this.State = LoadingState.None;

@@ -31,21 +31,48 @@ namespace Trash_Can
             });
         }
 
-        private async Task<TrashItem> New()
+        private async Task<TrashItem> New(string title)
         {
             StorageFile file = await FileUtil.CreateFileAsync();
             TrashItem trash = FileUtil.ConstructTrashItem(file, base.ActualTheme);
             trash.Properties = new Trash
             {
-                Title = this.Untitled,
+                Title = title
             };
 
             this.Items.Add(trash);
             this.Save();
-
-            this.FlipView.SelectedIndex = 0;
-
             return trash;
+        }
+
+
+        private async Task<bool> Activated(StorageFile file)
+        {
+            if (file == null) return false;
+
+            this.Title = file.DisplayName;
+            this.Subtitle = string.Empty;
+            this.LocalFolderItem.IsEnabled =
+            this.RenameItem.IsEnabled = false;
+            this.Update2();
+
+            switch (file.FileType.ToLower())
+            {
+                case ".rtf":
+                    using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                    {
+                        this.Document.LoadFromStream(TextSetOptions.FormatRtf, stream);
+                    }
+                    break;
+                default:
+                    string text = await FileIO.ReadTextAsync(file);
+                    this.Document.SetText(TextSetOptions.FormatRtf, text);
+                    break;
+            }
+
+            this._vsIsWritable = true;
+            this.VisualState = this.VisualState; // VisualState
+            return true;
         }
 
 
@@ -59,6 +86,8 @@ namespace Trash_Can
 
             this.Title = trash.Title;
             this.Subtitle = trash.Name;
+            this.LocalFolderItem.IsEnabled =
+            this.RenameItem.IsEnabled = string.IsNullOrEmpty(trash.Name) == false;
             this.Update2();
 
             if (await FileUtil.GetFile(trash.Name) is IStorageFile file)
