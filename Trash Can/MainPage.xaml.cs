@@ -24,6 +24,7 @@ namespace Trash_Can
         private Visibility BooleanToVisibilityConverter(bool value) => value ? Visibility.Visible : Visibility.Collapsed;
         private Visibility ReverseBooleanToVisibilityConverter(bool value) => value ? Visibility.Collapsed : Visibility.Visible;
         private Symbol ReverseBooleanToPinConverter(bool value) => value ? Symbol.UnPin : Symbol.Pin;
+        private bool StringToBooleanConverter(string value) => string.IsNullOrEmpty(value) == false;
 
 
         public LoadingState State { get => this.LoadingControl.State; set => this.LoadingControl.State = value; }

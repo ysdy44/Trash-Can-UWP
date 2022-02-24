@@ -52,8 +52,6 @@ namespace Trash_Can
 
             this.Title = file.DisplayName;
             this.Subtitle = string.Empty;
-            this.LocalFolderItem.IsEnabled =
-            this.RenameItem.IsEnabled = false;
             this.Update2();
 
             switch (file.FileType.ToLower())
@@ -86,8 +84,6 @@ namespace Trash_Can
 
             this.Title = trash.Title;
             this.Subtitle = trash.Name;
-            this.LocalFolderItem.IsEnabled =
-            this.RenameItem.IsEnabled = string.IsNullOrEmpty(trash.Name) == false;
             this.Update2();
 
             if (await FileUtil.GetFile(trash.Name) is IStorageFile file)
@@ -125,6 +121,7 @@ namespace Trash_Can
             if (string.IsNullOrEmpty(name)) return false;
             if (await FileUtil.GetFile(name) is IStorageFile file2)
             {
+                this.Subtitle = name;
                 using (IRandomAccessStream stream = await file2.OpenAsync(FileAccessMode.ReadWrite))
                 {
                     this.Document.SaveToStream(TextGetOptions.FormatRtf, stream);

@@ -57,7 +57,7 @@
                 Find
             </MenuFlyoutItem>
             <MenuFlyoutSeparator/>
-            <MenuFlyoutItem x:Name="LocalFolderItem">
+            <MenuFlyoutItem x:Name="LocalFolderItem" IsEnabled="{x:Bind StringToBooleanConverter(SubtitleTextBlock.Text),Mode=OneWay}">
                 <MenuFlyoutItem.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="Control" Key="L"/>
                 </MenuFlyoutItem.KeyboardAccelerators>
@@ -66,7 +66,7 @@
                 </MenuFlyoutItem.Icon>
                 Local folder
             </MenuFlyoutItem>
-            <MenuFlyoutItem x:Name="RenameItem">
+            <MenuFlyoutItem x:Name="RenameItem" IsEnabled="{x:Bind StringToBooleanConverter(SubtitleTextBlock.Text),Mode=OneWay}">
                 <MenuFlyoutItem.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="Control" Key="E"/>
                 </MenuFlyoutItem.KeyboardAccelerators>
@@ -108,7 +108,7 @@
                 <MenuFlyoutItem.Icon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Icons\FontWeight\Black.png"/>
                 </MenuFlyoutItem.Icon>
-                Black 
+                Black
             </MenuFlyoutItem>
             <MenuFlyoutItem x:Name="WeightBoldItem" >
                 <MenuFlyoutItem.Icon>
@@ -121,19 +121,19 @@
                 <MenuFlyoutItem.Icon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Icons\FontWeight\ExtraBlack.png"/>
                 </MenuFlyoutItem.Icon>
-                ExtraBlack 
+                ExtraBlack
             </MenuFlyoutItem>
             <MenuFlyoutItem x:Name="WeightExtraBoldItem" >
                 <MenuFlyoutItem.Icon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Icons\FontWeight\ExtraBold.png"/>
                 </MenuFlyoutItem.Icon>
-                ExtraBold 
+                ExtraBold
             </MenuFlyoutItem>
             <MenuFlyoutItem x:Name="WeightExtraLightItem" >
                 <MenuFlyoutItem.Icon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Icons\FontWeight\ExtraLight.png"/>
                 </MenuFlyoutItem.Icon>
-                ExtraLight 
+                ExtraLight
             </MenuFlyoutItem>
             <MenuFlyoutSeparator/>
             <MenuFlyoutItem x:Name="WeightLightItem" >
@@ -146,33 +146,33 @@
                 <MenuFlyoutItem.Icon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Icons\FontWeight\Medium.png"/>
                 </MenuFlyoutItem.Icon>
-                Medium 
+                Medium
             </MenuFlyoutItem>
             <MenuFlyoutItem x:Name="WeightNormalItem" >
                 <MenuFlyoutItem.Icon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Icons\FontWeight\Normal.png"/>
                 </MenuFlyoutItem.Icon>
-                Normal 
+                Normal
             </MenuFlyoutItem>
             <MenuFlyoutSeparator/>
             <MenuFlyoutItem x:Name="WeightSemiBoldItem" >
                 <MenuFlyoutItem.Icon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Icons\FontWeight\SemiBold.png"/>
                 </MenuFlyoutItem.Icon>
-                SemiBold 
+                SemiBold
             </MenuFlyoutItem>
             <MenuFlyoutItem x:Name="WeightSemiLightItem" >
                 <MenuFlyoutItem.Icon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Icons\FontWeight\SemiLight.png"/>
                 </MenuFlyoutItem.Icon>
-                SemiLight 
+                SemiLight
             </MenuFlyoutItem>
             <MenuFlyoutSeparator/>
             <MenuFlyoutItem x:Name="WeightThinItem" >
                 <MenuFlyoutItem.Icon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Icons\FontWeight\Thin.png"/>
                 </MenuFlyoutItem.Icon>
-                Thin 
+                Thin
             </MenuFlyoutItem>
         </MenuFlyout>
         <MenuFlyout x:Name="UnderlineFlyout" >
@@ -1174,6 +1174,6 @@
             <local:AboutDialog x:Name="AboutDialog" Style="{StaticResource AppContentDialogStyle}"/>
             <local:SettingDialog x:Name="SettingDialog" Style="{StaticResource AppContentDialogStyle}"/>
         </Grid>
-        
+
     </Grid>
 </Page>
