@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +31,23 @@ namespace Trash_Can
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+        }
+
+        protected override void OnFileActivated(FileActivatedEventArgs args)
+        {
+            Frame frame = Window.Current.Content as Frame;
+            if (frame == null)
+            {
+                frame = new Frame();
+                Window.Current.Content = frame;
+            }
+
+            foreach (IStorageItem item in args.Files)
+            {
+                frame.Navigate(typeof(MainPage), item);
+                Window.Current.Activate();
+                break;
+            }
         }
 
         /// <summary>

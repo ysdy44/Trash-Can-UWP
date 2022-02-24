@@ -300,9 +300,29 @@ namespace Trash_Can
             TrashControl.Operated -= this.TrashControl_OperatedAsync;
         }
         /// <summary> The current page becomes the active page. </summary>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             TrashControl.Operated += this.TrashControl_OperatedAsync;
+
+            if (e.Parameter is IStorageItem item)
+            {
+                this.State = LoadingState.Loading;
+                if (item is StorageFile file)
+                {
+                    bool result = await this.Activated(file);
+                    if (result == false)
+                    {
+                        this.State = LoadingState.FileCorrupt;
+                        await Task.Delay(1000);
+                    }
+                }
+                else
+                {
+                    this.State = LoadingState.FileCorrupt;
+                    await Task.Delay(1000);
+                }
+                this.State = LoadingState.None;
+            }
         }
 
         private async void TrashControl_OperatedAsync(object sender, OperateType e)
