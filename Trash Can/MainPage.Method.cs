@@ -172,10 +172,7 @@ namespace Trash_Can
         }
 
 
-        /// <summary>
-        /// Exit the current Project.
-        /// </summary>
-        private async Task<bool> Exit(TrashItem item, ElementTheme theme)
+        private bool Close()
         {
             if (this._vsIsWritable == false) return false;
 
@@ -195,7 +192,19 @@ namespace Trash_Can
                 this._vsIsFullScreen = false;
                 this._vsIsWritable = false;
                 this.VisualState = this.VisualState; // VisualState
+                return true;
             }
+        }
+
+
+        /// <summary>
+        /// Exit the current Project.
+        /// </summary>
+        private async Task<bool> Exit(TrashItem item, ElementTheme theme)
+        {
+            bool result = this.Close();
+            if (result == false) return false;
+            if (this.HasChanged == false) return true;
 
             await this.Export(item.Name);
 

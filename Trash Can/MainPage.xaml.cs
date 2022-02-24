@@ -32,6 +32,7 @@ namespace Trash_Can
         public string Title { get => this.TitleTextBlock.Text; set => this.TitleTextBlock.Text = value; }
         public string Subtitle { get => this.SubtitleTextBlock.Text; set => this.SubtitleTextBlock.Text = value; }
         public ITextDocument Document => this.RichEditBox.Document;
+        public bool HasChanged => this.Document.CanUndo() || this.Document.CanRedo();
         public ITextRange Selection => this.Document.Selection;
         public ITextCharacterFormat CharacterFormat { get => this.Selection.CharacterFormat; set => this.Selection.CharacterFormat = value; }
         public ITextParagraphFormat ParagraphFormat { get => this.Selection.ParagraphFormat; set => this.Selection.ParagraphFormat = value; }
