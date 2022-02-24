@@ -46,31 +46,48 @@ namespace Trash_Can
         }
 
 
-        private async Task<bool> Activated(StorageFile file)
+        private async Task<bool> Activated(IStorageItem tem)
         {
-            if (file == null) return false;
-
-            this.Title = file.DisplayName;
-            this.Subtitle = string.Empty;
-            this.Update2();
-
-            switch (file.FileType.ToLower())
+            if (tem == null) return false;
+            if (tem is StorageFile file)
             {
-                case ".rtf":
-                    using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
-                    {
-                        this.Document.LoadFromStream(TextSetOptions.FormatRtf, stream);
-                    }
-                    break;
-                default:
-                    string text = await FileIO.ReadTextAsync(file);
-                    this.Document.SetText(TextSetOptions.FormatRtf, text);
-                    break;
-            }
+                switch (file.FileType.ToLower())
+                {
+                    case ".rtf":
+                        try
+                        {
+                            using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.Read))
+                            {
+                                this.Document.LoadFromStream(TextSetOptions.FormatRtf, stream);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            return false;
+                        }
+                        break;
+                    default:
+                        try
+                        {
+                            string text = await FileIO.ReadTextAsync(file);
+                            this.Document.SetText(TextSetOptions.None, text);
+                        }
+                        catch (Exception)
+                        {
+                            return false;
+                        }
+                        break;
+                }
 
-            this._vsIsWritable = true;
-            this.VisualState = this.VisualState; // VisualState
-            return true;
+                this.Title = file.DisplayName;
+                this.Subtitle = string.Empty;
+                this.Update2();
+
+                this._vsIsWritable = true;
+                this.VisualState = this.VisualState; // VisualState
+                return true;
+            }
+            return false;
         }
 
 
@@ -82,27 +99,41 @@ namespace Trash_Can
             if (trash == null) return false;
             if (string.IsNullOrEmpty(trash.Name)) return false;
 
-            this.Title = trash.Title;
-            this.Subtitle = trash.Name;
-            this.Update2();
-
             if (await FileUtil.GetFile(trash.Name) is IStorageFile file)
             {
                 // Color:
                 // Foregournd follow Theme
                 if (theme != trash.Theme)
                 {
-                    string text = FileUtil.ReadTextAsync(await FileIO.ReadTextAsync(file), theme);
-                    //await FileIO.WriteTextAsync(file, text);
-                    this.Document.SetText(TextSetOptions.FormatRtf, text);
+                    try
+                    {
+                        string text = FileUtil.ReadTextAsync(await FileIO.ReadTextAsync(file), theme);
+                        //await FileIO.WriteTextAsync(file, text);
+                        this.Document.SetText(TextSetOptions.FormatRtf, text);
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
-                    using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                    try
                     {
-                        this.Document.LoadFromStream(TextSetOptions.FormatRtf, stream);
+                        using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.Read))
+                        {
+                            this.Document.LoadFromStream(TextSetOptions.FormatRtf, stream);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        return false;
                     }
                 }
+
+                this.Title = trash.Title;
+                this.Subtitle = trash.Name;
+                this.Update2();
 
                 this._vsIsWritable = true;
                 this.VisualState = this.VisualState; // VisualState
@@ -119,10 +150,10 @@ namespace Trash_Can
         private async Task<bool> Export(string name)
         {
             if (string.IsNullOrEmpty(name)) return false;
-            if (await FileUtil.GetFile(name) is IStorageFile file2)
+            if (await FileUtil.GetFile(name) is IStorageFile file)
             {
                 this.Subtitle = name;
-                using (IRandomAccessStream stream = await file2.OpenAsync(FileAccessMode.ReadWrite))
+                using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
                 {
                     this.Document.SaveToStream(TextGetOptions.FormatRtf, stream);
                 }

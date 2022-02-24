@@ -7,6 +7,7 @@ using Trash_Can.Controls;
 using Trash_Can.Elements;
 using Trash_Can.Trashs;
 using Windows.ApplicationModel.Core;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Storage;
 using Windows.UI.Text;
@@ -103,6 +104,35 @@ namespace Trash_Can
             // Extend TitleBar
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
+
+
+            // Drag and Drop 
+            base.AllowDrop = true;
+            base.Drop += async (s, e) =>
+            {
+                this.State = LoadingState.Loading;
+                if (e.DataView.Contains(StandardDataFormats.StorageItems))
+                {
+                    IReadOnlyList<IStorageItem> items = await e.DataView.GetStorageItemsAsync();
+                    foreach (IStorageItem item in items)
+                    {
+                        bool result = await this.Activated(item);
+                        if (result == false)
+                        {
+                            this.State = LoadingState.FileCorrupt;
+                            await Task.Delay(1000);
+                        }
+                        break;
+                    }
+                }
+                this.State = LoadingState.None;
+            };
+            base.DragOver += (s, e) =>
+            {
+                e.AcceptedOperation = DataPackageOperation.Copy;
+                //e.DragUIOverride.Caption = 
+                e.DragUIOverride.IsCaptionVisible = e.DragUIOverride.IsContentVisible = e.DragUIOverride.IsGlyphVisible = true;
+            };
 
 
             base.SizeChanged += (s, e) =>
@@ -308,16 +338,8 @@ namespace Trash_Can
             if (e.Parameter is IStorageItem item)
             {
                 this.State = LoadingState.Loading;
-                if (item is StorageFile file)
-                {
-                    bool result = await this.Activated(file);
-                    if (result == false)
-                    {
-                        this.State = LoadingState.FileCorrupt;
-                        await Task.Delay(1000);
-                    }
-                }
-                else
+                bool result = await this.Activated(item);
+                if (result == false)
                 {
                     this.State = LoadingState.FileCorrupt;
                     await Task.Delay(1000);
