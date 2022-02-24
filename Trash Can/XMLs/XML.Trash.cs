@@ -24,8 +24,8 @@ namespace Trash_Can
 
             if (trash.Properties != null)
             {
-                if (trash.Properties.Title != null) element.Add(new XAttribute("Title", trash.Title));
-                if (trash.Properties.Comment != null) element.Add(new XAttribute("Comment", trash.Comment));
+                if (trash.Properties.Title != null) element.Add(new XElement("Title", trash.Title));
+                if (trash.Properties.Comment != null) element.Add(new XElement("Comment", trash.Comment));
                 if (trash.Keywords != null) element.Add(new XElement
                 (
                     "Keywords",
@@ -41,8 +41,19 @@ namespace Trash_Can
         public static TrashItem LoadTrash(XElement element)
         {
             Trash trash = new Trash();
-            if (element.Attribute("Title") is XAttribute title) trash.Title = title.Value;
-            if (element.Attribute("Comment") is XAttribute comment) trash.Comment = comment.Value;
+
+            //@Compatible
+            // 1.1.0
+            {
+                if (element.Attribute("Title") is XAttribute title) trash.Title = title.Value;
+                if (element.Attribute("Comment") is XAttribute comment) trash.Comment = comment.Value;
+            }
+            // 1.2.0
+            {
+                if (element.Element("Title") is XElement title) trash.Title = title.Value;
+                if (element.Element("Comment") is XElement comment) trash.Comment = comment.Value;
+            }
+
             if (element.Element("Keywords") is XElement keywords)
             {
                 if (keywords.Elements("Keyword") is IEnumerable<XElement> keywords2)

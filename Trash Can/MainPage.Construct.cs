@@ -260,6 +260,7 @@ namespace Trash_Can
             {
                 if (this.FlipView.SelectedItem is TrashItem item)
                 {
+                    this.Editor.Subtitle = item.Name;
                     this.Editor.Trash = item.Properties;
                     await this.Editor.ShowAsync(ContentDialogPlacement.InPlace);
                 }

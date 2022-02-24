@@ -310,13 +310,14 @@ namespace Trash_Can
 
             this.Editor.Closed += (s, e) =>
             {
-                if (this.FlipView.SelectedItem is TrashItem item)
-                {
-                    item.Properties = this.Editor.Trash;
-                    this.Save();
+                string name = this.Editor.Subtitle;
+                TrashItem item = string.IsNullOrEmpty(name) ? null : this.Items.FirstOrDefault(c => c.Name == name);
+                if (item == null) return;
 
-                    this.Title = item.Title;
-                }
+                item.Properties = this.Editor.Trash;
+                this.Save();
+
+                if (this._vsIsWritable) this.Title = item.Title;
             };
         }
 
@@ -371,6 +372,7 @@ namespace Trash_Can
                         break;
                     case OperateType.Rename:
                         {
+                            this.Editor.Subtitle = item.Name;
                             this.Editor.Trash = item.Properties;
                             await this.Editor.ShowAsync(ContentDialogPlacement.InPlace);
                         }
