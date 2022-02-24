@@ -28,7 +28,7 @@
         >
         <StackPanel x:Name="StackPanel">
 
-            <TextBox x:Name="TitleTextBox" VerticalAlignment="Center"
+            <TextBox x:Name="TitleTextBox" 
                  BorderThickness="1" BorderBrush="{ThemeResource AppBorderBrush}">
                 <TextBox.Header>
                     Title
@@ -37,7 +37,8 @@
 
             <ContentControl Height="12"/>
 
-            <TextBox x:Name="CommentTextBox" AcceptsReturn="True" VerticalAlignment="Center"
+            <TextBox x:Name="CommentTextBox" TextWrapping="Wrap"
+                 MinHeight="80"
                  BorderThickness="1" BorderBrush="{ThemeResource AppBorderBrush}">
                 <TextBox.Header>
                     Comment
@@ -59,6 +60,10 @@
                     <local:ReorderControl x:Name="KeywordsControl4" ReorderIndex="4"/>
                 </Canvas>
             </Border>
+            
+            <ContentControl Height="6"/>
+
+            <TextBlock x:Name="SubtitleTextBlock" FontSize="10" HorizontalAlignment="Center" Foreground="{ThemeResource AppForeground}"/>
 
         </StackPanel>
     </ScrollViewer>

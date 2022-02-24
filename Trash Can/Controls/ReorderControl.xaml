@@ -22,7 +22,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="TextBox" VerticalAlignment="Center"
+        <TextBox x:Name="_TextBox" VerticalAlignment="Center"
                  Margin="6,0"
                  BorderThickness="1" BorderBrush="{ThemeResource AppBorderBrush}"/>
 

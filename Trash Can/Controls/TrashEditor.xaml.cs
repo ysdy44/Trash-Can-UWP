@@ -3,12 +3,19 @@ using System.Linq;
 using Trash_Can.Trashs;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
+using Windows.System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace Trash_Can.Controls
 {
     public sealed partial class TrashEditor : ContentDialog
     {
+
+        //@Converter
+        private string StringToEmptyConverter(string value) => value == null ? string.Empty : value;
+
+        public string Subtitle { get => this.SubtitleTextBlock.Text; set => this.SubtitleTextBlock.Text = value; }
 
         public Trash Trash
         {
@@ -20,25 +27,14 @@ namespace Trash_Can.Controls
             };
             set
             {
-                if (value == null) return;
-                this.TitleTextBox.Text = value.Title == null ? string.Empty : value.Title;
-                this.CommentTextBox.Text = value.Comment == null ? string.Empty : value.Comment;
-                if (value.Keywords == null) return;
-                for (int i = 0; i < value.Keywords.Count; i++)
-                {
-                    string text2 = value.Keywords[i];
-                    string text = text2 == null ? string.Empty : text2;
+                this.TitleTextBox.Text = this.StringToEmptyConverter(value?.Title);
+                this.CommentTextBox.Text = this.StringToEmptyConverter(value?.Comment);
 
-                    switch (i)
-                    {
-                        case 0: this.KeywordsControl0.Text = text; break;
-                        case 1: this.KeywordsControl1.Text = text; break;
-                        case 2: this.KeywordsControl2.Text = text; break;
-                        case 3: this.KeywordsControl3.Text = text; break;
-                        case 4: this.KeywordsControl4.Text = text; break;
-                        default: break;
-                    }
-                }
+                this.KeywordsControl0.TextBox.Text = this.GetKeyword(this.KeywordsControl0.ReorderIndex, value.Keywords);
+                this.KeywordsControl1.TextBox.Text = this.GetKeyword(this.KeywordsControl1.ReorderIndex, value.Keywords);
+                this.KeywordsControl2.TextBox.Text = this.GetKeyword(this.KeywordsControl2.ReorderIndex, value.Keywords);
+                this.KeywordsControl3.TextBox.Text = this.GetKeyword(this.KeywordsControl3.ReorderIndex, value.Keywords);
+                this.KeywordsControl4.TextBox.Text = this.GetKeyword(this.KeywordsControl4.ReorderIndex, value.Keywords);
             }
         }
 
@@ -46,37 +42,28 @@ namespace Trash_Can.Controls
         {
             this.InitializeComponent();
             this.ConstructStrings();
-
+            this.ConstructGotFocus();
+            
             this.StackPanel.SizeChanged += (s, e) =>
             {
                 if (e.NewSize == Size.Empty) return;
                 if (e.NewSize == e.PreviousSize) return;
 
-                double width = e.NewSize.Width;
-                this.KeywordsControl0.Width = width;
-                this.KeywordsControl1.Width = width;
-                this.KeywordsControl2.Width = width;
-                this.KeywordsControl3.Width = width;
-                this.KeywordsControl4.Width = width;
+                this.KeywordsControl0.Width =
+                this.KeywordsControl1.Width =
+                this.KeywordsControl2.Width =
+                this.KeywordsControl3.Width =
+                this.KeywordsControl4.Width =
+                e.NewSize.Width;
             };
-        }
 
-        private IEnumerable<string> GetKeywords()
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                string text =
-                      (this.KeywordsControl0.ReorderIndex == i) ? this.KeywordsControl0.Text :
-                      (this.KeywordsControl1.ReorderIndex == i) ? this.KeywordsControl1.Text :
-                      (this.KeywordsControl2.ReorderIndex == i) ? this.KeywordsControl2.Text :
-                      (this.KeywordsControl3.ReorderIndex == i) ? this.KeywordsControl3.Text :
-                      (this.KeywordsControl4.ReorderIndex == i) ? this.KeywordsControl4.Text :
-                      null;
-
-                if (string.IsNullOrEmpty(text)) continue;
-
-                yield return text;
-            }
+            this.TitleTextBox.GotFocus += (s, e) => this.TitleTextBox.SelectAll();
+            this.CommentTextBox.GotFocus += (s, e) => this.CommentTextBox.SelectAll();
+            this.KeywordsControl0.TextBox.GotFocus += (s, e) => this.KeywordsControl0.TextBox.SelectAll();
+            this.KeywordsControl1.TextBox.GotFocus += (s, e) => this.KeywordsControl1.TextBox.SelectAll();
+            this.KeywordsControl2.TextBox.GotFocus += (s, e) => this.KeywordsControl2.TextBox.SelectAll();
+            this.KeywordsControl3.TextBox.GotFocus += (s, e) => this.KeywordsControl3.TextBox.SelectAll();
+            this.KeywordsControl4.TextBox.GotFocus += (s, e) => this.KeywordsControl4.TextBox.SelectAll();
         }
 
     }
@@ -103,6 +90,110 @@ namespace Trash_Can.Controls
             this.TitleTextBox.Header = resource.GetString("$DrawPage_Editor_Title");
             this.CommentTextBox.Header = resource.GetString("$DrawPage_Editor_Comment");
             this.KeywordsTextBlock.Text = resource.GetString("$DrawPage_Editor_Keywords");
+        }
+
+        private void ConstructGotFocus()
+        {
+            this.TitleTextBox.KeyDown += (s, e) =>
+            {
+                switch (e.OriginalKey)
+                {
+                    case VirtualKey.Enter:
+                        this.CommentTextBox.Focus(FocusState.Keyboard);
+                        break;
+                    default:
+                        break;
+                }
+            };
+            this.CommentTextBox.KeyDown += (s, e) =>
+            {
+                switch (e.OriginalKey)
+                {
+                    case VirtualKey.Enter:
+                        this.SetFocus(0);
+                        break;
+                }
+            };
+            this.KeywordsControl0.TextBox.KeyDown += (s, e) =>
+            {
+                switch (e.OriginalKey)
+                {
+                    case VirtualKey.Enter:
+                        this.SetFocus(1);
+                        break;
+                }
+            };
+            this.KeywordsControl1.TextBox.KeyDown += (s, e) =>
+            {
+                switch (e.OriginalKey)
+                {
+                    case VirtualKey.Enter:
+                        this.SetFocus(2);
+                        break;
+                }
+            };
+            this.KeywordsControl2.TextBox.KeyDown += (s, e) =>
+            {
+                switch (e.OriginalKey)
+                {
+                    case VirtualKey.Enter:
+                        this.SetFocus(3);
+                        break;
+                }
+            };
+            this.KeywordsControl3.TextBox.KeyDown += (s, e) =>
+            {
+                switch (e.OriginalKey)
+                {
+                    case VirtualKey.Enter:
+                        this.SetFocus(4);
+                        break;
+                }
+            };
+            this.KeywordsControl4.TextBox.KeyDown += (s, e) =>
+            {
+                switch (e.OriginalKey)
+                {
+                    case VirtualKey.Enter:
+                        this.SetFocus(5);
+                        break;
+                }
+            };
+        }
+        
+        private void SetFocus(int index)
+        {
+            if (this.KeywordsControl0.ReorderIndex == index) this.KeywordsControl0.TextBox.Focus(FocusState.Keyboard);
+            else if (this.KeywordsControl1.ReorderIndex == index) this.KeywordsControl1.TextBox.Focus(FocusState.Keyboard);
+            else if (this.KeywordsControl2.ReorderIndex == index) this.KeywordsControl2.TextBox.Focus(FocusState.Keyboard);
+            else if (this.KeywordsControl3.ReorderIndex == index) this.KeywordsControl3.TextBox.Focus(FocusState.Keyboard);
+            else if (this.KeywordsControl4.ReorderIndex == index) this.KeywordsControl4.TextBox.Focus(FocusState.Keyboard);
+            else this.TitleTextBox.Focus(FocusState.Keyboard);
+        }
+
+        private string GetKeyword(int index, IList<string> keywords) =>
+            keywords == null ?
+                string.Empty :
+                index < keywords.Count ?
+                    this.StringToEmptyConverter(keywords[index]) :
+                    string.Empty;
+
+        private IEnumerable<string> GetKeywords()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                string text =
+                      (this.KeywordsControl0.ReorderIndex == i) ? this.KeywordsControl0.TextBox.Text :
+                      (this.KeywordsControl1.ReorderIndex == i) ? this.KeywordsControl1.TextBox.Text :
+                      (this.KeywordsControl2.ReorderIndex == i) ? this.KeywordsControl2.TextBox.Text :
+                      (this.KeywordsControl3.ReorderIndex == i) ? this.KeywordsControl3.TextBox.Text :
+                      (this.KeywordsControl4.ReorderIndex == i) ? this.KeywordsControl4.TextBox.Text :
+                      null;
+
+                if (string.IsNullOrEmpty(text)) continue;
+
+                yield return text;
+            }
         }
 
     }
