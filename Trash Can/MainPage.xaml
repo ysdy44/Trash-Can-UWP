@@ -7,7 +7,6 @@
     xmlns:local="using:Trash_Can"
     xmlns:controls="using:Trash_Can.Controls"
     xmlns:elements="using:Trash_Can.Elements"
-    xmlns:transitions="using:Trash_Can.Elements.Transitions"
     xmlns:trashs="using:Trash_Can.Trashs"
     mc:Ignorable="d"
     NavigationCacheMode="Required"    
@@ -655,7 +654,7 @@
 
 
                 <!--Foot-->
-                <transitions:TransitionPanel x:Name="FootPanel" Grid.Row="3" VerticalAlignment="Top" IsShow="False" >
+                <elements:TransitionPanel x:Name="FootPanel" Grid.Row="3" VerticalAlignment="Top" IsShow="False" >
                     <FrameworkElement.Resources>
                         <!--Style-->
                         <Style TargetType="Rectangle">
@@ -679,7 +678,7 @@
                             <Setter Property="Stroke" Value="{ThemeResource AppBlueLinearGradientBrush}" />
                         </Style>
                     </FrameworkElement.Resources>
-                    <ScrollViewer x:Name="FootScrollViewer"  Style="{StaticResource AppHorizontalScrollViewerStyle}">
+                    <ScrollViewer x:Name="FootScrollViewer" Style="{StaticResource AppHorizontalScrollViewerStyle}">
                         <Border x:Name="FootBorder"                      
                                 CornerRadius="8"
                                 Padding="12,0"
@@ -998,7 +997,7 @@
                             </StackPanel>
                         </Border>
                     </ScrollViewer>
-                </transitions:TransitionPanel>
+                </elements:TransitionPanel>
 
 
                 <!--Find-->
