@@ -19,7 +19,7 @@
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
@@ -156,6 +156,9 @@
     <Compile Include="Elements\DeviceLayoutType.cs" />
     <Compile Include="Elements\ProgressRing.cs" />
     <Compile Include="Elements\Reorder.cs" />
+    <Compile Include="Elements\TransitionPanel.xaml.cs">
+      <DependentUpon>TransitionPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Elements\Transitions\IndexTransitionPanel.cs" />
     <Compile Include="Elements\Transitions\ITransitionElement.cs" />
     <Compile Include="Elements\Transitions\TransitionPanel.cs" />
@@ -290,6 +293,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Elements\AccentDecoratorItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Elements\TransitionPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
