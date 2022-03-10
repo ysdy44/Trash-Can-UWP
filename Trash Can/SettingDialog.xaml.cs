@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using Trash_Can.Texts;
 using Windows.ApplicationModel.Resources;
+using Windows.Globalization;
 using Windows.Storage;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -21,6 +25,8 @@ namespace Trash_Can
         public event EventHandler<float> FontSizeSetted;
         /// <summary> Occurs when Setted. </summary>
         public event EventHandler<Thickness> PageMarginSetted;
+        /// <summary> Occurs when Setted. </summary>
+        public event EventHandler<string> LanguageSetted;
 
         readonly ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
 
@@ -36,6 +42,8 @@ namespace Trash_Can
             new Thickness(32,28,32,28),
         };
 
+        string LanguageUseSystemSetting = "Use system setting";
+
         //@Construct
         /// <summary>
         /// Initializes a SettingDialog. 
@@ -43,11 +51,23 @@ namespace Trash_Can
         public SettingDialog()
         {
             this.InitializeComponent();
-            this.ConstructTheme();
             this.ConstructStrings();
+
+            this.ConstructTheme();
             this.ConstructFontFamily();
             this.ConstructFontSize();
             this.ConstructPageMargin();
+            this.ConstructLanguage();
+            this.LanguageTipButton.Click += async (s, e) =>
+            {
+                await Windows.ApplicationModel.Core.CoreApplication.RequestRestartAsync(string.Empty);
+            };
+
+            this.LocalFolderButton.Click += async (s, e) =>
+            {
+                IStorageFolder folder = ApplicationData.Current.LocalFolder;
+                await Launcher.LaunchFolderAsync(folder);
+            };
 
             base.SecondaryButtonClick += (s, e) => base.Hide();
             base.PrimaryButtonClick += (s, e) => base.Hide();
@@ -133,6 +153,14 @@ namespace Trash_Can
 
             this.FontFamilyTextBlock.Text = resource.GetString("$SettingPage_Texts_FontFamily");
             this.FontSizeTextBlock.Text = resource.GetString("$SettingPage_Texts_FontSize");
+            this.PageMarginTextBlock.Text = resource.GetString("$SettingPage_PageMargin");
+
+            this.LanguageTextBlock.Text = resource.GetString("$SettingPage_Language");
+            this.LanguageTipButton.Content = resource.GetString("$SettingPage_LanguageTip");
+            this.LanguageUseSystemSetting = resource.GetString("$SettingPage_Language_UseSystemSetting");
+
+            this.LocalFolderTextBlock.Text = resource.GetString("$SettingPage_LocalFolder");
+            this.OpenTextBlock.Text = resource.GetString("$SettingPage_LocalFolder_Open");
         }
 
         private void ConstructTheme()
@@ -189,6 +217,62 @@ namespace Trash_Can
                     this.PageMarginSetted?.Invoke(this, item); // Delegate
                 }
             };
+        }
+
+        private void ConstructLanguage()
+        {
+            // Languages
+            string groupLanguage = ApplicationLanguages.PrimaryLanguageOverride;
+            List<string> languages = new List<string>(ApplicationLanguages.ManifestLanguages);
+            languages.Sort();
+            languages.Insert(0, string.Empty);
+
+            // Items
+            IEnumerable<ContentControl> languages2 =
+                from item
+                in languages
+                select string.IsNullOrEmpty(item) ? new ContentControl
+                {
+                    Tag = string.Empty,
+                    Content = this.LanguageUseSystemSetting
+                } : new ContentControl
+                {
+                    Tag = item,
+                    ContentTemplate = this.LanguageTemplate,
+                    Content = new CultureInfo(item)
+                };
+
+            this.LanguageComboBox.ItemsSource = languages2;
+            this.LanguageComboBox.SelectedIndex = languages.IndexOf(groupLanguage);
+            this.LanguageComboBox.SelectionChanged += (s, e) =>
+            {
+                if (this.LanguageComboBox.SelectedItem is ContentControl item)
+                {
+                    if (item.Tag is string language)
+                    {
+                        this.SetLanguage(language);
+                        this.LanguageSetted?.Invoke(this, language); // Delegate
+                        this.ConstructStrings();
+                    }
+                }
+            };
+        }
+
+        private void SetLanguage(string language)
+        {
+            if (ApplicationLanguages.PrimaryLanguageOverride == language) return;
+            ApplicationLanguages.PrimaryLanguageOverride = language;
+
+            if (string.IsNullOrEmpty(language) == false)
+            {
+                if (Window.Current.Content is FrameworkElement frameworkElement)
+                {
+                    if (frameworkElement.Language != language)
+                    {
+                        frameworkElement.Language = language;
+                    }
+                }
+            }
         }
 
     }

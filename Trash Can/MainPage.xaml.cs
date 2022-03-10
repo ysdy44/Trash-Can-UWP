@@ -306,6 +306,11 @@ namespace Trash_Can
             this.SettingDialog.FontFamilySetted += (s, fontFamily) => this.RichEditBox.FontFamily = new FontFamily(fontFamily);
             this.SettingDialog.FontSizeSetted += (s, fontSize) => this.RichEditBox.FontSize = fontSize;
             this.SettingDialog.PageMarginSetted += (s, pageMargin) => this.UpdateRichEditBoxPadding(this.FindMode, pageMargin);
+            this.SettingDialog.LanguageSetted += (s, language) =>
+            {
+                this.ConstructFlowDirection();
+                this.ConstructStrings();
+            };
 
 
             this.Editor.Closed += (s, e) =>

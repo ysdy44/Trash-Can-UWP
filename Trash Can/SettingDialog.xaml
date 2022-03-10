@@ -4,8 +4,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:globalization="using:System.Globalization"
     mc:Ignorable="d" 
     >
+
+    <FrameworkElement.Resources>
+        <!--Template-->
+        <DataTemplate x:Name="LanguageTemplate" x:DataType="globalization:CultureInfo">
+            <TextBlock>                  
+                <Run Text="{Binding NativeName, Mode=OneTime}"/>              
+                <Run Text=" "/>                
+                <Run Text="{Binding DisplayName, Mode=OneTime}" Foreground="{ThemeResource AppForeground}"/>
+            </TextBlock>
+        </DataTemplate>
+    </FrameworkElement.Resources>
+    
 
     <ContentDialog.Title>
         <TextBlock x:Name="TitleTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
@@ -14,67 +27,98 @@
     </ContentDialog.Title>
 
 
-    <StackPanel>
+    <ScrollViewer>
+        <StackPanel>
 
-        <Panel.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition IsStaggeringEnabled="True"/>
-            </TransitionCollection>
-        </Panel.ChildrenTransitions>
-
-
-        <Panel.Children>
-
-            <!--ThemeMode-->
-            <TextBlock x:Name="ThemeTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
-                Theme
-            </TextBlock>
-            <RadioButton x:Name="LightRadioButton">
-                Light
-            </RadioButton>
-            <RadioButton x:Name="DarkRadioButton">
-                Dark
-            </RadioButton>
-            <RadioButton x:Name="DefaultRadioButton">
-                Use System
-            </RadioButton>
-            <ContentControl Height="8"/>
+            <Panel.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                </TransitionCollection>
+            </Panel.ChildrenTransitions>
 
 
-            <!--FontFamily-->
-            <TextBlock x:Name="FontFamilyTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
-                Font Family
-            </TextBlock>
-            <ComboBox x:Name="FontFamilyComboBox" />
-            <ContentControl Height="8"/>
+            <Panel.Children>
+
+                <!--ThemeMode-->
+                <TextBlock x:Name="ThemeTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
+                    Theme
+                </TextBlock>
+                <RadioButton x:Name="LightRadioButton">
+                    Light
+                </RadioButton>
+                <RadioButton x:Name="DarkRadioButton">
+                    Dark
+                </RadioButton>
+                <RadioButton x:Name="DefaultRadioButton">
+                    Use System
+                </RadioButton>
+                <ContentControl Height="8"/>
 
 
-            <!--FontSize-->
-            <TextBlock x:Name="FontSizeTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
-                Font Size
-            </TextBlock>
-            <ComboBox x:Name="FontSizeComboBox" />
-            <ContentControl Height="8"/>
+                <!--FontFamily-->
+                <TextBlock x:Name="FontFamilyTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
+                    Font Family
+                </TextBlock>
+                <ComboBox x:Name="FontFamilyComboBox" />
+                <ContentControl Height="8"/>
 
 
-            <!--PageMargin-->
-            <TextBlock x:Name="PageMarginTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
-                Page Margin
-            </TextBlock>
-            <ComboBox x:Name="PageMarginComboBox" >
-                <ComboBox.ItemTemplate>
-                    <DataTemplate x:DataType="Thickness">
-                        <TextBlock>
+                <!--FontSize-->
+                <TextBlock x:Name="FontSizeTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
+                    Font Size
+                </TextBlock>
+                <ComboBox x:Name="FontSizeComboBox" />
+                <ContentControl Height="8"/>
+
+
+                <!--PageMargin-->
+                <TextBlock x:Name="PageMarginTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
+                    Page Margin
+                </TextBlock>
+                <ComboBox x:Name="PageMarginComboBox" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="Thickness">
+                            <TextBlock>
                             <Run Text="{x:Bind Left, Mode=OneTime}"/>
                             <Run Text="{x:Bind Top, Mode=OneTime}"/>
                             <Run Text="{x:Bind Right, Mode=OneTime}"/>
                             <Run Text="{x:Bind Bottom, Mode=OneTime}"/>
-                        </TextBlock>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ContentControl Height="8"/>
 
-        </Panel.Children>
 
-    </StackPanel>
+                <!--Language-->
+                <TextBlock x:Name="LanguageTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
+                    Language
+                </TextBlock>
+                <ComboBox x:Name="LanguageComboBox" >
+                </ComboBox>
+                <HyperlinkButton x:Name="LanguageTipButton"/>
+                <ContentControl Height="8"/>
+
+
+                <!--LocalFolder-->
+                <TextBlock x:Name="LocalFolderTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
+                    Local Folder
+                </TextBlock>
+                <Border Margin="4" CornerRadius="20" Height="40" Background="#11FFFFFF" HorizontalAlignment="Left">
+                    <Button x:Name="LocalFolderButton" Padding="12,0" Width="Auto" Foreground="{ThemeResource AppForeground}">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon Glyph="&#xE17C;" FontSize="24" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                            <ContentControl Width="8"/>
+                            <TextBlock x:Name="OpenTextBlock" VerticalAlignment="Center">
+                                Open
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+                </Border>
+
+            </Panel.Children>
+
+        </StackPanel>
+    </ScrollViewer>
+
 </ContentDialog>
