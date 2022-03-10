@@ -81,6 +81,12 @@
 <data name='$SettingPage_Theme_UseSystem' xml:space='preserve'> <value>システムを使用する</value> </data>
 <data name='$SettingPage_Texts_FontFamily' xml:space='preserve'> <value>フォントファミリー</value> </data>
 <data name='$SettingPage_Texts_FontSize' xml:space='preserve'> <value>フォントサイズ</value> </data>
+<data name='$SettingPage_PageMargin' xml:space='preserve'> <value>余白</value> </data>
+<data name='$SettingPage_Language' xml:space='preserve'> <value>言語</value> </data>
+<data name='$SettingPage_LanguageTip' xml:space='preserve'> <value>アプリを再起動して変更内容を表示します。</value> </data>
+<data name='$SettingPage_Language_UseSystemSetting' xml:space='preserve'> <value>システム設定を使用する</value> </data>
+<data name='$SettingPage_LocalFolder' xml:space='preserve'> <value>ローカルフォルダ</value> </data>
+<data name='$SettingPage_LocalFolder_Open' xml:space='preserve'> <value>開いた</value> </data>
 <data name='$MainPage_New' xml:space='preserve'> <value>新着</value> </data>
 <data name='$MainPage_Home' xml:space='preserve'> <value>家</value> </data>
 <data name='$MainPage_About' xml:space='preserve'> <value>約...</value> </data>

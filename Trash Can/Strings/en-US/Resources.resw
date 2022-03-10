@@ -81,6 +81,12 @@
 <data name='$SettingPage_Theme_UseSystem' xml:space='preserve'> <value>Use System</value> </data>
 <data name='$SettingPage_Texts_FontFamily' xml:space='preserve'> <value>Font Family</value> </data>
 <data name='$SettingPage_Texts_FontSize' xml:space='preserve'> <value>Font Size</value> </data>
+<data name='$SettingPage_PageMargin' xml:space='preserve'> <value>Page Margins</value> </data>
+<data name='$SettingPage_Language' xml:space='preserve'> <value>Language</value> </data>
+<data name='$SettingPage_LanguageTip' xml:space='preserve'> <value>Restart the app to see your changes.</value> </data>
+<data name='$SettingPage_Language_UseSystemSetting' xml:space='preserve'> <value>Use system setting</value> </data>
+<data name='$SettingPage_LocalFolder' xml:space='preserve'> <value>Local folder</value> </data>
+<data name='$SettingPage_LocalFolder_Open' xml:space='preserve'> <value>Open</value> </data>
 <data name='$MainPage_New' xml:space='preserve'> <value>New</value> </data>
 <data name='$MainPage_Home' xml:space='preserve'> <value>Home</value> </data>
 <data name='$MainPage_About' xml:space='preserve'> <value>About...</value> </data>

@@ -81,6 +81,12 @@
 <data name='$SettingPage_Theme_UseSystem' xml:space='preserve'> <value>사용 시스템</value> </data>
 <data name='$SettingPage_Texts_FontFamily' xml:space='preserve'> <value>글꼴 군</value> </data>
 <data name='$SettingPage_Texts_FontSize' xml:space='preserve'> <value>글꼴 크기</value> </data>
+<data name='$SettingPage_PageMargin' xml:space='preserve'> <value>페이지 여백</value> </data>
+<data name='$SettingPage_Language' xml:space='preserve'> <value>언어</value> </data>
+<data name='$SettingPage_LanguageTip' xml:space='preserve'> <value>앱을 다시 시작하여 변경 내용을 확인하세요.</value> </data>
+<data name='$SettingPage_Language_UseSystemSetting' xml:space='preserve'> <value>시스템 설정 사용</value> </data>
+<data name='$SettingPage_LocalFolder' xml:space='preserve'> <value>로컬 폴더</value> </data>
+<data name='$SettingPage_LocalFolder_Open' xml:space='preserve'> <value>열다</value> </data>
 <data name='$MainPage_New' xml:space='preserve'> <value>새로운</value> </data>
 <data name='$MainPage_Home' xml:space='preserve'> <value>집</value> </data>
 <data name='$MainPage_About' xml:space='preserve'> <value>약...</value> </data>

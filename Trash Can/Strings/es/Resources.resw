@@ -81,6 +81,12 @@
 <data name='$SettingPage_Theme_UseSystem' xml:space='preserve'> <value>Usar sistema</value> </data>
 <data name='$SettingPage_Texts_FontFamily' xml:space='preserve'> <value>Familia tipográfica</value> </data>
 <data name='$SettingPage_Texts_FontSize' xml:space='preserve'> <value>Tamaño de fuente</value> </data>
+<data name='$SettingPage_PageMargin' xml:space='preserve'> <value>Márgenes de página</value> </data>
+<data name='$SettingPage_Language' xml:space='preserve'> <value>Idioma</value> </data>
+<data name='$SettingPage_LanguageTip' xml:space='preserve'> <value>Reinicie la aplicación para ver los cambios.</value> </data>
+<data name='$SettingPage_Language_UseSystemSetting' xml:space='preserve'> <value>Usar configuración del sistema</value> </data>
+<data name='$SettingPage_LocalFolder' xml:space='preserve'> <value>Carpeta local</value> </data>
+<data name='$SettingPage_LocalFolder_Open' xml:space='preserve'> <value>Abierto</value> </data>
 <data name='$MainPage_New' xml:space='preserve'> <value>Nuevo</value> </data>
 <data name='$MainPage_Home' xml:space='preserve'> <value>Casa</value> </data>
 <data name='$MainPage_About' xml:space='preserve'> <value>Sobre...</value> </data>

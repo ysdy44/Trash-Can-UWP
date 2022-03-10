@@ -81,6 +81,12 @@
 <data name='$SettingPage_Theme_UseSystem' xml:space='preserve'> <value>Использовать систему</value> </data>
 <data name='$SettingPage_Texts_FontFamily' xml:space='preserve'> <value>Семейство шрифтов</value> </data>
 <data name='$SettingPage_Texts_FontSize' xml:space='preserve'> <value>Размер шрифта</value> </data>
+<data name='$SettingPage_PageMargin' xml:space='preserve'> <value>Поля страницы</value> </data>
+<data name='$SettingPage_Language' xml:space='preserve'> <value>Язык</value> </data>
+<data name='$SettingPage_LanguageTip' xml:space='preserve'> <value>Перезапустите приложение, чтобы увидеть изменения.</value> </data>
+<data name='$SettingPage_Language_UseSystemSetting' xml:space='preserve'> <value>Использовать системные настройки</value> </data>
+<data name='$SettingPage_LocalFolder' xml:space='preserve'> <value>Локальная папка</value> </data>
+<data name='$SettingPage_LocalFolder_Open' xml:space='preserve'> <value>Открыть</value> </data>
 <data name='$MainPage_New' xml:space='preserve'> <value>Новый</value> </data>
 <data name='$MainPage_Home' xml:space='preserve'> <value>Дома</value> </data>
 <data name='$MainPage_About' xml:space='preserve'> <value>О...</value> </data>

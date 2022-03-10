@@ -81,6 +81,12 @@
 <data name='$SettingPage_Theme_UseSystem' xml:space='preserve'> <value>استخدم النظام</value> </data>
 <data name='$SettingPage_Texts_FontFamily' xml:space='preserve'> <value>خط العائلة</value> </data>
 <data name='$SettingPage_Texts_FontSize' xml:space='preserve'> <value>حجم الخط</value> </data>
+<data name='$SettingPage_PageMargin' xml:space='preserve'> <value>هوامش الصفحة</value> </data>
+<data name='$SettingPage_Language' xml:space='preserve'> <value>لغة</value> </data>
+<data name='$SettingPage_LanguageTip' xml:space='preserve'> <value>أعد تشغيل التطبيق لمشاهدة التغييرات.</value> </data>
+<data name='$SettingPage_Language_UseSystemSetting' xml:space='preserve'> <value>استخدم إعدادات النظام</value> </data>
+<data name='$SettingPage_LocalFolder' xml:space='preserve'> <value>مجلد محلي</value> </data>
+<data name='$SettingPage_LocalFolder_Open' xml:space='preserve'> <value>فتح</value> </data>
 <data name='$MainPage_New' xml:space='preserve'> <value>جديد</value> </data>
 <data name='$MainPage_Home' xml:space='preserve'> <value>الصفحة الرئيسية</value> </data>
 <data name='$MainPage_About' xml:space='preserve'> <value>حول...</value> </data>
