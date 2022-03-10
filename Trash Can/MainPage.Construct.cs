@@ -258,12 +258,13 @@ namespace Trash_Can
             this.LocalFolderItem.Click += async (s, e) => await this.LaunchFolder(this.Subtitle);
             this.RenameItem.Click += async (s, e) =>
             {
-                if (this.FlipView.SelectedItem is TrashItem item)
-                {
-                    this.Editor.Subtitle = item.Name;
-                    this.Editor.Trash = item.Properties;
-                    await this.Editor.ShowAsync(ContentDialogPlacement.InPlace);
-                }
+                string name = this.Subtitle;
+                TrashItem item = string.IsNullOrEmpty(name) ? null : this.Items.FirstOrDefault(c => c.Name == name);
+                if (item == null) return;
+
+                this.Editor.Subtitle = item.Name;
+                this.Editor.Trash = item.Properties;
+                await this.Editor.ShowAsync(ContentDialogPlacement.InPlace);
             };
         }
 

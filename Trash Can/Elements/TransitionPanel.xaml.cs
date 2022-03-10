@@ -40,6 +40,7 @@ namespace Trash_Can.Elements
             get => (bool)base.GetValue(IsShowProperty);
             set => SetValue(IsShowProperty, value);
         }
+        /// <summary> Identifies the <see cref = "TransitionPanel.IsShow" /> dependency property. </summary>
         protected static readonly DependencyProperty IsShowProperty = DependencyProperty.Register(nameof(IsShow), typeof(bool), typeof(TransitionPanel), new PropertyMetadata(false, (sender, e) =>
         {
             TransitionPanel control = (TransitionPanel)sender;

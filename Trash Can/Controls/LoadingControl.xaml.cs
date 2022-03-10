@@ -48,7 +48,7 @@ namespace Trash_Can.Controls
             get => (LoadingState)base.GetValue(StateProperty);
             set => base.SetValue(StateProperty, value);
         }
-        /// <summary> Identifies the <see cref = "LoadingControl.IsActive" /> dependency property. </summary>
+        /// <summary> Identifies the <see cref = "LoadingControl.State" /> dependency property. </summary>
         public static readonly DependencyProperty StateProperty = DependencyProperty.Register(nameof(State), typeof(LoadingState), typeof(LoadingControl), new PropertyMetadata(LoadingState.None));
 
 
