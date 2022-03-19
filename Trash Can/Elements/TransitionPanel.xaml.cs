@@ -28,7 +28,7 @@ namespace Trash_Can.Elements
         public Orientation Orientation
         {
             get => (Orientation)base.GetValue(OrientationProperty);
-            set => SetValue(OrientationProperty, value);
+            set => base.SetValue(OrientationProperty, value);
         }
         /// <summary> Identifies the <see cref = "TransitionPanel.Orientation" /> dependency property. </summary>
         public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register(nameof(Orientation), typeof(Orientation), typeof(TransitionPanel), new PropertyMetadata(Orientation.Vertical));
@@ -38,7 +38,7 @@ namespace Trash_Can.Elements
         public bool IsShow
         {
             get => (bool)base.GetValue(IsShowProperty);
-            set => SetValue(IsShowProperty, value);
+            set => base.SetValue(IsShowProperty, value);
         }
         /// <summary> Identifies the <see cref = "TransitionPanel.IsShow" /> dependency property. </summary>
         protected static readonly DependencyProperty IsShowProperty = DependencyProperty.Register(nameof(IsShow), typeof(bool), typeof(TransitionPanel), new PropertyMetadata(false, (sender, e) =>

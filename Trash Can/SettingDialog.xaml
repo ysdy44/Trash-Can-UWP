@@ -18,7 +18,7 @@
             </TextBlock>
         </DataTemplate>
     </FrameworkElement.Resources>
-    
+
 
     <ContentDialog.Title>
         <TextBlock x:Name="TitleTextBlock" Style="{StaticResource SubtitleTextBlockStyle}">
@@ -107,7 +107,7 @@
                 <Border Margin="4" CornerRadius="20" Height="40" Background="#11FFFFFF" HorizontalAlignment="Left">
                     <Button x:Name="LocalFolderButton" Padding="12,0" Width="Auto" Foreground="{ThemeResource AppForeground}">
                         <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xE17C;" FontSize="24" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                            <SymbolIcon Symbol="NewWindow"/>
                             <ContentControl Width="8"/>
                             <TextBlock x:Name="OpenTextBlock" VerticalAlignment="Center">
                                 Open
