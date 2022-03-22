@@ -344,12 +344,26 @@ namespace Trash_Can
 
             if (e.Parameter is IStorageItem item)
             {
+                bool result = false;
                 this.State = LoadingState.Loading;
-                bool result = await this.Activated(item);
-                if (result == false)
                 {
-                    this.State = LoadingState.FileCorrupt;
-                    await Task.Delay(1000);
+                    // 1. FInd in Local Folder.
+                    foreach (TrashItem item2 in this.Items)
+                    {
+                        if (item2.Name == item.Name)
+                        {
+                            result = await this.Open(item2, base.ActualTheme);
+                        }
+                    }
+
+                    // 2. Activate new File.
+                    if (result == false) result = await this.Activated(item);
+
+                    if (result == false)
+                    {
+                        this.State = LoadingState.FileCorrupt;
+                        await Task.Delay(1000);
+                    }
                 }
                 this.State = LoadingState.None;
             }
