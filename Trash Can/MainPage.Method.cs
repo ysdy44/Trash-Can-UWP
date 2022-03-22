@@ -85,6 +85,8 @@ namespace Trash_Can
 
                 this._vsIsWritable = true;
                 this.VisualState = this.VisualState; // VisualState
+
+                this.RichEditBox.Focus(FocusState.Keyboard); // Focus
                 return true;
             }
             return false;
@@ -137,6 +139,8 @@ namespace Trash_Can
 
                 this._vsIsWritable = true;
                 this.VisualState = this.VisualState; // VisualState
+
+                this.RichEditBox.Focus(FocusState.Keyboard); // Focus
                 return true;
             }
 
