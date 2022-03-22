@@ -199,6 +199,8 @@ namespace Trash_Can
 
             this.SaveItem.Click += async (s, e) =>
             {
+                if (string.IsNullOrEmpty(this.Subtitle)) return;
+
                 this.State = LoadingState.Saving;
                 {
                     string name = this.Subtitle;
@@ -216,6 +218,8 @@ namespace Trash_Can
             };
             this.CloseItem.Click += async (s, e) =>
             {
+                if (string.IsNullOrEmpty(this.Subtitle)) return;
+
                 switch (this.FindMode)
                 {
                     case FindMode.None:
@@ -245,6 +249,8 @@ namespace Trash_Can
             };
             this.DateItem.Click += (s, e) =>
             {
+                if (string.IsNullOrEmpty(this.Subtitle)) return;
+
                 // Clipboard
                 DataPackage dataPackage = new DataPackage();
                 dataPackage.SetText(DateTimeOffset.Now.ToString());
@@ -254,10 +260,22 @@ namespace Trash_Can
                 this.Update();
                 this.Focus();
             };
-            this.FindItem.Click += (s, e) => this.FindMode = FindMode.Find;
-            this.LocalFolderItem.Click += async (s, e) => await this.LaunchFolder(this.Subtitle);
+            this.FindItem.Click += (s, e) =>
+            {
+                if (string.IsNullOrEmpty(this.Subtitle)) return;
+
+                this.FindMode = FindMode.Find;
+            };
+            this.LocalFolderItem.Click += async (s, e) =>
+            {
+                if (string.IsNullOrEmpty(this.Subtitle)) return;
+
+                await this.LaunchFolder(this.Subtitle);
+            };
             this.RenameItem.Click += async (s, e) =>
             {
+                if (string.IsNullOrEmpty(this.Subtitle)) return;
+
                 string name = this.Subtitle;
                 TrashItem item = string.IsNullOrEmpty(name) ? null : this.Items.FirstOrDefault(c => c.Name == name);
                 if (item == null) return;
