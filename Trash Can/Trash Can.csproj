@@ -152,6 +152,7 @@
       <DependentUpon>AccentDecoratorItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Elements\ApplicationTitleBarExtension.cs" />
+    <Compile Include="Elements\ContentDialogExtensions.cs" />
     <Compile Include="Elements\DeviceLayout.cs" />
     <Compile Include="Elements\DeviceLayoutType.cs" />
     <Compile Include="Elements\ProgressRing.cs" />
