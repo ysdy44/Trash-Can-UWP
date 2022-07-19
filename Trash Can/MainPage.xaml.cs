@@ -196,7 +196,7 @@ namespace Trash_Can
                 }
                 this.State = LoadingState.None;
             };
-            this.SettingItem.Tapped += async (s, e) => await this.SettingDialog.ShowAsync(ContentDialogPlacement.InPlace);
+            this.SettingItem.Tapped += async (s, e) => await this.SettingDialog.ShowInstance();
             this.PaneListView.ItemClick += async (s, e) =>
             {
                 if (e.ClickedItem is StackPanel stackPanel)
@@ -256,7 +256,7 @@ namespace Trash_Can
                                 }
                                 break;
                             case 2:
-                                await this.AboutDialog.ShowAsync(ContentDialogPlacement.InPlace);
+                                await this.AboutDialog.ShowInstance();
                                 break;
                             default:
                                 break;
@@ -393,7 +393,7 @@ namespace Trash_Can
                         {
                             this.Editor.Subtitle = item.Name;
                             this.Editor.Trash = item.Properties;
-                            await this.Editor.ShowAsync(ContentDialogPlacement.InPlace);
+                            await this.Editor.ShowInstance();
                         }
                         break;
                     case OperateType.Remove:

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Trash_Can.Controls;
+using Trash_Can.Elements;
 using Trash_Can.Trashs;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
@@ -282,7 +283,7 @@ namespace Trash_Can
 
                 this.Editor.Subtitle = item.Name;
                 this.Editor.Trash = item.Properties;
-                await this.Editor.ShowAsync(ContentDialogPlacement.InPlace);
+                await this.Editor.ShowInstance();
             };
         }
 
