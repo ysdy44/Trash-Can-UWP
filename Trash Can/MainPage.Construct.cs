@@ -56,7 +56,8 @@ namespace Trash_Can
                 this.FullScreenToolTip.Content = resource.GetString("$DrawPage_FullScreen");
                 this.UnFullScreenToolTip.Content = resource.GetString("$DrawPage_UnFullScreen");
 
-                this.FindToolTip.Content = resource.GetString("$DrawPage_Find");
+                this.ImageToolTip.Content = resource.GetString("$DrawPage_Image");
+            
                 this.FindReplaceToolTip.Content = resource.GetString("$DrawPage_Replace");
                 this.FindCloseToolTip.Content = resource.GetString("$DrawPage_Close");
                 this.NextToolTip.Content = resource.GetString("$DrawPage_Next");

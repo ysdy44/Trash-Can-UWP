@@ -752,13 +752,13 @@
                                             <SymbolIcon Symbol="Delete" />
                                         </Button>
                                         <Rectangle Grid.Column="5"/>
-                                        <Button x:Name="FindButton" Grid.Column="6">
+                                        <Button x:Name="ImageButton" Grid.Column="6">
                                             <ToolTipService.ToolTip>
-                                                <ToolTip x:Name="FindToolTip" Style="{StaticResource AppToolTipStyle}">
-                                                    Find
+                                                <ToolTip x:Name="ImageToolTip" Style="{StaticResource AppToolTipStyle}">
+                                                    Image
                                                 </ToolTip>
                                             </ToolTipService.ToolTip>
-                                            <SymbolIcon Symbol="Find" />
+                                            <SymbolIcon Symbol="Pictures" />
                                         </Button>
                                     </Grid>
 

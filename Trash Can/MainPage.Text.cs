@@ -1,5 +1,10 @@
-﻿using Trash_Can.Blends;
+﻿using System;
+using Trash_Can.Blends;
 using Trash_Can.Texts;
+using Windows.Storage;
+using Windows.Storage.FileProperties;
+using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
 using Windows.UI;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
@@ -72,16 +77,17 @@ namespace Trash_Can
                 this.Update();
                 this.Focus();
             };
-            this.FindButton.Click += (s, e) =>
+            this.ImageButton.Click += async (s, e) =>
             {
-                switch (this.FindMode)
+                StorageFile file = await FileUtil.PickSingleImageFileAsync(PickerLocationId.Desktop);
+                if (file is null) return;
+
+                ImageProperties prop = await file.Properties.GetImagePropertiesAsync();
+                if (prop is null) return;
+
+                using (IRandomAccessStreamWithContentType stream = await file.OpenReadAsync())
                 {
-                    case FindMode.None:
-                        this.FindMode = FindMode.Find;
-                        break;
-                    default:
-                        this.FindMode = FindMode.None;
-                        break;
+                    this.Selection.InsertImage((int)prop.Width / 4, (int)prop.Height / 4, 0, VerticalCharacterAlignment.Top, "abc", stream);
                 }
             };
         }
