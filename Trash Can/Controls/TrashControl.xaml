@@ -73,11 +73,12 @@
                    TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxLines="3"
                    HorizontalTextAlignment="Center" HorizontalAlignment="Center"
                    Text ="{x:Bind Model.Comment, Mode=OneWay}"/>
-        <Border Margin="4" CornerRadius="20" Height="40" Background="#44FFFFFF" HorizontalAlignment="Center">
-            <Button x:Name="EditButton" MinWidth="80" Height="40" Padding="12,2" FontSize="18" FontWeight="Light" Foreground="White" >
+        <Grid Margin="4" HorizontalAlignment="Center">
+            <Border CornerRadius="20" Height="40" Background="#44FFFFFF" HorizontalAlignment="Stretch"/>
+            <Button x:Name="EditButton" MinWidth="90" Height="40" FontSize="18" FontWeight="Light" Foreground="White" >
                 Edit
             </Button>
-        </Border>
+        </Grid>
         <ItemsControl Padding="12,0" ItemsSource="{x:Bind Model.Keywords, Mode=OneWay}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
