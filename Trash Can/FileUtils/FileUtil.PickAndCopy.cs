@@ -1,38 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Core;
-using Windows.Foundation.Collections;
 using Windows.Storage;
-using Windows.Storage.FileProperties;
 using Windows.Storage.Pickers;
-using Windows.Storage.Streams;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 
 namespace Trash_Can
 {
     public static partial class FileUtil
     {
 
-        public async static Task<StorageFolder> PickFolderAsync(PickerLocationId location)
+        /// <summary>
+        /// The file picker is displayed so that the user can select a file.
+        /// </summary>
+        /// <param name="location"> The destination locationId. </param>
+        /// <returns> The product file. </returns>
+        public async static Task<StorageFile> PickSingleImageFileAsync(PickerLocationId location)
         {
             // Picker
-            FolderPicker openPicker = new FolderPicker
+            FileOpenPicker openPicker = new FileOpenPicker
             {
                 ViewMode = PickerViewMode.Thumbnail,
                 SuggestedStartLocation = location,
+                FileTypeFilter =
+                {
+                     ".jpg", ".jpeg", ".jpe",
+                     ".png",
+                     ".gif",
+                     ".bmp", ".dib",
+                     ".tif", ".tiff",
+                }
             };
 
-            if (openPicker is null) return null;
-
-            // Folder
-            StorageFolder folder = await openPicker.PickSingleFolderAsync();
-            return folder;
+            // File
+            StorageFile file = await openPicker.PickSingleFileAsync();
+            return file;
         }
 
     }
