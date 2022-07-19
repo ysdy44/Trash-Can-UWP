@@ -313,7 +313,7 @@ namespace Trash_Can
             };
 
 
-            this.Editor.Closed += (s, e) =>
+            this.Editor.PrimaryButtonClick += (s, e) =>
             {
                 string name = this.Editor.Subtitle;
                 TrashItem item = string.IsNullOrEmpty(name) ? null : this.Items.FirstOrDefault(c => c.Name == name);
