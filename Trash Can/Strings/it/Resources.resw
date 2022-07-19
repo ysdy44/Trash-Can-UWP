@@ -59,7 +59,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 <data name='$DisplayName' xml:space='preserve'> <value>Trash Can</value> </data>
-<data name='$Version' xml:space='preserve'> <value>1.3.0</value> </data>
+<data name='$Version' xml:space='preserve'> <value>1.4.0</value> </data>
 <data name='$InputText' xml:space='preserve'> <value>Inserisci il testo</value> </data>
 <data name='$Untitled' xml:space='preserve'> <value>Senza titolo</value> </data>
 <data name='$GithubLink' xml:space='preserve'> <value>https://github.com/ysdy44/Trash-Can-UWP</value> </data>
@@ -111,6 +111,7 @@
 <data name='$DrawPage_Redo' xml:space='preserve'> <value>Rifare</value> </data>
 <data name='$DrawPage_FullScreen' xml:space='preserve'> <value>A schermo intero</value> </data>
 <data name='$DrawPage_UnFullScreen' xml:space='preserve'> <value>Esci dalla modalità schermo intero</value> </data>
+<data name='$DrawPage_Image' xml:space='preserve'> <value>Aggiungi foto)</value> </data>
 <data name='$DrawPage_Find' xml:space='preserve'> <value>Trova</value> </data>
 <data name='$DrawPage_Next' xml:space='preserve'> <value>Prossimo</value> </data>
 <data name='$DrawPage_Replace' xml:space='preserve'> <value>Sostituire</value> </data>
