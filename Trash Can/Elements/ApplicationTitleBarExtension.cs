@@ -6,7 +6,6 @@ using Windows.UI.Xaml;
 namespace Trash_Can.Elements
 {
     /// <summary>
-    /// <summary>
     /// Provides constant and static methods 
     /// for gets and sets to <see cref="ApplicationViewTitleBar"/>'s background and title.
     /// </summary>
@@ -29,10 +28,6 @@ namespace Trash_Can.Elements
 
 
         #region DependencyProperty
-
-
-        /// <summary> Gets or sets <see cref="ApplicationTitleBarExtension"/>'s title. </summary>
-        public string Title { get => this.View.Title; set => this.View.Title = value; }
 
 
         /// <summary> Gets or set the color for <see cref="ApplicationViewTitleBar"/>. </summary>
@@ -74,22 +69,34 @@ namespace Trash_Can.Elements
         /// <summary> Gets or set the state for <see cref="ApplicationViewTitleBar"/>. </summary>
         public bool IsAccent
         {
-            get => this.isAccent;
-            set
-            {
-                this.Color = value ? this.AccentTitleBarColor : this.TitleBarColor;
-                this.isAccent = value;
-            }
+            get => (bool)base.GetValue(IsAccentProperty);
+            set => base.SetValue(IsAccentProperty, value);
         }
-        private bool isAccent;
+        /// <summary> Identifies the <see cref = "ApplicationTitleBarExtension.IsAccent" /> dependency property. </summary>
+        public static readonly DependencyProperty IsAccentProperty = DependencyProperty.Register(nameof(IsAccent), typeof(bool), typeof(ApplicationTitleBarExtension), new PropertyMetadata(false, (sender, e) =>
+        {
+            ApplicationTitleBarExtension control = (ApplicationTitleBarExtension)sender;
+
+            if (e.NewValue is bool value)
+            {
+                control.Color = value ? control.AccentTitleBarColor : control.TitleBarColor;
+            }
+        }));
+
 
         #endregion
 
 
-        public bool IsFullScreenMode => this.View.IsFullScreenMode;
-        public void ExitFullScreenMode() => this.View.ExitFullScreenMode();
-        public bool TryEnterFullScreenMode() => this.View.TryEnterFullScreenMode();
+        /// <summary> <see cref="ApplicationView.Title"/> </summary>
+        public string Title { get => this.View.Title; set => this.View.Title = value; }
 
+
+        /// <summary> <see cref="ApplicationView.IsFullScreenMode"/> </summary>
+        public bool IsFullScreenMode => this.View.IsFullScreenMode;
+        /// <summary> <see cref="ApplicationView.ExitFullScreenMode"/> </summary>
+        public void ExitFullScreenMode() => this.View.ExitFullScreenMode();
+        /// <summary> <see cref="ApplicationView.TryEnterFullScreenMode"/> </summary>
+        public bool TryEnterFullScreenMode() => this.View.TryEnterFullScreenMode();
 
     }
 }
