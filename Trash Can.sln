@@ -5,6 +5,19 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trash Can", "Trash Can\Trash Can.csproj", "{7651F21F-6A3A-4FB3-ACBA-B66DD3FABE68}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Root", "Root", "{F8DBE854-024F-4137-A703-44A170A22CF5}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README-EN.md = README-EN.md
+		README-ZH.md = README-ZH.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScreenShot", "ScreenShot", "{0013542A-152B-46A7-B4EE-B6793AADCDE0}"
+	ProjectSection(SolutionItems) = preProject
+		ScreenShot\logo.png = ScreenShot\logo.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +65,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0013542A-152B-46A7-B4EE-B6793AADCDE0} = {F8DBE854-024F-4137-A703-44A170A22CF5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B5A258D7-CA37-4C71-939B-53C49E2E4EC5}
