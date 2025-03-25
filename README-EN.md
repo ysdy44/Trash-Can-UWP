@@ -4,7 +4,7 @@
 
  
  Windows 10 app store address: 
-[Buy Trash Can - Microsoft Store](https://www.microsoft.com/store/productId/9NW5LQJPH078)   
+[Buy Trash Can - Microsoft Store](https://apps.microsoft.com/detail/9nw5lqjph078)   
 
 
 <br/>
